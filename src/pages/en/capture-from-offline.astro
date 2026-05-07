@@ -1,0 +1,233 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { ArrowRight } from 'lucide-astro';
+import type { Lang } from '../../i18n/ui';
+const currentLang: Lang = 'en';
+
+const features = [
+  {
+    title: 'Smart QR Codes',
+    desc: 'Create QR codes that directly open WhatsApp with a predefined message.',
+    stat: '80%',
+    statLabel: 'More scans vs traditional QR',
+    color: 'oklch(0.70 0.15 235)',
+    icon: '📱',
+  },
+  {
+    title: 'NFC Tags',
+    desc: 'NFC tags that when tapped open WhatsApp chat with your team.',
+    stat: '5x',
+    statLabel: 'More engagement than QR',
+    color: 'oklch(0.75 0.15 195)',
+    icon: '📡',
+  },
+  {
+    title: 'Link in Bio',
+    desc: 'Gestify generates a unique link that connects all your offline channels.',
+    stat: '60%',
+    statLabel: 'Better conversion vs single link',
+    color: 'oklch(0.65 0.15 280)',
+    icon: '🔗',
+  },
+];
+---
+
+<BaseLayout title="Capture offline leads" lang={currentLang}>
+  <!-- Hero with Image Area -->
+  <section class="hero-visual">
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-text">
+          <div class="announce-badge fade-in">
+            <span>🏪</span>
+            <span>Offline Capture</span>
+          </div>
+          <h1 class="hero-title fade-in" style="transition-delay:100ms;">
+            Convert offline customers into digital leads
+          </h1>
+          <p class="hero-sub fade-in" style="transition-delay:200ms;">
+            QR codes, NFC tags and links that connect your physical store directly to WhatsApp
+          </p>
+          <div class="hero-ctas fade-in" style="transition-delay:300ms;">
+            <a href={`/${currentLang}/demo`} class="btn btn-primary">
+              Talk to sales <ArrowRight size={16} />
+            </a>
+            <a href="#" class="btn btn-outline">
+              Start free trial
+            </a>
+          </div>
+        </div>
+        <div class="hero-visual-area fade-in" style="transition-delay:200ms;">
+          <div class="offline-tools-visual">
+            <div class="tool-section">
+              <div class="tool-label">QR Code</div>
+              <div class="qr-placeholder">
+                <span>📱</span>
+                <span>QR Code Preview</span>
+              </div>
+            </div>
+            <div class="tool-section">
+              <div class="tool-label">NFC Tag</div>
+              <div class="nfc-placeholder">
+                <span>📡</span>
+                <span>NFC Preview</span>
+              </div>
+            </div>
+            <div class="tool-section">
+              <div class="tool-label">Link in bio</div>
+              <div class="link-placeholder">
+                <span>🔗</span>
+                <span>gestify.io/store</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats Bar -->
+  <section class="stats-bar">
+    <div class="container">
+      <div class="stats-grid fade-in">
+        <div class="stat-item">
+          <span class="stat-val">80%</span>
+          <span class="stat-lbl">More scans with smart QR</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-val">5x</span>
+          <span class="stat-lbl">More engagement vs traditional QR</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-val">60%</span>
+          <span class="stat-lbl">Better conversion with unified link</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features with Visual -->
+  <section class="features-section">
+    <div class="container">
+      <div class="features-grid">
+        {features.map((f, i) => (
+          <div class="feature-card fade-in" style={`transition-delay:${i * 100}ms;`}>
+            <div class="feature-visual">
+              <div class="feature-icon-center">{f.icon}</div>
+            </div>
+            <div class="feature-content">
+              <span class="feature-stat" style={`color: ${f.color};`}>{f.stat}</span>
+              <span class="feature-stat-lbl">{f.statLabel}</span>
+              <h3>{f.title}</h3>
+              <p>{f.desc}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Use Cases Visual -->
+  <section class="usecases-section">
+    <div class="container">
+      <div class="section-header-center fade-in">
+        <h2>Where to use Gestify Offline</h2>
+      </div>
+      <div class="usecases-grid">
+        <div class="usecase-card fade-in">
+          <div class="usecase-image-placeholder">
+            <span>🏪</span>
+            <span>Physical Store</span>
+          </div>
+          <h3>Retail Stores</h3>
+          <p>QR on products, registers, store windows</p>
+        </div>
+        <div class="usecase-card fade-in" style="transition-delay:100ms;">
+          <div class="usecase-image-placeholder">
+            <span>🍽️</span>
+            <span>Restaurant</span>
+          </div>
+          <h3>Restaurants</h3>
+          <p>QR on tables, menus, bill</p>
+        </div>
+        <div class="usecase-card fade-in" style="transition-delay:200ms;">
+          <div class="usecase-image-placeholder">
+            <span>🏢</span>
+            <span>Office</span>
+          </div>
+          <h3>Offices & Coworking</h3>
+          <p>NFC at reception, rooms, badges</p>
+        </div>
+        <div class="usecase-card fade-in" style="transition-delay:300ms;">
+          <div class="usecase-image-placeholder">
+            <span>📞</span>
+            <span>Event</span>
+          </div>
+          <h3>Events & Trade Shows</h3>
+          <p>Links on badges, booths, materials</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section">
+    <div class="container">
+      <div class="cta-card fade-in">
+        <h2>Connect your physical business to digital 📍</h2>
+        <div class="cta-btns">
+          <a href={`/${currentLang}/demo`} class="btn btn-primary">Talk to sales</a>
+          <a href="#" class="btn btn-outline">Start free trial</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+.hero-visual { padding: 140px 0 60px; }
+.hero-content { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+.announce-badge { display: inline-flex; align-items: center; gap: 10px; padding: 8px 16px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 9999px; font-size: 13px; color: rgba(255,255,255,0.7); margin-bottom: 24px; }
+.hero-title { font-size: clamp(2rem, 4vw, 3.2rem); font-weight: 800; line-height: 1.1; margin-bottom: 20px; }
+.hero-sub { font-size: 18px; color: rgba(255,255,255,0.5); line-height: 1.6; margin-bottom: 32px; }
+.hero-ctas { display: flex; gap: 16px; flex-wrap: wrap; }
+.offline-tools-visual { background: linear-gradient(145deg, #1a1a1a, #0a0a0a); border: 1px solid rgba(255,255,255,0.1); border-radius: 20px; padding: 24px; display: flex; flex-direction: column; gap: 16px; }
+.tool-section { }
+.tool-label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: rgba(255,255,255,0.4); margin-bottom: 8px; }
+.qr-placeholder, .nfc-placeholder, .link-placeholder { background: #161616; border-radius: 12px; padding: 20px; display: flex; align-items: center; gap: 12px; }
+.qr-placeholder span:first-child, .nfc-placeholder span:first-child { font-size: 28px; }
+.qr-placeholder span:last-child, .nfc-placeholder span:last-child { font-size: 12px; color: rgba(255,255,255,0.3); }
+.link-placeholder span:first-child { font-size: 28px; }
+.link-placeholder span:last-child { font-size: 14px; font-weight: 600; color: oklch(0.75 0.15 195); }
+.stats-bar { padding: 60px 0; border-top: 1px solid rgba(255,255,255,0.05); border-bottom: 1px solid rgba(255,255,255,0.05); }
+.stats-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; }
+.stat-item { text-align: center; }
+.stat-val { display: block; font-size: 40px; font-weight: 800; background: linear-gradient(135deg, oklch(0.75 0.15 195), oklch(0.70 0.15 235)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.stat-lbl { font-size: 13px; color: rgba(255,255,255,0.5); }
+.features-section { padding: 80px 0; }
+.features-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.feature-card { background: #161616; border: 1px solid rgba(255,255,255,0.08); border-radius: 20px; overflow: hidden; }
+.feature-visual { background: linear-gradient(135deg, #0a0a0a, #161616); aspect-ratio: 16/9; display: flex; align-items: center; justify-content: center; }
+.feature-icon-center { font-size: 48px; }
+.feature-content { padding: 24px; }
+.feature-stat { display: block; font-size: 28px; font-weight: 800; }
+.feature-stat-lbl { display: block; font-size: 11px; color: rgba(255,255,255,0.4); margin-bottom: 8px; }
+.feature-content h3 { font-size: 16px; font-weight: 700; margin-bottom: 8px; }
+.feature-content p { font-size: 13px; color: rgba(255,255,255,0.5); line-height: 1.5; }
+.usecases-section { padding: 80px 0; background: #080808; }
+.section-header-center { text-align: center; max-width: 650px; margin: 0 auto 48px; }
+.section-header-center h2 { font-size: clamp(1.8rem, 3vw, 2.5rem); font-weight: 700; margin-bottom: 12px; }
+.usecases-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+.usecase-card { background: #161616; border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; overflow: hidden; }
+.usecase-image-placeholder { background: linear-gradient(135deg, #0a0a0a, #161616); aspect-ratio: 16/10; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; }
+.usecase-image-placeholder span:first-child { font-size: 32px; }
+.usecase-image-placeholder span:last-child { font-size: 12px; color: rgba(255,255,255,0.3); }
+.usecase-card h3 { padding: 16px 16px 8px; font-size: 14px; font-weight: 700; }
+.usecase-card p { padding: 0 16px 16px; font-size: 12px; color: rgba(255,255,255,0.5); }
+.cta-section { padding: 80px 0; }
+.cta-card { text-align: center; background: linear-gradient(135deg, #161616, #0a0a0a); border: 1px solid rgba(255,255,255,0.08); border-radius: 24px; padding: 60px; }
+.cta-card h2 { font-size: clamp(1.8rem, 3vw, 2.5rem); font-weight: 800; margin-bottom: 32px; }
+.cta-btns { display: flex; justify-content: center; gap: 16px; }
+@media (max-width: 1024px) { .usecases-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 768px) { .hero-content { grid-template-columns: 1fr; } .hero-visual-area { display: none; } .stats-grid { grid-template-columns: 1fr; } .features-grid { grid-template-columns: 1fr; } }
+</style>

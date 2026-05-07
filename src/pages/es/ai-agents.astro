@@ -1,0 +1,291 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { ArrowRight } from 'lucide-astro';
+import type { Lang } from '../../i18n/ui';
+const currentLang: Lang = 'es';
+
+const features = [
+  {
+    title: 'Agentes IA para FAQ',
+    desc: 'Responde automáticamente preguntas frecuentes de clientes las 24/7. Reduce workload del equipo hasta en 70% mientras mantienes tiempos de respuesta instantáneos.',
+    stat: '70%',
+    statLabel: 'Reducción en workload',
+    color: 'oklch(0.75 0.15 195)',
+  },
+  {
+    title: 'Cualificación Automática',
+    desc: 'Califica leads basándose en comportamiento, demografía y nivel de intención. Prioriza tu pipeline enfocándote en prospectos de alto valor.',
+    stat: '3x',
+    statLabel: 'Más conversiones',
+    color: 'oklch(0.70 0.15 235)',
+  },
+  {
+    title: 'Enrutamiento Inteligente',
+    desc: 'Envía cada consulta al agente o departamento correcto basado en habilidades, idioma y disponibilidad. Zero lead leakage.',
+    stat: '95%',
+    statLabel: 'Leads enrutados correctamente',
+    color: 'oklch(0.65 0.15 280)',
+  },
+];
+---
+
+<BaseLayout title="Agentes IA para convertir más leads" lang={currentLang}>
+  <!-- Hero with Visual -->
+  <section class="hero-visual">
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-text">
+          <div class="announce-badge fade-in">
+            <span>✨</span>
+            <span>Gestify AI Agents — Razonamiento avanzado</span>
+          </div>
+          <h1 class="hero-title fade-in" style="transition-delay:100ms;">
+            Convierte más leads con Agentes IA que trabajan 24/7
+          </h1>
+          <p class="hero-sub fade-in" style="transition-delay:200ms;">
+            Cualifica, enruta y convierte automáticamente con IA que entiende a tus clientes desde la primera conversación
+          </p>
+          <div class="hero-ctas fade-in" style="transition-delay:300ms;">
+            <a href={`/${currentLang}/demo`} class="btn btn-primary">
+              Hablar con ventas <ArrowRight size={16} />
+            </a>
+            <a href="#" class="btn btn-outline">
+              Empezar prueba gratis
+            </a>
+          </div>
+        </div>
+        <div class="hero-visual-area fade-in" style="transition-delay:200ms;">
+          <div class="visual-card">
+            <div class="visual-header">
+              <span class="visual-dot"></span>
+              <span>AI Agent Preview</span>
+            </div>
+            <div class="ai-conversation">
+              <div class="ai-msg user">Tengo una pregunta sobre mi pedido</div>
+              <div class="ai-msg bot">
+                <span class="typing-indicator">● ● ●</span>
+              </div>
+              <div class="ai-msg bot">¡Hola! Con gusto te ayudo. ¿Podrías darme tu número de pedido?</div>
+              <div class="ai-msg user">Es el #4521</div>
+              <div class="ai-msg bot resolved">Perfecto, encontré tu pedido. Tu envío llega mañana antes del mediodía 🚚</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats -->
+  <section class="stats-section">
+    <div class="container">
+      <div class="stats-grid fade-in">
+        <div class="stat-item">
+          <span class="stat-val">70%</span>
+          <span class="stat-lbl">Reducción en workload</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-val">3x</span>
+          <span class="stat-lbl">Más conversiones</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-val">95%</span>
+          <span class="stat-lbl">Leads enrutados correctamente</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features with Visual -->
+  <section class="features-section">
+    <div class="container">
+      <div class="features-grid">
+        <div class="feature-visual-card fade-in">
+          <div class="feature-visual-image">
+            <div class="placeholder-box">
+              <span>📱</span>
+              <span>Chat Interface</span>
+            </div>
+          </div>
+          <div class="feature-visual-content">
+            <span class="feature-stat" style="color: oklch(0.75 0.15 195);">70%</span>
+            <h3>Agentes IA para FAQ</h3>
+            <p>Responde automáticamente preguntas frecuentes de clientes las 24/7. Reduce workload del equipo.</p>
+          </div>
+        </div>
+        <div class="feature-visual-card fade-in" style="transition-delay:100ms;">
+          <div class="feature-visual-image">
+            <div class="placeholder-box">
+              <span>🎯</span>
+              <span>Lead Scoring</span>
+            </div>
+          </div>
+          <div class="feature-visual-content">
+            <span class="feature-stat" style="color: oklch(0.70 0.15 235);">3x</span>
+            <h3>Cualificación Automática</h3>
+            <p>Califica leads basándose en comportamiento y nivel de intención. Prioriza tu pipeline.</p>
+          </div>
+        </div>
+        <div class="feature-visual-card fade-in" style="transition-delay:200ms;">
+          <div class="feature-visual-image">
+            <div class="placeholder-box">
+              <span>🔀</span>
+              <span>Routing Flow</span>
+            </div>
+          </div>
+          <div class="feature-visual-content">
+            <span class="feature-stat" style="color: oklch(0.65 0.15 280);">95%</span>
+            <h3>Enrutamiento Inteligente</h3>
+            <p>Envía cada consulta al agente correcto basado en habilidades, idioma y disponibilidad.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- AI Flow Visual -->
+  <section class="flow-section">
+    <div class="container">
+      <div class="flow-header fade-in">
+        <h2>Cómo funciona el flujo de IA</h2>
+      </div>
+      <div class="flow-visual">
+        <div class="flow-step fade-in">
+          <div class="flow-icon">📥</div>
+          <div class="flow-num">01</div>
+          <h4>Captura</h4>
+          <p>Lead llega de cualquier canal</p>
+        </div>
+        <div class="flow-connector"></div>
+        <div class="flow-step fade-in" style="transition-delay:100ms;">
+          <div class="flow-icon">🤖</div>
+          <div class="flow-num">02</div>
+          <h4>Cualifica</h4>
+          <p>IA hace preguntas y puntúa</p>
+        </div>
+        <div class="flow-connector"></div>
+        <div class="flow-step fade-in" style="transition-delay:200ms;">
+          <div class="flow-icon">🔀</div>
+          <div class="flow-num">03</div>
+          <h4>Enruta</h4>
+          <p>Asigna al agente correcto</p>
+        </div>
+        <div class="flow-connector"></div>
+        <div class="flow-step fade-in" style="transition-delay:300ms;">
+          <div class="flow-icon">💰</div>
+          <div class="flow-num">04</div>
+          <h4>Convierte</h4>
+          <p>Seguimiento y cierre</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Capabilities Visual -->
+  <section class="capabilities-section">
+    <div class="container">
+      <div class="cap-grid">
+        <div class="cap-card fade-in">
+          <div class="cap-icon">🌐</div>
+          <h4>NLP multi-idioma</h4>
+          <p>Responde en español, inglés, portugués y 50+ idiomas</p>
+        </div>
+        <div class="cap-card fade-in" style="transition-delay:80ms;">
+          <div class="cap-icon">👤</div>
+          <h4>Hand-off a humanos</h4>
+          <p>Transfiere a agentes humanos con contexto completo</p>
+        </div>
+        <div class="cap-card fade-in" style="transition-delay:160ms;">
+          <div class="cap-icon">📈</div>
+          <h4>Learning continuo</h4>
+          <p>Los agentes aprenden de cada interacción</p>
+        </div>
+        <div class="cap-card fade-in" style="transition-delay:240ms;">
+          <div class="cap-icon">🔗</div>
+          <h4>Integración CRM</h4>
+          <p>Sync con HubSpot, Salesforce, Zoho</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA with Visual -->
+  <section class="cta-section">
+    <div class="container">
+      <div class="cta-visual fade-in">
+        <div class="cta-content">
+          <h2>Empieza a convertir más con IA 🚀</h2>
+          <p>Únete a empresas que ya usan Gestify AI para aumentar conversiones</p>
+          <div class="cta-btns">
+            <a href={`/${currentLang}/demo`} class="btn btn-primary">Hablar con ventas</a>
+            <a href="#" class="btn btn-outline">Empezar prueba gratis</a>
+          </div>
+        </div>
+        <div class="cta-visual-graphic">
+          <div class="floating-card">✨</div>
+          <div class="floating-card">🤖</div>
+          <div class="floating-card">📈</div>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+.hero-visual { padding: 140px 0 60px; }
+.hero-content { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+.announce-badge { display: inline-flex; align-items: center; gap: 10px; padding: 8px 16px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 9999px; font-size: 13px; color: rgba(255,255,255,0.7); margin-bottom: 24px; }
+.hero-title { font-size: clamp(2rem, 4vw, 3.2rem); font-weight: 800; line-height: 1.1; margin-bottom: 20px; }
+.hero-sub { font-size: 18px; color: rgba(255,255,255,0.5); line-height: 1.6; margin-bottom: 32px; }
+.hero-ctas { display: flex; gap: 16px; flex-wrap: wrap; }
+.hero-visual-area { }
+.visual-card { background: linear-gradient(145deg, #1a1a1a, #0a0a0a); border: 1px solid rgba(255,255,255,0.1); border-radius: 20px; padding: 24px; }
+.visual-header { display: flex; align-items: center; gap: 8px; font-size: 12px; color: rgba(255,255,255,0.4); margin-bottom: 16px; }
+.visual-dot { width: 8px; height: 8px; border-radius: 50%; background: oklch(0.75 0.15 195); }
+.ai-conversation { display: flex; flex-direction: column; gap: 12px; }
+.ai-msg { padding: 12px 16px; border-radius: 16px; font-size: 14px; max-width: 85%; }
+.ai-msg.user { background: oklch(0.70 0.15 235); color: #fff; align-self: flex-end; }
+.ai-msg.bot { background: #222; color: rgba(255,255,255,0.8); align-self: flex-start; }
+.ai-msg.bot.resolved { border: 1px solid rgba(34, 197, 94, 0.3); }
+.typing-indicator { color: oklch(0.75 0.15 195); letter-spacing: 2px; }
+.stats-section { padding: 60px 0; border-top: 1px solid rgba(255,255,255,0.05); border-bottom: 1px solid rgba(255,255,255,0.05); }
+.stats-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; }
+.stat-item { text-align: center; }
+.stat-val { display: block; font-size: 40px; font-weight: 800; background: linear-gradient(135deg, oklch(0.75 0.15 195), oklch(0.70 0.15 235)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.stat-lbl { font-size: 13px; color: rgba(255,255,255,0.5); }
+.features-section { padding: 80px 0; }
+.features-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.feature-visual-card { background: #161616; border: 1px solid rgba(255,255,255,0.08); border-radius: 20px; overflow: hidden; }
+.feature-visual-image { background: linear-gradient(135deg, #0a0a0a, #161616); aspect-ratio: 16/9; display: flex; align-items: center; justify-content: center; }
+.placeholder-box { text-align: center; color: rgba(255,255,255,0.3); }
+.placeholder-box span { display: block; font-size: 36px; margin-bottom: 8px; }
+.placeholder-box span:last-child { font-size: 12px; font-weight: 500; }
+.feature-visual-content { padding: 24px; }
+.feature-stat { display: block; font-size: 32px; font-weight: 800; margin-bottom: 8px; }
+.feature-visual-content h3 { font-size: 18px; font-weight: 700; margin-bottom: 8px; }
+.feature-visual-content p { font-size: 13px; color: rgba(255,255,255,0.5); line-height: 1.5; }
+.flow-section { padding: 80px 0; background: #080808; }
+.flow-header { text-align: center; margin-bottom: 48px; }
+.flow-header h2 { font-size: clamp(1.8rem, 3vw, 2.5rem); font-weight: 700; }
+.flow-visual { display: flex; justify-content: center; align-items: center; gap: 0; }
+.flow-step { text-align: center; padding: 0 32px; }
+.flow-icon { font-size: 48px; margin-bottom: 12px; }
+.flow-num { font-size: 11px; font-weight: 700; color: oklch(0.75 0.15 195); margin-bottom: 8px; }
+.flow-step h4 { font-size: 16px; font-weight: 700; margin-bottom: 4px; }
+.flow-step p { font-size: 12px; color: rgba(255,255,255,0.4); }
+.flow-connector { width: 60px; height: 2px; background: linear-gradient(90deg, rgba(255,255,255,0.1), rgba(255,255,255,0.3), rgba(255,255,255,0.1)); }
+.capabilities-section { padding: 80px 0; }
+.cap-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+.cap-card { padding: 24px; background: #161616; border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; text-align: center; }
+.cap-icon { font-size: 32px; margin-bottom: 16px; }
+.cap-card h4 { font-size: 14px; font-weight: 700; margin-bottom: 8px; }
+.cap-card p { font-size: 12px; color: rgba(255,255,255,0.5); }
+.cta-section { padding: 80px 0; }
+.cta-visual { display: grid; grid-template-columns: 2fr 1fr; gap: 60px; align-items: center; background: linear-gradient(135deg, #161616, #0a0a0a); border: 1px solid rgba(255,255,255,0.08); border-radius: 24px; padding: 60px; }
+.cta-content h2 { font-size: clamp(1.8rem, 3vw, 2.5rem); font-weight: 800; margin-bottom: 12px; }
+.cta-content p { font-size: 16px; color: rgba(255,255,255,0.5); margin-bottom: 32px; }
+.cta-btns { display: flex; gap: 16px; }
+.cta-visual-graphic { display: flex; gap: 16px; justify-content: center; }
+.floating-card { width: 64px; height: 64px; background: #222; border: 1px solid rgba(255,255,255,0.1); border-radius: 16px; display: flex; align-items: center; justify-content: center; font-size: 28px; }
+@media (max-width: 1024px) { .cap-grid { grid-template-columns: repeat(2, 1fr); } .flow-visual { flex-wrap: wrap; } .flow-connector { display: none; } }
+@media (max-width: 768px) { .hero-content { grid-template-columns: 1fr; } .hero-visual-area { display: none; } .stats-grid { grid-template-columns: 1fr; } .features-grid { grid-template-columns: 1fr; } .cta-visual { grid-template-columns: 1fr; } .cta-visual-graphic { display: none; } }
+</style>

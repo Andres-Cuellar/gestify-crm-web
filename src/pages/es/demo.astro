@@ -1,0 +1,206 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { ui } from '../../i18n/ui';
+import type { Lang } from '../../i18n/ui';
+const currentLang: Lang = 'es';
+---
+
+<BaseLayout title="Reservar demo" lang={currentLang}>
+  <section class="page-hero">
+    <div class="container">
+      <span class="section-tag fade-in" style="width:fit-content;">
+        <span class="section-tag-dot"></span>Demo
+      </span>
+      <h1 class="page-title fade-in" style="transition-delay:100ms;">Ve Gestify en acción</h1>
+      <p class="page-sub fade-in" style="transition-delay:200ms;">
+        Agenda una demo personalizada de 30 minutos con nuestro equipo. Te mostramos cómo Gestify puede ayudar a tu agencia.
+      </p>
+    </div>
+  </section>
+
+  <section class="section section-dark">
+    <div class="container">
+      <div class="demo-grid">
+        <div class="demo-form-wrapper fade-in">
+          <form class="contact-form">
+            <div class="form-group">
+              <label class="form-label">Nombre completo</label>
+              <input type="text" class="form-input" placeholder="Juan Pérez" />
+            </div>
+            <div class="form-group">
+              <label class="form-label">Email de trabajo</label>
+              <input type="email" class="form-input" placeholder="juan@miagencia.com" />
+            </div>
+            <div class="form-group">
+              <label class="form-label">Empresa</label>
+              <input type="text" class="form-input" placeholder="Nombre de tu agencia" />
+            </div>
+            <div class="form-group">
+              <label class="form-label">Tamaño de equipo</label>
+              <select class="form-input">
+                <option value="">Selecciona...</option>
+                <option value="1-5">1-5 personas</option>
+                <option value="6-15">6-15 personas</option>
+                <option value="16-50">16-50 personas</option>
+                <option value="50+">50+ personas</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label">¿En qué estás interesado?</label>
+              <select class="form-input">
+                <option value="">Selecciona...</option>
+                <option value="inbox">Inbox Unificado</option>
+                <option value="crm">CRM & Pipelines</option>
+                <option value="ai">Agentes IA</option>
+                <option value="automation">Automatización</option>
+                <option value="all">Todo</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label">¿Qué día te conviene?</label>
+              <input type="date" class="form-input" />
+            </div>
+            <button type="submit" class="btn btn-primary" style="width:100%; justify-content:center;">
+              Reservar mi demo
+            </button>
+          </form>
+        </div>
+
+        <div class="demo-info fade-in" style="transition-delay:100ms;">
+          <h2 class="demo-heading">¿Qué incluye la demo?</h2>
+          <div class="demo-points">
+            <div class="demo-point">
+              <span class="demo-num">01</span>
+              <div>
+                <h4>Paso a paso personalizado</h4>
+                <p>Te mostramos exactamente cómo Gestify se adapta a tu flujo de trabajo.</p>
+              </div>
+            </div>
+            <div class="demo-point">
+              <span class="demo-num">02</span>
+              <div>
+                <h4>Responde tus preguntas</h4>
+                <p>Cualquier duda sobre pricing, integraciones o onboarding — respondemos al momento.</p>
+              </div>
+            </div>
+            <div class="demo-point">
+              <span class="demo-num">03</span>
+              <div>
+                <h4>Plan de migración</h4>
+                <p>Si vienes de otra herramienta, te ayudamos a planificar la transición.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="demo-testimonial">
+            <p class="demo-quote">"La demo me convenció en 20 minutos. En 2 semanas ya teníamos todo migrado."</p>
+            <span class="demo-author">— María García, CEO @ Agencia Digital</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+.page-hero {
+  padding: 160px 0 80px;
+  text-align: center;
+}
+.page-title {
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  font-weight: 700;
+  line-height: 1.1;
+  margin: 20px auto 24px;
+  max-width: 700px;
+}
+.page-sub {
+  font-size: 18px;
+  color: rgba(255,255,255,0.5);
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.7;
+}
+.demo-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+.demo-heading {
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 28px;
+}
+.demo-points {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  margin-bottom: 40px;
+}
+.demo-point {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+}
+.demo-num {
+  font-size: 12px;
+  font-weight: 700;
+  color: oklch(0.75 0.15 195);
+  font-family: monospace;
+}
+.demo-point h4 {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+.demo-point p {
+  font-size: 13px;
+  color: rgba(255,255,255,0.5);
+  line-height: 1.5;
+}
+.demo-testimonial {
+  padding: 24px;
+  background: #161616;
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 16px;
+}
+.demo-quote {
+  font-size: 15px;
+  font-style: italic;
+  color: rgba(255,255,255,0.8);
+  line-height: 1.6;
+  margin-bottom: 12px;
+}
+.demo-author {
+  font-size: 12px;
+  color: rgba(255,255,255,0.4);
+}
+.form-group { margin-bottom: 20px; }
+.form-label {
+  display: block;
+  font-size: 13px;
+  font-weight: 500;
+  color: rgba(255,255,255,0.7);
+  margin-bottom: 8px;
+}
+.form-input {
+  width: 100%;
+  padding: 14px 16px;
+  background: #161616;
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 12px;
+  color: #fafafa;
+  font-size: 14px;
+  font-family: inherit;
+  outline: none;
+  transition: border-color 0.2s;
+  appearance: none;
+}
+.form-input:focus { border-color: oklch(0.70 0.15 235); }
+.form-input::placeholder { color: rgba(255,255,255,0.3); }
+@media (max-width: 768px) {
+  .demo-grid { grid-template-columns: 1fr; }
+}
+</style>

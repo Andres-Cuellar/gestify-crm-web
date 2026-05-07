@@ -1,0 +1,730 @@
+---
+import { Languages, Menu, X, ChevronDown, ArrowRight } from 'lucide-astro';
+import { ui } from '@/i18n/ui';
+import type { Lang } from '@/i18n/ui';
+
+interface Props { currentLang: Lang; }
+const { currentLang } = Astro.props;
+const otherLang = currentLang === 'es' ? 'en' : 'es';
+
+const captureItems = [
+  { 
+    title: 'Capture from Ads', 
+    href: `/${currentLang}/capture-from-ads`, 
+    desc: 'Meta Click to Chat, TikTok Ads',
+    icon: 'M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3',
+  },
+  { 
+    title: 'Capture from Social', 
+    href: `/${currentLang}/capture-from-social`, 
+    desc: 'Facebook, Instagram, TikTok DMs',
+    icon: 'M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z',
+  },
+  { 
+    title: 'Capture from Website', 
+    href: `/${currentLang}/capture-from-website`, 
+    desc: 'Chat widgets, lead forms',
+    icon: 'M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5',
+  },
+  { 
+    title: 'Capture from Offline', 
+    href: `/${currentLang}/capture-from-offline`, 
+    desc: 'QR codes, in-store',
+    icon: 'M3 3h7v7H3zM14 3h7v7h-7zM14 14h7v7h-7zM3 14h7v7H3z',
+  },
+];
+
+const convertItems = [
+  { 
+    title: 'AI Agents ✨', 
+    href: `/${currentLang}/ai-agents`, 
+    desc: 'FAQ, qualify, route, book',
+    icon: 'M12 8V4H8M8 12H2M22 12h-4M16 12a4 4 0 1 1-8 0 4 4 0 0 1 8 0zM6 18h.01M10 18h.01',
+  },
+  { 
+    title: 'Qualify Leads', 
+    href: `/${currentLang}/qualify-leads`, 
+    desc: 'Score & prioritize prospects',
+    icon: 'M22 11.08V12a10 10 0 1 1-5.93-9.14M22 4 12 14.01l-3-3',
+  },
+  { 
+    title: 'Route Leads', 
+    href: `/${currentLang}/route-leads`, 
+    desc: 'Auto-assign to teams',
+    icon: 'M16 3h5v5M4 20L21 3M21 16v5h-5M15 15l6 6M4 4l5 5',
+  },
+  { 
+    title: 'Book Appointments', 
+    href: `/${currentLang}/book-appointments`, 
+    desc: 'Calendar integration',
+    icon: 'M19 4H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zM16 2v4M8 2v4M3 10h18',
+  },
+];
+
+const retainItems = [
+  { 
+    title: 'Conversational Support', 
+    href: `/${currentLang}/conversational-support`, 
+    desc: 'CSAT, ticket management',
+    icon: 'M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z',
+  },
+  { 
+    title: 'Promotions', 
+    href: `/${currentLang}/promotions`, 
+    desc: 'Broadcast campaigns',
+    icon: 'M22 17a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2zM6 17v-5M13 17v-5M18 17v-5',
+  },
+  { 
+    title: 'Renewal Reminders', 
+    href: `/${currentLang}/renewal-reminders`, 
+    desc: 'Proactive retention',
+    icon: 'M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z',
+  },
+  { 
+    title: 'CSAT / NPS Surveys', 
+    href: `/${currentLang}/csat-surveys`, 
+    desc: 'Measure satisfaction',
+    icon: 'M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3H14zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3',
+  },
+];
+---
+
+<nav class="nav-fixed">
+  <div class="nav-center">
+    <div class="nav-box">
+      <a href={`/${currentLang}`} class="nav-logo-link">
+        <img src="/logo.webp" alt="Gestify" class="nav-logo" />
+      </a>
+
+      <div class="nav-links">
+        <!-- Product with Mega Menu -->
+        <div class="nav-item-has-mega">
+          <button class="nav-link-btn" id="product-trigger">
+            {currentLang === 'es' ? 'Producto' : 'Product'}
+            <ChevronDown size={14} />
+          </button>
+          
+          <div class="mega-menu" id="mega-menu">
+            <div class="mega-header">
+              <span class="mega-header-title">{currentLang === 'es' ? 'Producto' : 'Product'}</span>
+              <p class="mega-header-sub">{currentLang === 'es' ? 'Todo lo que necesitas para capturar, convertir y fidelizar clientes' : 'Everything you need to capture, convert and retain customers'}</p>
+            </div>
+            
+            <div class="mega-grid">
+              <!-- Capture Leads -->
+              <div class="mega-section">
+                <div class="mega-section-header">
+                  <div class="mega-section-icon" style="background: oklch(0.70 0.15 235 / 0.15);">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="oklch(0.70 0.15 235)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:18px;height:18px;">
+                      <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                    </svg>
+                  </div>
+                  <span class="mega-section-title">{currentLang === 'es' ? 'Capturar Leads' : 'Capture Leads'}</span>
+                </div>
+                {captureItems.map(item => (
+                  <a href={item.href} class="mega-item">
+                    <div class="mega-item-icon">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:16px;height:16px;">
+                        <path d={item.icon}></path>
+                      </svg>
+                    </div>
+                    <div class="mega-item-content">
+                      <span class="mega-item-title">{item.title}</span>
+                      <span class="mega-item-desc">{item.desc}</spanc>
+                    </div>
+                  </a>
+                ))}
+              </div>
+
+              <!-- Convert Leads -->
+              <div class="mega-section">
+                <div class="mega-section-header">
+                  <div class="mega-section-icon" style="background: oklch(0.75 0.15 195 / 0.15);">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="oklch(0.75 0.15 195)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:18px;height:18px;">
+                      <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+                    </svg>
+                  </div>
+                  <span class="mega-section-title">{currentLang === 'es' ? 'Convertir Leads' : 'Convert Leads'}</span>
+                </div>
+                {convertItems.map(item => (
+                  <a href={item.href} class="mega-item">
+                    <div class="mega-item-icon">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:16px;height:16px;">
+                        <path d={item.icon}></path>
+                      </svg>
+                    </div>
+                    <div class="mega-item-content">
+                      <span class="mega-item-title">{item.title}</span>
+                      <span class="mega-item-desc">{item.desc}</span>
+                    </div>
+                  </a>
+                ))}
+              </div>
+
+              <!-- Retain Customers -->
+              <div class="mega-section">
+                <div class="mega-section-header">
+                  <div class="mega-section-icon" style="background: oklch(0.65 0.15 145 / 0.15);">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="oklch(0.65 0.15 145)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:18px;height:18px;">
+                      <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                    </svg>
+                  </div>
+                  <span class="mega-section-title">{currentLang === 'es' ? 'Fidelizar Clientes' : 'Retain Customers'}</span>
+                </div>
+                {retainItems.map(item => (
+                  <a href={item.href} class="mega-item">
+                    <div class="mega-item-icon">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:16px;height:16px;">
+                        <path d={item.icon}></path>
+                      </svg>
+                    </div>
+                    <div class="mega-item-content">
+                      <span class="mega-item-title">{item.title}</span>
+                      <span class="mega-item-desc">{item.desc}</span>
+                    </div>
+                  </a>
+                ))}
+              </div>
+
+              <!-- Scale with Gestify -->
+              <div class="mega-section mega-section-scale">
+                <div class="mega-scale-header">
+                  <span class="mega-scale-title">{currentLang === 'es' ? 'Escalar con Gestify' : 'Scale with Gestify'}</span>
+                </div>
+                <a href={`/${currentLang}/success-stories`} class="mega-scale-item">
+                  <div class="mega-scale-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:16px;height:16px;">
+                      <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                      <circle cx="9" cy="7" r="4"></circle>
+                      <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                      <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                    </svg>
+                  </div>
+                  <span>Success Stories</span>
+                </a>
+                <a href={`/${currentLang}/mobile-app`} class="mega-scale-item">
+                  <div class="mega-scale-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:16px;height:16px;">
+                      <rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect>
+                      <line x1="12" y1="18" x2="12.01" y2="18"></line>
+                    </svg>
+                  </div>
+                  <span>Mobile App</span>
+                </a>
+                <a href={`/${currentLang}/whatsapp-calling`} class="mega-scale-item">
+                  <div class="mega-scale-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:16px;height:16px;">
+                      <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72"></path>
+                      <polygon points="7 9 3 15 7 15"></polygon>
+                      <line x1="12" y1="12" x2="17" y2="15"></line>
+                    </svg>
+                  </div>
+                  <span>WhatsApp Business Calling</span>
+                </a>
+                <a href={`/${currentLang}/integrations`} class="mega-scale-item">
+                  <div class="mega-scale-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:16px;height:16px;">
+                      <rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect>
+                      <rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect>
+                      <line x1="6" y1="6" x2="6.01" y2="6"></line>
+                      <line x1="6" y1="18" x2="6.01" y2="18"></line>
+                    </svg>
+                  </div>
+                  <span>Channels & Integrations</span>
+                </a>
+              </div>
+            </div>
+
+            <div class="mega-footer">
+              <a href={`/${currentLang}/producto`} class="mega-footer-link">
+                {currentLang === 'es' ? 'Ver todas las features' : 'View all features'}
+                <ArrowRight size={14} />
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <a href={`/${currentLang}/soluciones`} class="nav-link-text">{currentLang === 'es' ? 'Industrias' : 'Industries'}</a>
+        <a href={`/${currentLang}/recursos`} class="nav-link-text">{currentLang === 'es' ? 'Recursos' : 'Resources'}</a>
+        <a href={`/${currentLang}/precios`} class="nav-link-text">{currentLang === 'es' ? 'Precios' : 'Pricing'}</a>
+        <a href={`/${currentLang}/por-que-nosotros`} class="nav-link-text">{currentLang === 'es' ? 'Por qué nosotros' : 'Why Us'}</a>
+      </div>
+
+      <div class="nav-right">
+        <a href={`/${otherLang}`} class="lang-btn">
+          <Languages size={14} />
+          <span>{otherLang === 'es' ? 'ES' : 'EN'}</span>
+        </a>
+        <a href="#" class="btn btn-primary nav-cta">
+          {currentLang === 'es' ? 'Empezar gratis' : 'Start free'}
+        </a>
+        <a href={`/${currentLang}/demo`} class="btn btn-outline nav-cta-outline">
+          {currentLang === 'es' ? 'Hablar con ventas' : 'Talk to sales'}
+        </a>
+        <button class="mobile-menu-btn" id="menu-toggle">
+          <Menu size={20} />
+        </button>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- Mobile Menu -->
+<div class="mobile-menu" id="mobile-menu">
+  <button class="mobile-close" id="menu-close">
+    <X size={24} />
+  </button>
+
+  <div class="mobile-section">
+    <button class="mobile-section-title" data-toggle="product">
+      {currentLang === 'es' ? 'Producto' : 'Product'} <ChevronDown size={16} />
+    </button>
+      <div class="mobile-section-content" id="mobile-product">
+        <div class="mobile-sub-section">
+          <span class="mobile-sub-title" style="color: oklch(0.70 0.15 235);">{currentLang === 'es' ? 'Capturar Leads' : 'Capture Leads'}</span>
+        {captureItems.map(item => (
+          <a href={item.href} class="mobile-link">
+            <span class="mobile-link-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;">
+                <path d={item.icon}></path>
+              </svg>
+            </span>
+            {item.title}
+          </a>
+        ))}
+      </div>
+      <div class="mobile-sub-section">
+        <span class="mobile-sub-title" style="color: oklch(0.75 0.15 195);">{currentLang === 'es' ? 'Convertir Leads' : 'Convert Leads'}</span>
+        {convertItems.map(item => (
+          <a href={item.href} class="mobile-link">
+            <span class="mobile-link-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;">
+                <path d={item.icon}></path>
+              </svg>
+            </span>
+            {item.title}
+          </a>
+        ))}
+      </div>
+      <div class="mobile-sub-section">
+        <span class="mobile-sub-title" style="color: oklch(0.65 0.15 145);">{currentLang === 'es' ? 'Fidelizar Clientes' : 'Retain Customers'}</span>
+        {retainItems.map(item => (
+          <a href={item.href} class="mobile-link">
+            <span class="mobile-link-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;">
+                <path d={item.icon}></path>
+              </svg>
+            </span>
+            {item.title}
+          </a>
+        ))}
+      </div>
+    </div>
+  </div>
+
+  <a href={`/${currentLang}/soluciones`} class="mobile-link-top">{currentLang === 'es' ? 'Industrias' : 'Industries'}</a>
+  <a href={`/${currentLang}/recursos`} class="mobile-link-top">{currentLang === 'es' ? 'Recursos' : 'Resources'}</a>
+  <a href={`/${currentLang}/precios`} class="mobile-link-top">{currentLang === 'es' ? 'Precios' : 'Pricing'}</a>
+  <a href={`/${currentLang}/por-que-nosotros`} class="mobile-link-top">{currentLang === 'es' ? 'Por qué nosotros' : 'Why Us'}</a>
+
+  <div class="mobile-ctas">
+    <a href="#" class="btn btn-primary">{currentLang === 'es' ? 'Empezar gratis' : 'Start free'}</a>
+    <a href={`/${currentLang}/demo`} class="btn btn-outline">{currentLang === 'es' ? 'Hablar con ventas' : 'Talk to sales'}</a>
+  </div>
+</div>
+
+<style>
+.nav-fixed {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  padding: 14px 20px;
+}
+.nav-center {
+  display: flex;
+  justify-content: center;
+}
+.nav-box {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  width: 100%;
+  max-width: 1200px;
+  padding: 10px 20px;
+  background: rgba(5,5,5,0.85);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 18px;
+  backdrop-filter: blur(20px);
+}
+.nav-logo-link { display: flex; align-items: center; }
+.nav-logo { height: 28px; width: auto; filter: brightness(0) invert(1); }
+
+/* Nav Links */
+.nav-links { display: none; align-items: center; gap: 2px; }
+.nav-link-btn {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 8px 14px;
+  font-size: 14px;
+  font-weight: 500;
+  color: rgba(255,255,255,0.7);
+  background: none;
+  border: none;
+  cursor: pointer;
+  border-radius: 10px;
+  transition: color 0.15s, background 0.15s;
+}
+.nav-link-btn:hover { color: #fff; background: rgba(255,255,255,0.05); }
+.nav-link-text {
+  padding: 8px 14px;
+  font-size: 14px;
+  font-weight: 500;
+  color: rgba(255,255,255,0.7);
+  border-radius: 10px;
+  transition: color 0.15s, background 0.15s;
+}
+.nav-link-text:hover { color: #fff; background: rgba(255,255,255,0.05); }
+
+/* Mega Menu */
+.nav-item-has-mega { position: relative; }
+.mega-menu {
+  position: fixed;
+  top: 70px;
+  left: 50%;
+  transform: translateX(-50%) translateY(-8px);
+  width: 100vw;
+  max-width: 1400px;
+  background: #161616;
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 24px;
+  padding: 0;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s, visibility 0.2s, transform 0.2s;
+  box-shadow: 0 24px 80px rgba(0,0,0,0.6);
+  overflow: hidden;
+}
+.nav-item-has-mega:hover .mega-menu,
+.nav-item-has-mega:focus-within .mega-menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* Mega Header */
+.mega-header {
+  padding: 28px 40px 24px;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+.mega-header-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: #fff;
+  display: block;
+  margin-bottom: 4px;
+}
+.mega-header-sub {
+  font-size: 13px;
+  color: rgba(255,255,255,0.45);
+}
+
+/* Mega Grid */
+.mega-grid {
+  display: grid;
+  grid-template-columns: 2fr 2fr 2fr 1.5fr;
+  gap: 0;
+  padding: 24px 40px;
+}
+.mega-section {
+  padding: 0 28px;
+  border-right: 1px solid rgba(255,255,255,0.06);
+}
+.mega-section:first-child { padding-left: 0; }
+.mega-section:last-child { padding-right: 0; border-right: none; }
+.mega-section:not(:first-child):not(:last-child) { padding: 0 28px; }
+
+/* Scale Section */
+.mega-section-scale {
+  background: rgba(255,255,255,0.02);
+  margin: -24px -8px -24px 0;
+  padding: 24px 24px 24px 28px !important;
+  border-radius: 0 16px 16px 0;
+  border-right: none !important;
+}
+.mega-scale-header {
+  margin-bottom: 16px;
+}
+.mega-scale-title {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: rgba(255,255,255,0.4);
+}
+.mega-scale-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  border-radius: 10px;
+  text-decoration: none;
+  transition: background 0.15s;
+  margin-bottom: 4px;
+}
+.mega-scale-item:hover { background: rgba(255,255,255,0.05); }
+.mega-scale-item:last-child { margin-bottom: 0; }
+.mega-scale-icon {
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+  background: rgba(255,255,255,0.05);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255,255,255,0.5);
+  flex-shrink: 0;
+}
+.mega-scale-item:hover .mega-scale-icon {
+  background: rgba(255,255,255,0.1);
+  color: #fff;
+}
+.mega-scale-item span {
+  font-size: 13px;
+  font-weight: 500;
+  color: rgba(255,255,255,0.7);
+}
+.mega-scale-item:hover span { color: #fff; }
+.mega-section-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 14px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+.mega-section-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.mega-section-title {
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: rgba(255,255,255,0.5);
+}
+
+/* Mega Items */
+.mega-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 10px 12px;
+  border-radius: 12px;
+  text-decoration: none;
+  transition: background 0.15s;
+  margin-bottom: 4px;
+}
+.mega-item:hover { background: rgba(255,255,255,0.05); }
+.mega-item:last-child { margin-bottom: 0; }
+.mega-item-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  background: rgba(255,255,255,0.05);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: rgba(255,255,255,0.6);
+  transition: background 0.15s, color 0.15s;
+}
+.mega-item:hover .mega-item-icon {
+  background: rgba(255,255,255,0.1);
+  color: #fff;
+}
+.mega-item-content {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding-top: 4px;
+}
+.mega-item-title {
+  font-size: 13px;
+  font-weight: 600;
+  color: #fafafa;
+  line-height: 1.3;
+}
+.mega-item-desc {
+  font-size: 11px;
+  color: rgba(255,255,255,0.4);
+  line-height: 1.4;
+}
+
+/* Mega Footer */
+.mega-footer {
+  padding: 20px 40px;
+  border-top: 1px solid rgba(255,255,255,0.06);
+  background: rgba(255,255,255,0.02);
+}
+.mega-footer-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  color: oklch(0.75 0.15 195);
+  text-decoration: none;
+  transition: gap 0.15s;
+}
+.mega-footer-link:hover { gap: 10px; }
+
+/* Nav Right */
+.nav-right { display: flex; align-items: center; gap: 8px; }
+.lang-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 12px;
+  font-size: 12px;
+  font-weight: 600;
+  color: rgba(255,255,255,0.6);
+  border-radius: 8px;
+  transition: color 0.15s;
+}
+.lang-btn:hover { color: #fff; }
+.nav-cta { display: none; padding: 10px 18px; font-size: 13px; }
+.nav-cta-outline { display: none; }
+.mobile-menu-btn {
+  display: flex;
+  background: none;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  padding: 8px;
+}
+
+/* Mobile Menu */
+.mobile-menu {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  background: #0a0a0a;
+  flex-direction: column;
+  overflow-y: auto;
+  padding: 80px 24px 40px;
+}
+.mobile-menu.open { display: flex; }
+.mobile-close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: none;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  padding: 8px;
+}
+.mobile-section { margin-bottom: 24px; }
+.mobile-section-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 14px 0;
+  font-size: 18px;
+  font-weight: 600;
+  color: rgba(255,255,255,0.8);
+  background: none;
+  border: none;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  cursor: pointer;
+}
+.mobile-section-content {
+  display: none;
+  padding: 16px 0;
+}
+.mobile-section-content.open { display: block; }
+.mobile-sub-section { margin-bottom: 24px; }
+.mobile-sub-title {
+  display: block;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 10px;
+}
+.mobile-link {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  font-size: 14px;
+  color: rgba(255,255,255,0.7);
+  border-radius: 10px;
+}
+.mobile-link:hover { background: rgba(255,255,255,0.05); }
+.mobile-link-icon {
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+  background: rgba(255,255,255,0.05);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255,255,255,0.5);
+}
+.mobile-link-top {
+  display: block;
+  padding: 14px 0;
+  font-size: 18px;
+  font-weight: 600;
+  color: rgba(255,255,255,0.8);
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+.mobile-ctas {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 32px;
+}
+
+/* Responsive */
+@media (min-width: 1024px) {
+  .nav-links { display: flex; }
+  .mobile-menu-btn { display: none; }
+  .nav-cta { display: inline-flex; }
+  .nav-cta-outline { display: inline-flex; }
+}
+</style>
+
+<script>
+const toggle = document.getElementById('menu-toggle');
+const menu = document.getElementById('mobile-menu');
+const close = document.getElementById('menu-close');
+const productTrigger = document.getElementById('product-trigger');
+const productSection = document.getElementById('mobile-product');
+
+toggle?.addEventListener('click', () => menu?.classList.add('open'));
+close?.addEventListener('click', () => menu?.classList.remove('open'));
+
+productTrigger?.addEventListener('click', () => {
+  productSection?.classList.toggle('open');
+});
+
+document.querySelectorAll('.mobile-section-title').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const content = btn.nextElementSibling;
+    content?.classList.toggle('open');
+  });
+});
+</script>

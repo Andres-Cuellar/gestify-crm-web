@@ -1,0 +1,245 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { ArrowRight } from 'lucide-astro';
+import type { Lang } from '../../i18n/ui';
+const currentLang: Lang = 'en';
+
+const features = [
+  {
+    title: 'Skill-Based Routing',
+    desc: 'Send leads to the right agent based on language, expertise, workload.',
+    stat: '95%',
+    statLabel: 'Routing accuracy',
+    color: 'oklch(0.75 0.15 195)',
+    icon: '🎯',
+  },
+  {
+    title: 'Smart Round Robin',
+    desc: 'Distribute leads equitably considering availability.',
+    stat: '50%',
+    statLabel: 'More fairness in distribution',
+    color: 'oklch(0.70 0.15 235)',
+    icon: '⚖️',
+  },
+  {
+    title: 'Priority Queue',
+    desc: 'High-intent leads go first. Queue reorders automatically.',
+    stat: '3x',
+    statLabel: 'Faster response',
+    color: 'oklch(0.65 0.15 280)',
+    icon: '⚡',
+  },
+];
+---
+
+<BaseLayout title="Route leads to the right agent" lang={currentLang}>
+  <!-- Hero with Visual -->
+  <section class="hero-visual">
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-text">
+          <div class="announce-badge fade-in">
+            <span>🔀</span>
+            <span>AI Smart Routing</span>
+          </div>
+          <h1 class="hero-title fade-in" style="transition-delay:100ms;">
+            Every lead reaches the right agent, always
+          </h1>
+          <p class="hero-sub fade-in" style="transition-delay:200ms;">
+            Route automatically by language, expertise, availability, and workload. Zero lost leads.
+          </p>
+          <div class="hero-ctas fade-in" style="transition-delay:300ms;">
+            <a href={`/${currentLang}/demo`} class="btn btn-primary">
+              Talk to sales <ArrowRight size={16} />
+            </a>
+            <a href="#" class="btn btn-outline">
+              Start free trial
+            </a>
+          </div>
+        </div>
+        <div class="hero-visual-area fade-in" style="transition-delay:200ms;">
+          <div class="routing-visual-card">
+            <div class="routing-header">
+              <span>Live Routing</span>
+              <span class="status-dot"></span>
+            </div>
+            <div class="routing-flow-visual">
+              <div class="routing-source">
+                <span>📥 New Lead</span>
+              </div>
+              <div class="routing-arrow-animated">→</div>
+              <div class="routing-brain">🧠</div>
+              <div class="routing-arrow-animated">→</div>
+              <div class="routing-result">
+                <div class="agent-card">
+                  <span class="agent-avatar">EN</span>
+                  <span>English</span>
+                </div>
+              </div>
+            </div>
+            <div class="routing-log">
+              <div class="log-item">Lead #4521 → Agent EN-03 (English, available)</div>
+              <div class="log-item">Score: 95 (Hot) → High priority</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats -->
+  <section class="stats-section">
+    <div class="container">
+      <div class="stats-grid fade-in">
+        <div class="stat-item">
+          <span class="stat-val">95%</span>
+          <span class="stat-lbl">Routing accuracy</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-val">50%</span>
+          <span class="stat-lbl">More fairness in distribution</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-val">3x</span>
+          <span class="stat-lbl">Faster response</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Visual -->
+  <section class="features-section">
+    <div class="container">
+      <div class="features-grid">
+        {features.map((f, i) => (
+          <div class="feature-card fade-in" style={`transition-delay:${i * 100}ms;`}>
+            <div class="feature-header">
+              <span class="feature-icon">{f.icon}</span>
+              <span class="feature-stat" style={`color: ${f.color};`}>{f.stat}</span>
+            </div>
+            <h3>{f.title}</h3>
+            <p>{f.desc}</p>
+            <span class="feature-label">{f.statLabel}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Routing Flow Visual -->
+  <section class="routing-flow-section">
+    <div class="container">
+      <div class="flow-header fade-in">
+        <h2>Routing flow</h2>
+      </div>
+      <div class="flow-steps">
+        <div class="flow-step-card fade-in">
+          <div class="step-icon">📥</div>
+          <div class="step-num">1</div>
+          <h4>Lead enters</h4>
+          <p>Any channel</p>
+        </div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step-card fade-in" style="transition-delay:100ms;">
+          <div class="step-icon">🎯</div>
+          <div class="step-num">2</div>
+          <h4>Scoring</h4>
+          <p>AI scores</p>
+        </div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step-card fade-in" style="transition-delay:200ms;">
+          <div class="step-icon">🗣️</div>
+          <div class="step-num">3</div>
+          <h4>Language</h4>
+          <p>Detects language</p>
+        </div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step-card fade-in" style="transition-delay:300ms;">
+          <div class="step-icon">👨‍💻</div>
+          <div class="step-num">4</div>
+          <h4>Skills</h4>
+          <p>Match expertise</p>
+        </div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step-card fade-in" style="transition-delay:400ms;">
+          <div class="step-icon">📊</div>
+          <div class="step-num">5</div>
+          <h4>Load</h4>
+          <p>Lowest load</p>
+        </div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step-card fade-in" style="transition-delay:500ms;">
+          <div class="step-icon">✅</div>
+          <div class="step-num">6</div>
+          <h4>Assigned</h4>
+          <p>Right agent</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section">
+    <div class="container">
+      <div class="cta-card fade-in">
+        <h2>Zero lost leads, always 🔀</h2>
+        <div class="cta-btns">
+          <a href={`/${currentLang}/demo`} class="btn btn-primary">Talk to sales</a>
+          <a href="#" class="btn btn-outline">Start free trial</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+.hero-visual { padding: 140px 0 60px; }
+.hero-content { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+.announce-badge { display: inline-flex; align-items: center; gap: 10px; padding: 8px 16px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 9999px; font-size: 13px; color: rgba(255,255,255,0.7); margin-bottom: 24px; }
+.hero-title { font-size: clamp(2rem, 4vw, 3.2rem); font-weight: 800; line-height: 1.1; margin-bottom: 20px; }
+.hero-sub { font-size: 18px; color: rgba(255,255,255,0.5); line-height: 1.6; margin-bottom: 32px; }
+.hero-ctas { display: flex; gap: 16px; flex-wrap: wrap; }
+.routing-visual-card { background: linear-gradient(145deg, #1a1a1a, #0a0a0a); border: 1px solid rgba(255,255,255,0.1); border-radius: 20px; padding: 24px; }
+.routing-header { display: flex; justify-content: space-between; align-items: center; font-size: 13px; color: rgba(255,255,255,0.5); margin-bottom: 20px; }
+.status-dot { width: 8px; height: 8px; border-radius: 50%; background: #22C55E; }
+.routing-flow-visual { display: flex; align-items: center; justify-content: center; gap: 16px; padding: 24px 0; }
+.routing-source { padding: 12px 16px; background: #222; border-radius: 10px; font-size: 13px; }
+.routing-arrow-animated { font-size: 24px; color: oklch(0.75 0.15 195); }
+.routing-brain { font-size: 36px; }
+.routing-result { }
+.agent-card { display: flex; flex-direction: column; align-items: center; gap: 4px; padding: 12px; background: oklch(0.75 0.15 195); border-radius: 10px; }
+.agent-avatar { width: 32px; height: 32px; border-radius: 50%; background: #000; color: oklch(0.75 0.15 195); display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 800; }
+.agent-card span:last-child { font-size: 11px; font-weight: 600; }
+.routing-log { margin-top: 16px; padding-top: 16px; border-top: 1px solid rgba(255,255,255,0.1); }
+.log-item { font-size: 11px; color: rgba(255,255,255,0.5); padding: 4px 0; }
+.stats-section { padding: 60px 0; border-top: 1px solid rgba(255,255,255,0.05); border-bottom: 1px solid rgba(255,255,255,0.05); }
+.stats-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; }
+.stat-item { text-align: center; }
+.stat-val { display: block; font-size: 40px; font-weight: 800; background: linear-gradient(135deg, oklch(0.75 0.15 195), oklch(0.70 0.15 235)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.stat-lbl { font-size: 13px; color: rgba(255,255,255,0.5); }
+.features-section { padding: 80px 0; }
+.features-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.feature-card { padding: 28px; background: #161616; border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; }
+.feature-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 16px; }
+.feature-icon { font-size: 32px; }
+.feature-stat { font-size: 28px; font-weight: 800; }
+.feature-card h3 { font-size: 16px; font-weight: 700; margin-bottom: 8px; }
+.feature-card p { font-size: 13px; color: rgba(255,255,255,0.5); line-height: 1.5; margin-bottom: 12px; }
+.feature-label { font-size: 11px; color: rgba(255,255,255,0.4); }
+.routing-flow-section { padding: 80px 0; background: #080808; }
+.flow-header { text-align: center; margin-bottom: 48px; }
+.flow-header h2 { font-size: clamp(1.8rem, 3vw, 2.5rem); font-weight: 700; }
+.flow-steps { display: flex; justify-content: center; align-items: center; gap: 0; }
+.flow-step-card { text-align: center; padding: 0 20px; }
+.step-icon { font-size: 36px; margin-bottom: 8px; }
+.step-num { font-size: 11px; font-weight: 700; color: oklch(0.75 0.15 195); margin-bottom: 4px; }
+.flow-step-card h4 { font-size: 13px; font-weight: 700; margin-bottom: 4px; }
+.flow-step-card p { font-size: 11px; color: rgba(255,255,255,0.4); }
+.flow-arrow { font-size: 20px; color: rgba(255,255,255,0.2); }
+.cta-section { padding: 80px 0; }
+.cta-card { text-align: center; background: linear-gradient(135deg, #161616, #0a0a0a); border: 1px solid rgba(255,255,255,0.08); border-radius: 24px; padding: 60px; }
+.cta-card h2 { font-size: clamp(1.8rem, 3vw, 2.5rem); font-weight: 800; margin-bottom: 32px; }
+.cta-btns { display: flex; justify-content: center; gap: 16px; }
+@media (max-width: 1024px) { .flow-steps { flex-wrap: wrap; } .flow-arrow { display: none; } }
+@media (max-width: 768px) { .hero-content { grid-template-columns: 1fr; } .hero-visual-area { display: none; } .stats-grid { grid-template-columns: 1fr; } .features-grid { grid-template-columns: 1fr; } }
+</style>

@@ -1,0 +1,104 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { ui } from '../../i18n/ui';
+const currentLang = 'en';
+const t = ui[currentLang];
+---
+
+<BaseLayout title="Why Us" lang={currentLang}>
+  <section class="page-hero">
+    <div class="container">
+      <span class="section-tag fade-in" style="width:fit-content;"><span class="section-tag-dot"></span>Why us</span>
+      <h1 class="page-title fade-in" style="transition-delay:100ms;">We're not just another platform</h1>
+      <p class="page-sub fade-in" style="transition-delay:200ms;">We're the team that grows with you, that responds when you need help and that builds features while others just talk.</p>
+    </div>
+  </section>
+
+  <section class="section section-dark">
+    <div class="container">
+      <div class="reasons-grid">
+        <div class="reason-card fade-in">
+          <div class="reason-icon">🎯</div>
+          <h3 class="reason-title">Focus on real results</h3>
+          <p class="reason-desc">We don't measure our success in "active users". We measure it in how many of your customers convert, how many deals you close, how much time we save you.</p>
+        </div>
+        <div class="reason-card fade-in" style="transition-delay:100ms;">
+          <div class="reason-icon">⚡</div>
+          <h3 class="reason-title">Fast responses</h3>
+          <p class="reason-desc">When you write to us, a real person responds — not a bot. And almost always in under 2 hours during business hours.</p>
+        </div>
+        <div class="reason-card fade-in" style="transition-delay:200ms;">
+          <div class="reason-icon">🔄</div>
+          <h3 class="reason-title">We evolve with you</h3>
+          <p class="reason-desc">We listen to our customers and build what they need. If something doesn't work, we fix it. If something's missing, we add it.</p>
+        </div>
+        <div class="reason-card fade-in" style="transition-delay:300ms;">
+          <div class="reason-icon">💰</div>
+          <h3 class="reason-title">Fair prices, no surprises</h3>
+          <p class="reason-desc">We don't charge for hidden features. No arbitrary limits. You know exactly what you pay and what you get.</p>
+        </div>
+        <div class="reason-card fade-in" style="transition-delay:400ms;">
+          <div class="reason-icon">🌍</div>
+          <h3 class="reason-title">International team</h3>
+          <p class="reason-desc">We're in Colombia, Mexico and Spain. We speak your language and understand your market.</p>
+        </div>
+        <div class="reason-card fade-in" style="transition-delay:500ms;">
+          <div class="reason-icon">🛠️</div>
+          <h3 class="reason-title">Pain-free implementation</h3>
+          <p class="reason-desc">We don't leave you hanging after the sale. We help you set everything up, migrate your data and start seeing results from day one.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-light">
+    <div class="container">
+      <div class="stats-row">
+        <div class="stat-item fade-in">
+          <span class="stat-num">500+</span>
+          <span class="stat-label">Active businesses</span>
+        </div>
+        <div class="stat-item fade-in" style="transition-delay:100ms;">
+          <span class="stat-num">4.8</span>
+          <span class="stat-label">Rating on G2</span>
+        </div>
+        <div class="stat-item fade-in" style="transition-delay:200ms;">
+          <span class="stat-num">2hrs</span>
+          <span class="stat-label">Avg response time</span>
+        </div>
+        <div class="stat-item fade-in" style="transition-delay:300ms;">
+          <span class="stat-num">99%</span>
+          <span class="stat-label">Uptime guaranteed</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-dark">
+    <div class="container" style="text-align:center;">
+      <h2 class="section-title fade-in">Ready to grow with us?</h2>
+      <p class="section-sub fade-in" style="transition-delay:100ms; max-width: 600px; margin: 0 auto 40px;">Join more than 500 businesses that already trust Gestify.</p>
+      <a href="/en/pricing" class="btn btn-primary btn-lg fade-in" style="transition-delay:200ms;">
+        View pricing
+      </a>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+.page-hero { padding: 160px 0 80px; text-align: center; }
+.page-title { font-size: clamp(2rem, 4vw, 3.5rem); font-weight: 700; line-height: 1.1; margin: 20px auto 24px; max-width: 700px; }
+.page-sub { font-size: 18px; color: rgba(255,255,255,0.5); max-width: 600px; margin: 0 auto; line-height: 1.7; }
+.reasons-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
+.reason-card { padding: 32px; background: #161616; border: 1px solid rgba(255,255,255,0.08); border-radius: 20px; }
+.reason-icon { font-size: 40px; margin-bottom: 16px; }
+.reason-title { font-size: 20px; font-weight: 600; margin-bottom: 12px; }
+.reason-desc { font-size: 14px; color: rgba(255,255,255,0.5); line-height: 1.7; }
+.stats-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 40px; text-align: center; }
+.stat-item { }
+.stat-num { font-size: 48px; font-weight: 700; color: oklch(0.75 0.15 195); display: block; margin-bottom: 8px; }
+.stat-label { font-size: 14px; color: rgba(255,255,255,0.5); }
+.btn-lg { padding: 16px 32px; font-size: 16px; }
+@media (max-width: 1024px) { .reasons-grid { grid-template-columns: repeat(2, 1fr); } .stats-row { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 640px) { .reasons-grid { grid-template-columns: 1fr; } .stats-row { grid-template-columns: repeat(2, 1fr); } }
+</style>

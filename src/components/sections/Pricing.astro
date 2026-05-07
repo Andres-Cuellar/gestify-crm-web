@@ -1,0 +1,200 @@
+---
+import { Check } from 'lucide-astro';
+import { ui } from '@/i18n/ui';
+import type { Lang } from '@/i18n/ui';
+
+interface Props { currentLang: Lang; }
+const { currentLang } = Astro.props;
+const t = ui[currentLang];
+
+const plans = [
+  { 
+    name: t.pricing.starter.name, 
+    annualPrice: t.pricing.starter.annualPrice, 
+    monthlyPrice: t.pricing.starter.monthlyPrice, 
+    desc: t.pricing.starter.description, 
+    features: t.pricing.starter.features, 
+    popular: false,
+    emailLimit: t.pricing.starter.emailLimit,
+    whatsappPrice: t.pricing.starter.whatsappPrice,
+  },
+  { 
+    name: t.pricing.growth.name, 
+    annualPrice: t.pricing.growth.annualPrice, 
+    monthlyPrice: t.pricing.growth.monthlyPrice, 
+    desc: t.pricing.growth.description, 
+    features: t.pricing.growth.features, 
+    popular: true,
+    emailLimit: t.pricing.growth.emailLimit,
+    whatsappIncluded: true,
+  },
+  { 
+    name: t.pricing.advanced.name, 
+    annualPrice: t.pricing.advanced.annualPrice, 
+    monthlyPrice: t.pricing.advanced.monthlyPrice, 
+    desc: t.pricing.advanced.description, 
+    features: t.pricing.advanced.features, 
+    popular: false,
+    emailLimit: t.pricing.advanced.emailLimit,
+    whatsappIncluded: true,
+    noWhitelabel: true,
+  },
+  { 
+    name: t.pricing.enterprise.name, 
+    price: t.pricing.enterprise.price, 
+    desc: t.pricing.enterprise.description, 
+    features: t.pricing.enterprise.features, 
+    popular: false,
+  },
+];
+---
+
+<section class="section section-light" id="pricing">
+  <div class="container">
+    <div class="section-header" style="text-align: center; max-width: 600px; margin: 0 auto 60px;">
+      <span class="section-tag fade-in" style="margin: 0 auto 20px;">
+        <span class="section-tag-dot"></span>
+        {currentLang === 'es' ? 'Precios' : 'Pricing'}
+      </span>
+      <h2 class="section-title fade-in" style="transition-delay: 100ms;">{t.pricing.title}</h2>
+      <p class="section-sub fade-in" style="transition-delay: 200ms;">{t.pricing.subtitle}</p>
+    </div>
+
+    <!-- Billing Toggle -->
+    <div class="billing-toggle fade-in" style="transition-delay: 250ms;">
+      <span class="billing-label">{currentLang === 'es' ? 'Facturado anualmente' : 'Billed annually'}</span>
+      <label class="toggle">
+        <input type="checkbox" id="billing-toggle">
+        <span class="toggle-slider"></span>
+      </label>
+      <span class="billing-label">{currentLang === 'es' ? 'Facturado mensualmente' : 'Billed monthly'}</span>
+    </div>
+
+    <div class="pricing-grid">
+      {plans.map((plan, i) => (
+        <div class={`price-card fade-in ${plan.popular ? 'popular' : ''}`} style={`transition-delay: ${(i + 3) * 100}ms;`}>
+          {plan.popular && <span class="price-badge">{currentLang === 'es' ? 'Popular' : 'Most popular'}</span>}
+          <div class="price-name">{plan.name}</div>
+          <div class="price-amount">
+            {plan.price !== 'Custom' ? (
+              <>
+                <span class="price-num" data-annual={plan.annualPrice} data-monthly={plan.monthlyPrice}>{plan.annualPrice}</span>
+                <span class="price-currency">COP</span>
+                <span class="price-period">{t.pricing.perMonth}</span>
+              </>
+            ) : (
+              <span class="price-num">{plan.price}</span>
+            )}
+          </div>
+          {plan.price !== 'Custom' && (
+            <div class="price-email-limit">
+              {plan.emailLimit} {t.pricing.emails}
+            </div>
+          )}
+          {plan.whatsappPrice && (
+            <div class="price-whatsapp">
+              WhatsApp +{plan.whatsappPrice} COP/{currentLang === 'es' ? 'mes' : 'mo'}
+            </div>
+          )}
+          {plan.whatsappIncluded && plan.name !== 'Enterprise' && (
+            <div class="price-whatsapp included">
+              ✓ WhatsApp {currentLang === 'es' ? 'incluido' : 'included'}
+            </div>
+          )}
+          <div class="price-desc">{plan.desc}</div>
+          <div class="price-divider"></div>
+          <ul class="price-features">
+            {plan.features.map(f => <li><Check size={14} />{f}</li>)}
+          </ul>
+          <button class={`price-btn ${plan.popular ? 'primary' : ''}`}>
+            {currentLang === 'es' ? 'Empezar' : 'Get started'}
+          </button>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<script is:inline>
+  document.addEventListener('DOMContentLoaded', () => {
+    const toggle = document.getElementById('billing-toggle');
+    const prices = document.querySelectorAll('.price-num[data-annual]');
+
+    toggle?.addEventListener('change', () => {
+      const isMonthly = toggle.checked;
+      prices.forEach(p => {
+        const el = p;
+        el.textContent = isMonthly ? el.dataset.monthly : el.dataset.annual;
+      });
+    });
+  });
+</script>
+
+<style>
+.billing-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 48px;
+}
+.billing-label {
+  font-size: 14px;
+  color: rgba(255,255,255,0.6);
+}
+.toggle {
+  position: relative;
+  width: 48px;
+  height: 26px;
+}
+.toggle input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+.toggle-slider {
+  position: absolute;
+  inset: 0;
+  background: rgba(255,255,255,0.1);
+  border-radius: 9999px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+.toggle-slider::before {
+  content: '';
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  left: 3px;
+  bottom: 3px;
+  background: white;
+  border-radius: 50%;
+  transition: transform 0.3s;
+}
+.toggle input:checked + .toggle-slider {
+  background: oklch(0.75 0.15 195);
+}
+.toggle input:checked + .toggle-slider::before {
+  transform: translateX(22px);
+}
+.price-email-limit {
+  font-size: 12px;
+  color: oklch(0.75 0.15 195);
+  font-weight: 600;
+  margin-top: 4px;
+}
+.price-whatsapp {
+  font-size: 11px;
+  color: rgba(255,255,255,0.5);
+  margin-top: 2px;
+}
+.price-whatsapp.included {
+  color: oklch(0.70 0.15 145);
+}
+.price-currency {
+  font-size: 14px;
+  font-weight: 600;
+  margin-left: 4px;
+  opacity: 0.7;
+}
+</style>

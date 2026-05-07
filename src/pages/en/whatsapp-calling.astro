@@ -1,0 +1,181 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { ArrowRight, Phone } from 'lucide-astro';
+import type { Lang } from '../../i18n/ui';
+const currentLang: Lang = 'en';
+
+const features = [
+  { title: 'Incoming calls', desc: 'Receive customer calls directly in your dashboard', icon: '📞' },
+  { title: 'Click to call', desc: 'Click to call from any customer record', icon: '👉' },
+  { title: 'Recording', desc: 'All calls recorded for training and compliance', icon: '🎙️' },
+  { title: 'IVR menu', desc: 'Interactive menus to route calls to the right department', icon: '📊' },
+];
+
+const benefits = [
+  { val: '99.9%', label: 'Guaranteed uptime' },
+  { val: 'HD', label: 'Voice quality' },
+  { val: 'Global', label: 'Numbers in 50+ countries' },
+];
+---
+
+<BaseLayout title="WhatsApp Business Calling" lang={currentLang}>
+  <!-- Hero -->
+  <section class="hero-visual">
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-text">
+          <div class="announce-badge fade-in">
+            <span>📞</span>
+            <span>WhatsApp Calling</span>
+          </div>
+          <h1 class="hero-title fade-in" style="transition-delay:100ms;">
+            WhatsApp Business calls without switching tools
+          </h1>
+          <p class="hero-sub fade-in" style="transition-delay:200ms;">
+            Receive and make WhatsApp calls directly from your Gestify inbox. Everything unified, no friction.
+          </p>
+          <div class="hero-ctas fade-in" style="transition-delay:300ms;">
+            <a href={`/${currentLang}/demo`} class="btn btn-primary">
+              Request demo <ArrowRight size={16} />
+            </a>
+            <a href="#" class="btn btn-outline">
+              Start trial
+            </a>
+          </div>
+        </div>
+        <div class="hero-image-placeholder fade-in" style="transition-delay:200ms;">
+          <div class="calling-ui">
+            <div class="call-header">
+              <span>📱 WhatsApp Call</span>
+            </div>
+            <div class="call-avatar">MG</div>
+            <div class="call-name">Maria Garcia</div>
+            <div class="call-status">Incoming call...</div>
+            <div class="call-actions">
+              <div class="call-btn decline">❌</div>
+              <div class="call-btn accept">📞</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Benefits Bar -->
+  <section class="benefits-bar">
+    <div class="container">
+      <div class="benefits-grid fade-in">
+        {benefits.map(b => (
+          <div class="benefit-item">
+            <span class="benefit-val">{b.val}</span>
+            <span class="benefit-lbl">{b.label}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Features -->
+  <section class="features-section">
+    <div class="container">
+      <div class="section-header-center fade-in">
+        <h2>Superior calling</h2>
+        <p>Professional call features integrated into your WhatsApp workflow.</p>
+      </div>
+      <div class="features-grid">
+        {features.map((f, i) => (
+          <div class="feature-card fade-in" style={`transition-delay:${i * 80}ms;`}>
+            <div class="feature-icon">{f.icon}</div>
+            <h3 class="feature-title">{f.title}</h3>
+            <p class="feature-desc">{f.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Integration Preview -->
+  <section class="integration-preview">
+    <div class="container">
+      <div class="preview-grid">
+        <div class="preview-image-placeholder fade-in">
+          <div class="image-placeholder-content">
+            <div class="placeholder-icon">📞</div>
+            <span>WhatsApp Calling UI</span>
+          </div>
+        </div>
+        <div class="preview-content fade-in" style="transition-delay:100ms;">
+          <h2>One inbox, all channels</h2>
+          <p>WhatsApp calls appear in the same unified inbox as your messages. No switching, no confusion, just seamless customer experience.</p>
+          <ul class="preview-list">
+            <li>📥 Incoming calls in the same inbox</li>
+            <li>📤 Call history with player</li>
+            <li>📊 Tags and notes per call</li>
+            <li>🔄 Transfer between agents</li>
+          </ul>
+          <a href={`/${currentLang}/demo`} class="btn btn-primary">View demo <ArrowRight size={16} /></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section-cta">
+    <div class="container">
+      <h2 class="cta-title fade-in">Add calls to your WhatsApp 📞</h2>
+      <div class="cta-btns fade-in" style="transition-delay:100ms;">
+        <a href={`/${currentLang}/demo`} class="btn btn-primary">Talk to sales</a>
+        <a href="#" class="btn btn-outline">Start free</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+.hero-visual { padding: 140px 0 80px; }
+.hero-content { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+.hero-text { }
+.announce-badge { display: inline-flex; align-items: center; gap: 10px; padding: 8px 16px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 9999px; font-size: 13px; color: rgba(255,255,255,0.7); margin-bottom: 24px; }
+.hero-title { font-size: clamp(2rem, 4vw, 3.2rem); font-weight: 800; line-height: 1.1; margin-bottom: 20px; }
+.hero-sub { font-size: 18px; color: rgba(255,255,255,0.5); line-height: 1.6; margin-bottom: 32px; }
+.hero-ctas { display: flex; gap: 16px; flex-wrap: wrap; }
+.hero-image-placeholder { display: flex; justify-content: center; }
+.calling-ui { width: 280px; background: linear-gradient(145deg, #1a1a1a, #0a0a0a); border: 2px solid rgba(255,255,255,0.1); border-radius: 24px; padding: 32px; text-align: center; }
+.call-header { font-size: 12px; color: rgba(255,255,255,0.5); margin-bottom: 24px; }
+.call-avatar { width: 80px; height: 80px; border-radius: 50%; background: oklch(0.75 0.15 195); color: #000; display: flex; align-items: center; justify-content: center; font-size: 28px; font-weight: 800; margin: 0 auto 16px; }
+.call-name { font-size: 18px; font-weight: 700; margin-bottom: 4px; }
+.call-status { font-size: 13px; color: rgba(255,255,255,0.5); margin-bottom: 32px; }
+.call-actions { display: flex; justify-content: center; gap: 32px; }
+.call-btn { width: 56px; height: 56px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 24px; cursor: pointer; }
+.call-btn.decline { background: rgba(239, 68, 68, 0.15); }
+.call-btn.accept { background: oklch(0.75 0.15 195); }
+.benefits-bar { padding: 40px 0; border-top: 1px solid rgba(255,255,255,0.05); border-bottom: 1px solid rgba(255,255,255,0.05); }
+.benefits-grid { display: flex; justify-content: center; gap: 80px; }
+.benefit-item { text-align: center; }
+.benefit-val { display: block; font-size: 28px; font-weight: 800; background: linear-gradient(135deg, oklch(0.75 0.15 195), oklch(0.70 0.15 235)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.benefit-lbl { font-size: 13px; color: rgba(255,255,255,0.5); }
+.features-section { padding: 80px 0; }
+.section-header-center { text-align: center; max-width: 650px; margin: 0 auto 48px; }
+.section-header-center h2 { font-size: clamp(1.8rem, 3vw, 2.5rem); font-weight: 700; margin-bottom: 12px; }
+.section-header-center p { font-size: 16px; color: rgba(255,255,255,0.5); line-height: 1.6; }
+.features-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+.feature-card { padding: 28px; background: #161616; border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; text-align: center; }
+.feature-icon { font-size: 32px; margin-bottom: 16px; }
+.feature-title { font-size: 15px; font-weight: 700; margin-bottom: 8px; }
+.feature-desc { font-size: 12px; color: rgba(255,255,255,0.5); }
+.integration-preview { padding: 80px 0; background: #080808; }
+.preview-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+.preview-image-placeholder { background: linear-gradient(135deg, #161616, #0a0a0a); border: 1px solid rgba(255,255,255,0.08); border-radius: 24px; aspect-ratio: 16/10; display: flex; align-items: center; justify-content: center; }
+.image-placeholder-content { text-align: center; color: rgba(255,255,255,0.3); }
+.placeholder-icon { font-size: 48px; margin-bottom: 12px; }
+.image-placeholder-content span { font-size: 13px; font-weight: 500; }
+.preview-content h2 { font-size: clamp(1.6rem, 2.5vw, 2.2rem); font-weight: 700; margin-bottom: 16px; }
+.preview-content p { font-size: 16px; color: rgba(255,255,255,0.5); line-height: 1.6; margin-bottom: 24px; }
+.preview-list { list-style: none; margin-bottom: 32px; }
+.preview-list li { padding: 10px 0; font-size: 15px; color: rgba(255,255,255,0.8); }
+.section-cta { padding: 100px 0; text-align: center; }
+.cta-title { font-size: clamp(1.8rem, 3.5vw, 2.8rem); font-weight: 800; margin-bottom: 32px; }
+.cta-btns { display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; }
+@media (max-width: 1024px) { .features-grid { grid-template-columns: repeat(2, 1fr); } .preview-grid { grid-template-columns: 1fr; } }
+@media (max-width: 768px) { .hero-content { grid-template-columns: 1fr; } .hero-image-placeholder { display: none; } .benefits-grid { gap: 40px; } }
+</style>

@@ -1,0 +1,37 @@
+---
+import '../styles/global.css';
+import Navbar from '../components/layout/Navbar.astro';
+import FooterNew from '../components/layout/FooterNew.astro';
+
+interface Props {
+  title: string;
+  lang?: 'es' | 'en';
+}
+
+const { title, lang = 'es' } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang={lang}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/icon.svg" />
+    <title>{title} | Gestify</title>
+  </head>
+  <body>
+    <Navbar currentLang={lang} />
+    <main>
+      <slot />
+    </main>
+    <FooterNew currentLang={lang} />
+    <script>
+      document.querySelectorAll('.fade-in').forEach(el => {
+        const observer = new IntersectionObserver(entries => {
+          entries.forEach(e => { if (e.isIntersecting) el.classList.add('visible'); });
+        }, { threshold: 0.1 });
+        observer.observe(el);
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,160 @@
+---
+import { ArrowRight } from 'lucide-astro';
+import { ui } from '@/i18n/ui';
+import type { Lang } from '@/i18n/ui';
+
+interface Props { currentLang: Lang; }
+const { currentLang } = Astro.props;
+const t = ui[currentLang];
+
+const steps = [
+  {
+    num: '01',
+    title: currentLang === 'es' ? 'Capturar' : 'Capture',
+    tagline: currentLang === 'es' ? 'Unifica todos los puntos de contacto' : 'Unify customer touchpoints',
+    desc: currentLang === 'es'
+      ? 'Leads vienen de todas partes — WhatsApp, Instagram, TikTok, formularios o visitas presenciales. Gestify los unifica en una bandeja compartida para que ninguna oportunidad se pierda.'
+      : 'Leads come from everywhere — WhatsApp chats, Instagram DMs, TikTok messages, website forms or even store visits. Gestify unifies them in a team inbox so no opportunity is overlooked.',
+    color: 'oklch(0.70 0.15 235)',
+  },
+  {
+    num: '02',
+    title: currentLang === 'es' ? 'Convertir' : 'Convert',
+    tagline: currentLang === 'es' ? 'Vende más con IA y analytics' : 'Sell more with AI and analytics',
+    desc: currentLang === 'es'
+      ? 'Agentes IA cualifican leads automáticamente, responden 24/7 y agendas citas. Tu equipo se enfoca en cerrar ventas mientras Gestify maneja las conversaciones iniciales.'
+      : 'AI Agents automatically qualify leads, respond 24/7 and schedule appointments. Your team focuses on closing deals while Gestify handles initial conversations.',
+    color: 'oklch(0.75 0.15 195)',
+  },
+  {
+    num: '03',
+    title: currentLang === 'es' ? 'Fidelizar' : 'Retain',
+    tagline: currentLang === 'es' ? 'Construye relaciones duraderas' : 'Build lasting relationships',
+    desc: currentLang === 'es'
+      ? 'Comunicación proactiva con recordatorios automáticos, encuestas de satisfacción y promotions. Construye relaciones que generan ingresos recurrentes, no solo ventas únicas.'
+      : 'Proactive communication with automatic reminders, CSAT surveys and promotions. Build relationships that generate recurring revenue, not just one-time sales.',
+    color: 'oklch(0.65 0.15 145)',
+  },
+];
+---
+
+<section class="framework-section">
+  <div class="container">
+    <div class="section-header-center fade-in">
+      <h2 class="section-title">
+        {currentLang === 'es'
+          ? 'Escala el crecimiento de tu negocio con cada conversación'
+          : 'Scale business growth with every customer conversation'}
+      </h2>
+      <p class="section-sub">
+        {currentLang === 'es'
+          ? 'A medida que los chats y llamadas se multiplican, los sistemas antiguos fallan. El framework de Crecimiento Guiado por Conversaciones™ de Gestify te ayuda a gestionar todo el journey del cliente.'
+          : 'As chats and calls multiply, old inboxes and workflows break. Gestify\'s Conversation-Led Growth™ framework helps you manage the entire customer journey across every channel.'}
+      </p>
+    </div>
+
+    <div class="framework-grid">
+      {steps.map((s, i) => (
+        <div class="framework-card fade-in" style={`transition-delay: ${(i + 1) * 150}ms;`}>
+          <div class="fw-image-placeholder">
+            <div class="fw-img-inner" style={`border-color: ${s.color}30;`}>
+              <span style={`color: ${s.color};`}>
+                {i === 0 ? '📥' : i === 1 ? '🤖' : '💚'}
+              </span>
+            </div>
+          </div>
+          <div class="fw-content">
+            <div class="fw-num" style={`color: ${s.color};`}>{s.num}</div>
+            <h3 class="fw-title">{s.title}</h3>
+            <div class="fw-tag" style={`color: ${s.color};`}>{s.tagline}</div>
+            <p class="fw-desc">{s.desc}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <div class="framework-cta fade-in" style="transition-delay: 500ms;">
+      <a href="#" class="btn btn-outline">
+        {currentLang === 'es' ? 'Explorar el framework' : 'Explore the framework'}
+        <ArrowRight size={16} />
+      </a>
+    </div>
+  </div>
+</section>
+
+<style>
+.framework-section {
+  padding: 100px 0;
+  background: #080808;
+}
+.section-header-center {
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto 60px;
+}
+.section-title {
+  font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 16px;
+}
+.section-sub {
+  font-size: 16px;
+  color: rgba(255,255,255,0.5);
+  line-height: 1.7;
+}
+.framework-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+  margin-bottom: 48px;
+}
+.framework-card {
+  padding: 32px;
+  background: #161616;
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 20px;
+  text-align: left;
+}
+.fw-image-placeholder {
+  margin-bottom: 24px;
+}
+.fw-img-inner {
+  width: 80px;
+  height: 80px;
+  border: 2px dashed;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 32px;
+}
+.fw-num {
+  font-size: 48px;
+  font-weight: 800;
+  font-family: monospace;
+  margin-bottom: 20px;
+  opacity: 0.3;
+}
+.fw-title {
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+.fw-tag {
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+.fw-desc {
+  font-size: 14px;
+  color: rgba(255,255,255,0.5);
+  line-height: 1.6;
+}
+.framework-cta {
+  text-align: center;
+}
+@media (max-width: 900px) {
+  .framework-grid { grid-template-columns: 1fr; }
+}
+</style>

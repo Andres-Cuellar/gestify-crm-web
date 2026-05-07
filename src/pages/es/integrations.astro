@@ -1,0 +1,196 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { ArrowRight } from 'lucide-astro';
+import type { Lang } from '../../i18n/ui';
+const currentLang: Lang = 'es';
+
+const integrations = [
+  { name: 'HubSpot', category: 'CRM', icon: 'H', color: '#FF7A59' },
+  { name: 'Salesforce', category: 'CRM', icon: 'SF', color: '#00A1E0' },
+  { name: 'Zapier', category: 'Automation', icon: 'Z', color: '#FF4A00' },
+  { name: 'Google Calendar', category: 'Calendar', icon: 'G', color: '#4285F4' },
+  { name: 'Shopify', category: 'E-commerce', icon: 'S', color: '#96BF48' },
+  { name: 'Slack', category: 'Notifications', icon: '#', color: '#4A154B' },
+];
+
+const channels = [
+  { name: 'WhatsApp', icon: '💬', users: '2B+' },
+  { name: 'Facebook Messenger', icon: '📘', users: '1.3B' },
+  { name: 'Instagram', icon: '📷', users: '2B+' },
+  { name: 'TikTok', icon: '🎵', users: '1.5B' },
+  { name: 'Email', icon: '📧', users: '4B+' },
+  { name: 'Live Chat', icon: '💭', users: '-' },
+];
+---
+
+<BaseLayout title="Canales e Integraciones" lang={currentLang}>
+  <!-- Hero -->
+  <section class="hero-visual">
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-text">
+          <div class="announce-badge fade-in">
+            <span>🔗</span>
+            <span>Integrations</span>
+          </div>
+          <h1 class="hero-title fade-in" style="transition-delay:100ms;">
+            Conecta todas tus herramientas en un solo lugar
+          </h1>
+          <p class="hero-sub fade-in" style="transition-delay:200ms;">
+            Gestify se integra con las herramientas que ya usas. CRM, calendarios, e-commerce, automatización — todo unificado.
+          </p>
+          <div class="hero-ctas fade-in" style="transition-delay:300ms;">
+            <a href={`/${currentLang}/demo`} class="btn btn-primary">
+              Ver todas las integraciones <ArrowRight size={16} />
+            </a>
+          </div>
+        </div>
+        <div class="hero-image-placeholder fade-in" style="transition-delay:200ms;">
+          <div class="integrations-visual">
+            <div class="integration-node center">Gestify</div>
+            <div class="integration-node">HubSpot</div>
+            <div class="integration-node">Salesforce</div>
+            <div class="integration-node">Shopify</div>
+            <div class="integration-node">Zapier</div>
+            <div class="integration-lines"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Channels -->
+  <section class="channels-section">
+    <div class="container">
+      <div class="section-header-center fade-in">
+        <h2>Todos tus canales en un inbox</h2>
+        <p>Conecta WhatsApp, Facebook, Instagram, TikTok, email y más. Un solo lugar para todas las conversaciones.</p>
+      </div>
+      <div class="channels-grid">
+        {channels.map((ch, i) => (
+          <div class="channel-card fade-in" style={`transition-delay:${i * 60}ms;`}>
+            <span class="channel-icon">{ch.icon}</span>
+            <span class="channel-name">{ch.name}</span>
+            <span class="channel-users">{ch.users} users</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Integrations -->
+  <section class="integrations-section">
+    <div class="container">
+      <div class="section-header-center fade-in">
+        <h2>Integraciones populares</h2>
+        <p>Conecta con tu CRM, calendario y herramientas de automatización.</p>
+      </div>
+      <div class="integrations-grid">
+        {integrations.map((int, i) => (
+          <div
+            class="integration-card fade-in"
+            style={`--integration-delay: ${i * 80}ms; --integration-color: ${int.color}; --integration-bg: ${int.color}20;`}
+          >
+            <div class="integration-icon">
+              {int.icon}
+            </div>
+            <div class="integration-info">
+              <span class="integration-name">{int.name}</span>
+              <span class="integration-category">{int.category}</span>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- API Section -->
+  <section class="api-section">
+    <div class="container">
+      <div class="api-grid">
+        <div class="api-content fade-in">
+          <h2>API abierta para developers</h2>
+          <p>Construye integraciones custom con nuestra API REST completa. Webhooks para eventos en tiempo real, SDKs para Node.js, Python y más.</p>
+          <div class="api-features">
+            <span class="api-feature">REST API</span>
+            <span class="api-feature">Webhooks</span>
+            <span class="api-feature">SDK Node.js</span>
+            <span class="api-feature">SDK Python</span>
+          </div>
+          <a href="#" class="btn btn-primary">Ver documentación <ArrowRight size={16} /></a>
+        </div>
+        <div class="api-image-placeholder fade-in" style="transition-delay:100ms;">
+          <div class="code-preview">
+            <div class="code-line">curl -X POST https://api.gestify.io/v1/messages</div>
+            <div class="code-line">-H "Authorization: Bearer YOUR_KEY"</div>
+            <div class="code-line">-d &#123;"channel": "whatsapp",</div>
+            <div class="code-line">   "to": "+1234567890",</div>
+            <div class="code-line">   "message": "Hello!"&#125;</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section-cta">
+    <div class="container">
+      <h2 class="cta-title fade-in">Conecta tu stack completo 🔗</h2>
+      <div class="cta-btns fade-in" style="transition-delay:100ms;">
+        <a href={`/${currentLang}/demo`} class="btn btn-primary">Hablar con ventas</a>
+        <a href="#" class="btn btn-outline">Ver integraciones</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+.hero-visual { padding: 140px 0 80px; }
+.hero-content { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+.hero-text { }
+.announce-badge { display: inline-flex; align-items: center; gap: 10px; padding: 8px 16px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 9999px; font-size: 13px; color: rgba(255,255,255,0.7); margin-bottom: 24px; }
+.hero-title { font-size: clamp(2rem, 4vw, 3.2rem); font-weight: 800; line-height: 1.1; margin-bottom: 20px; }
+.hero-sub { font-size: 18px; color: rgba(255,255,255,0.5); line-height: 1.6; margin-bottom: 32px; }
+.hero-ctas { display: flex; gap: 16px; flex-wrap: wrap; }
+.hero-image-placeholder { display: flex; justify-content: center; }
+.integrations-visual { position: relative; width: 300px; height: 300px; }
+.integration-node { position: absolute; width: 80px; height: 80px; background: #161616; border: 2px solid rgba(255,255,255,0.1); border-radius: 16px; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700; }
+.integration-node.center { background: oklch(0.75 0.15 195); color: #000; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 100px; height: 100px; font-size: 14px; border-color: oklch(0.75 0.15 195); }
+.integration-node:nth-child(2) { top: 10%; left: 50%; transform: translateX(-50%); }
+.integration-node:nth-child(3) { top: 50%; right: 0; transform: translateY(-50%); }
+.integration-node:nth-child(4) { bottom: 10%; left: 10%; }
+.integration-node:nth-child(5) { bottom: 10%; right: 10%; }
+.channels-section { padding: 80px 0; }
+.section-header-center { text-align: center; max-width: 650px; margin: 0 auto 48px; }
+.section-header-center h2 { font-size: clamp(1.8rem, 3vw, 2.5rem); font-weight: 700; margin-bottom: 12px; }
+.section-header-center p { font-size: 16px; color: rgba(255,255,255,0.5); line-height: 1.6; }
+.channels-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 16px; }
+.channel-card { padding: 20px; background: #161616; border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; text-align: center; transition: border-color 0.2s, transform 0.2s; }
+.channel-card:hover { border-color: oklch(0.75 0.15 195); transform: translateY(-4px); }
+.channel-icon { font-size: 28px; display: block; margin-bottom: 10px; }
+.channel-name { display: block; font-size: 13px; font-weight: 600; margin-bottom: 4px; }
+.channel-users { font-size: 11px; color: rgba(255,255,255,0.4); }
+.integrations-section { padding: 80px 0; background: #080808; }
+.integrations-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.integration-card { display: flex; align-items: center; gap: 16px; padding: 20px; background: #161616; border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; }
+.integration-card.fade-in { transition-delay: var(--integration-delay, 0ms); }
+.integration-icon { width: 48px; height: 48px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 800; background: var(--integration-bg, rgba(255,255,255,0.08)); color: var(--integration-color, #fff); }
+.integration-info { display: flex; flex-direction: column; }
+.integration-name { font-size: 15px; font-weight: 700; }
+.integration-category { font-size: 12px; color: rgba(255,255,255,0.4); }
+.api-section { padding: 80px 0; }
+.api-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+.api-content h2 { font-size: clamp(1.6rem, 2.5vw, 2.2rem); font-weight: 700; margin-bottom: 16px; }
+.api-content p { font-size: 16px; color: rgba(255,255,255,0.5); line-height: 1.6; margin-bottom: 24px; }
+.api-features { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 32px; }
+.api-feature { padding: 6px 12px; background: rgba(255,255,255,0.05); border-radius: 6px; font-size: 12px; font-weight: 600; }
+.api-image-placeholder { }
+.code-preview { background: #0a0a0a; border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; padding: 24px; font-family: 'Monaco', 'Menlo', monospace; }
+.code-line { font-size: 12px; color: rgba(255,255,255,0.6); margin-bottom: 8px; }
+.code-line:first-child { color: oklch(0.75 0.15 195); }
+.section-cta { padding: 100px 0; text-align: center; }
+.cta-title { font-size: clamp(1.8rem, 3.5vw, 2.8rem); font-weight: 800; margin-bottom: 32px; }
+.cta-btns { display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; }
+@media (max-width: 1024px) { .channels-grid { grid-template-columns: repeat(3, 1fr); } .integrations-grid { grid-template-columns: repeat(2, 1fr); } .api-grid { grid-template-columns: 1fr; } }
+@media (max-width: 768px) { .hero-content { grid-template-columns: 1fr; } .hero-image-placeholder { display: none; } .channels-grid { grid-template-columns: repeat(2, 1fr); } }
+</style>

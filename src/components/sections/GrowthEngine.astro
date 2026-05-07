@@ -1,0 +1,547 @@
+---
+import { CheckCircle2 } from "lucide-astro";
+import type { Lang } from "@/i18n/ui";
+
+interface Props {
+  currentLang: Lang;
+}
+const { currentLang } = Astro.props;
+
+const tabs = [
+  {
+    id: "capture",
+    label: currentLang === "es" ? "Captura" : "Capture",
+    title:
+      currentLang === "es"
+        ? "Consigue más leads de calidad"
+        : "Get more quality leads",
+    desc:
+      currentLang === "es"
+        ? "Atrae a las personas correctas y llena tu pipeline con oportunidades reales."
+        : "Attract the right people and fill your pipeline with real opportunities.",
+    image:
+      "https://images.leadconnectorhq.com/image/f_webp/q_80/r_1200/u_https://assets.cdn.filesafe.space/knES3eSWYIsc5YSZ3YLl/media/69a1cf6a6e50d66b2220b4c7.gif",
+    leftFeatures:
+      currentLang === "es"
+        ? [
+            "CRM con historial completo",
+            "Formularios y encuestas",
+            "Landing pages de conversión",
+            "Chat web con IA",
+            "Rastreo de llamadas",
+          ]
+        : [
+            "CRM with complete history",
+            "Forms and surveys",
+            "Conversion landing pages",
+            "Web chat with AI",
+            "Call tracking",
+          ],
+    rightFeatures:
+      currentLang === "es"
+        ? [
+            "Planner de redes sociales",
+            "Prospección asistida",
+            "QR para captación",
+            "Social DMs integrados",
+            "Missed call text-back",
+          ]
+        : [
+            "Social media planner",
+            "Assisted prospecting",
+            "Lead capture QR",
+            "Integrated Social DMs",
+            "Missed call text-back",
+          ],
+  },
+  {
+    id: "nurture",
+    label: currentLang === "es" ? "Nutre" : "Nurture",
+    title:
+      currentLang === "es"
+        ? "Nutre conversaciones que sí convierten"
+        : "Nurture conversations that convert",
+    desc:
+      currentLang === "es"
+        ? "Automatiza seguimientos sin perder el toque humano para cerrar más rápido."
+        : "Automate follow-ups without losing the human touch to close faster.",
+    image:
+      "https://images.leadconnectorhq.com/image/f_webp/q_80/r_1200/u_https://assets.cdn.filesafe.space/knES3eSWYIsc5YSZ3YLl/media/69a1cfa0f241b84c64bd4dde.gif",
+    leftFeatures:
+      currentLang === "es"
+        ? [
+            "Automatizaciones por comportamiento",
+            "Calendarios y recordatorios",
+            "Pipeline de ventas visual",
+            "Mensajes IA en tiempo real",
+            "Secuencias multicanal",
+          ]
+        : [
+            "Behavior automations",
+            "Calendars and reminders",
+            "Visual sales pipeline",
+            "Real-time AI messages",
+            "Multichannel sequences",
+          ],
+    rightFeatures:
+      currentLang === "es"
+        ? [
+            "App móvil para ventas",
+            "Ringless voicemail",
+            "Snippets y templates",
+            "Respuestas inteligentes",
+            "Reactivación automática",
+          ]
+        : [
+            "Mobile sales app",
+            "Ringless voicemail",
+            "Snippets and templates",
+            "Smart responses",
+            "Automatic reactivation",
+          ],
+  },
+  {
+    id: "close",
+    label: currentLang === "es" ? "Cierra" : "Close",
+    title:
+      currentLang === "es"
+        ? "Cierra ventas con menos fricción"
+        : "Close sales with less friction",
+    desc:
+      currentLang === "es"
+        ? "Pasa de interés a pago con un proceso claro y sin bloqueos operativos."
+        : "Move from interest to payment with a clear process and no operational blocks.",
+    image:
+      "https://images.leadconnectorhq.com/image/f_webp/q_80/r_1200/u_https://assets.cdn.filesafe.space/knES3eSWYIsc5YSZ3YLl/media/69a1cfb2b617a7acb6c47b24.gif",
+    leftFeatures:
+      currentLang === "es"
+        ? [
+            "Facturación integrada",
+            "Links y formularios de pago",
+            "Propuestas con seguimiento",
+            "Upsells y order bumps",
+            "Lead scoring accionable",
+          ]
+        : [
+            "Integrated billing",
+            "Payment links and forms",
+            "Proposals with tracking",
+            "Upsells and order bumps",
+            "Actionable lead scoring",
+          ],
+    rightFeatures:
+      currentLang === "es"
+        ? [
+            "Planes y membresías",
+            "Text-to-pay",
+            "Tap-to-pay",
+            "Control de renovaciones",
+            "Alertas de cierre",
+          ]
+        : [
+            "Plans and memberships",
+            "Text-to-pay",
+            "Tap-to-pay",
+            "Renewal control",
+            "Closing alerts",
+          ],
+  },
+  {
+    id: "evangelize",
+    label: currentLang === "es" ? "Fideliza" : "Retain",
+    title:
+      currentLang === "es"
+        ? "Convierte clientes en promotores"
+        : "Turn customers into promoters",
+    desc:
+      currentLang === "es"
+        ? "Activa reputación, reviews y referidos para crecer con menor CAC."
+        : "Activate reputation, reviews and referrals to grow with lower CAC.",
+    image:
+      "https://images.leadconnectorhq.com/image/f_webp/q_80/r_1200/u_https://assets.cdn.filesafe.space/knES3eSWYIsc5YSZ3YLl/media/69a1cfd63177b037536aba4d.gif",
+    leftFeatures:
+      currentLang === "es"
+        ? [
+            "Solicitudes automáticas de review",
+            "Gestor de reputación",
+            "Widgets de testimonios",
+            "Campañas de referidos",
+            "Respuestas IA de reseñas",
+          ]
+        : [
+            "Automatic review requests",
+            "Reputation manager",
+            "Testimonial widgets",
+            "Referral campaigns",
+            "AI review responses",
+          ],
+    rightFeatures:
+      currentLang === "es"
+        ? [
+            "Loyalty programs",
+            "Comunidad privada",
+            "Posteos de prueba social",
+            "Puntuación NPS",
+            "Alertas de experiencia",
+          ]
+        : [
+            "Loyalty programs",
+            "Private community",
+            "Social proof posts",
+            "NPS scoring",
+            "Experience alerts",
+          ],
+  },
+  {
+    id: "reactivate",
+    label: currentLang === "es" ? "Reactiva" : "Reactivate",
+    title:
+      currentLang === "es"
+        ? "Reactiva bases dormidas"
+        : "Reactivate dormant bases",
+    desc:
+      currentLang === "es"
+        ? "Recupera ingresos ocultos con mensajes oportunos a contactos inactivos."
+        : "Recover hidden revenue with timely messages to inactive contacts.",
+    image:
+      "https://images.leadconnectorhq.com/image/f_webp/q_80/r_1200/u_https://assets.cdn.filesafe.space/knES3eSWYIsc5YSZ3YLl/media/69a1cfefc4df651ff7a31c0c.gif",
+    leftFeatures:
+      currentLang === "es"
+        ? [
+            "Broadcast por WhatsApp y email",
+            "Segmentación por actividad",
+            "Campañas estacionales",
+            "Plantillas de reactivación",
+            "Workflows de win-back",
+          ]
+        : [
+            "WhatsApp and email broadcast",
+            "Activity-based segmentation",
+            "Seasonal campaigns",
+            "Reactivation templates",
+            "Win-back workflows",
+          ],
+    rightFeatures:
+      currentLang === "es"
+        ? [
+            "Contenido IA para campañas",
+            "Loyalty y recompensas",
+            "Reportes de recurrencia",
+            "Scoring de reenganche",
+            "Recuperación automática",
+          ]
+        : [
+            "AI content for campaigns",
+            "Loyalty and rewards",
+            "Recurrence reports",
+            "Re-engagement scoring",
+            "Automatic recovery",
+          ],
+  },
+];
+---
+
+<section id="motor-crecimiento" class="growth-engine">
+  <div class="container">
+    <!-- Section header -->
+    <div class="section-header-center fade-in">
+      <span class="section-tag">Growth Engine</span>
+      <h2 class="section-title">
+        {
+          currentLang === "es"
+            ? "Todo en una sola plataforma"
+            : "Everything in one platform"
+        }
+      </h2>
+      <p class="section-sub">
+        {
+          currentLang === "es"
+            ? "Captura, nutre, cierra, fideliza y reactiva con un sistema unificado para escalar sin fricción."
+            : "Capture, nurture, close, retain and reactivate with a unified system to scale without friction."
+        }
+      </p>
+    </div>
+
+    <!-- Tabs navigation -->
+    <div class="growth-tabs-nav fade-in" style="transition-delay: 100ms;">
+      {
+        tabs.map((tab) => (
+          <button
+            class={`growth-tab ${tab.id === "capture" ? "active" : ""}`}
+            data-tab={tab.id}
+            type="button"
+          >
+            {tab.label}
+          </button>
+        ))
+      }
+    </div>
+
+    <!-- Tab content -->
+    <div class="growth-content fade-in" style="transition-delay: 200ms;">
+      {
+        tabs.map((tab) => (
+          <div
+            class={`growth-panel ${tab.id === "capture" ? "active" : ""}`}
+            data-panel={tab.id}
+          >
+            <div class="growth-grid">
+              <div class="growth-info">
+                <h3 class="growth-title">{tab.title}</h3>
+                <p class="growth-desc">{tab.desc}</p>
+                <div class="growth-features">
+                  <div class="features-col">
+                    {tab.leftFeatures.map((f) => (
+                      <div class="feature-item">
+                        <CheckCircle2 size={10} class="growth-feature-icon" />
+                        <span>{f}</span>
+                      </div>
+                    ))}
+                  </div>
+                  <div class="features-col">
+                    {tab.rightFeatures.map((f) => (
+                      <div class="feature-item">
+                        <CheckCircle2 size={10} class="growth-feature-icon" />
+                        <span>{f}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+                <a
+                  href="https://wa.me/573018231874?text=Hola%20quiero%20solicitar%20mi%20prueba%20gratuita"
+                  target="_blank"
+                  rel="noreferrer"
+                  class="growth-cta"
+                >
+                  {currentLang === "es"
+                    ? "Solicitar 7 días de prueba gratuita"
+                    : "Request 7 days of free trial"}
+                </a>
+              </div>
+              <div class="growth-visual">
+                <div class="growth-image-wrapper">
+                  <img
+                    src={tab.image}
+                    alt={tab.title}
+                    loading="lazy"
+                    class="growth-image"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .growth-engine {
+    padding: 100px 0;
+    background: #050505;
+  }
+  .section-tag {
+    display: inline-block;
+    padding: 6px 14px;
+    background: oklch(0.75 0.15 195 / 0.15);
+    border: 1px solid oklch(0.75 0.15 195 / 0.3);
+    border-radius: 9999px;
+    font-size: 12px;
+    font-weight: 600;
+    color: oklch(0.75 0.15 195);
+    margin-bottom: 20px;
+  }
+  .section-header-center {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto 48px;
+  }
+  .section-title {
+    font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 16px;
+  }
+  .section-sub {
+    font-size: 16px;
+    color: rgba(255, 255, 255, 0.5);
+    line-height: 1.7;
+  }
+  .growth-tabs-nav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 32px;
+  }
+  .growth-tab {
+    padding: 12px 20px;
+    border-radius: 12px;
+    font-size: 14px;
+    font-weight: 600;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.03);
+    color: rgba(255, 255, 255, 0.6);
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  .growth-tab:hover {
+    border-color: oklch(0.75 0.15 195);
+    color: oklch(0.75 0.15 195);
+  }
+  .growth-tab.active {
+    background: oklch(0.75 0.15 195);
+    border-color: oklch(0.75 0.15 195);
+    color: #050505;
+    box-shadow: 0 4px 20px oklch(0.75 0.15 195 / 0.3);
+  }
+  .growth-content {
+    background: linear-gradient(135deg, #161616, #0a0a0a);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 24px;
+    padding: 40px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+  }
+  .growth-panel {
+    display: none;
+  }
+  .growth-panel.active {
+    display: block;
+  }
+  .growth-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    align-items: center;
+  }
+  .growth-visual {
+    border-radius: 16px;
+    overflow: hidden;
+  }
+  .growth-image-wrapper {
+    aspect-ratio: 16/10;
+    overflow: hidden;
+    border-radius: 12px;
+  }
+  .growth-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .growth-info {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .growth-title {
+    font-size: clamp(1.5rem, 2.5vw, 2rem);
+    font-weight: 700;
+    line-height: 1.3;
+  }
+  .growth-desc {
+    font-size: 15px;
+    color: rgba(255, 255, 255, 0.5);
+    line-height: 1.6;
+  }
+  .growth-features {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-top: 8px;
+  }
+  .features-col {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .feature-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.7);
+  }
+  .growth-feature-icon {
+    width: 15px;
+    height: 15px;
+    color: oklch(0.75 0.15 195);
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+  .growth-cta {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 14px 24px;
+    background: #25d366;
+    color: #fff;
+    font-size: 15px;
+    font-weight: 600;
+    border-radius: 12px;
+    margin-top: 16px;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+  }
+  .growth-cta:hover {
+    background: #1ebe5d;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
+  }
+  @media (max-width: 900px) {
+    .growth-grid {
+      grid-template-columns: 1fr;
+      gap: 32px;
+    }
+    .growth-visual {
+      order: 2;
+    }
+    .growth-info {
+      order: 1;
+    }
+  }
+  @media (max-width: 640px) {
+    .growth-tabs-nav {
+      gap: 8px;
+    }
+    .growth-tab {
+      padding: 10px 14px;
+      font-size: 13px;
+    }
+    .growth-content {
+      padding: 24px;
+    }
+    .growth-features {
+      grid-template-columns: 1fr;
+    }
+    .growth-cta {
+      width: 100%;
+    }
+  }
+</style>
+
+<script>
+  // Tab switching logic
+  const tabs = document.querySelectorAll(".growth-tab");
+  const panels = document.querySelectorAll(".growth-panel");
+
+  tabs.forEach((tab) => {
+    tab.addEventListener("click", () => {
+      const targetId = tab.getAttribute("data-tab");
+
+      // Update active tab
+      tabs.forEach((t) => t.classList.remove("active"));
+      tab.classList.add("active");
+
+      // Update active panel
+      panels.forEach((p) => {
+        if (p.getAttribute("data-panel") === targetId) {
+          p.classList.add("active");
+        } else {
+          p.classList.remove("active");
+        }
+      });
+    });
+  });
+</script>

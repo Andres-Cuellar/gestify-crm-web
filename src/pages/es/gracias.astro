@@ -1,0 +1,94 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Gracias" lang="es">
+  <section class="thankyou-hero">
+    <div class="container">
+      <div class="checkmark">✓</div>
+      <h1 class="thankyou-title">¡Listo!</h1>
+      <p class="thankyou-sub">Serás redirigido al pago en segundos...</p>
+      <div class="loading-bar">
+        <div class="loading-bar-fill"></div>
+      </div>
+      <p class="redirect-notice">Si no eres redirigido, haz clic en el botón de arriba.</p>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+.thankyou-hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 80px 20px;
+}
+.checkmark {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: oklch(0.70 0.15 145);
+  color: white;
+  font-size: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 24px;
+}
+.thankyou-title {
+  font-size: 48px;
+  font-weight: 700;
+  margin-bottom: 16px;
+}
+.thankyou-sub {
+  font-size: 18px;
+  color: rgba(255,255,255,0.6);
+  margin-bottom: 32px;
+}
+.loading-bar {
+  width: 300px;
+  height: 4px;
+  background: rgba(255,255,255,0.1);
+  border-radius: 9999px;
+  overflow: hidden;
+  margin: 0 auto 24px;
+}
+.loading-bar-fill {
+  height: 100%;
+  background: oklch(0.75 0.15 195);
+  animation: loading 2s ease-in-out infinite;
+}
+@keyframes loading {
+  0% { width: 0%; }
+  50% { width: 70%; }
+  100% { width: 100%; }
+}
+.redirect-notice {
+  font-size: 14px;
+  color: rgba(255,255,255,0.4);
+}
+</style>
+
+<script is:inline>
+  const urlParams = new URLSearchParams(window.location.search);
+  const plan = urlParams.get('plan');
+  const billing = urlParams.get('billing');
+
+  const redirectUrls = {
+    'starter-annual': 'https://pay.hotmart.com/YOUR_STARTER_ANNUAL',
+    'starter-monthly': 'https://pay.hotmart.com/YOUR_STARTER_MONTHLY',
+    'growth-annual': 'https://pay.hotmart.com/YOUR_GROWTH_ANNUAL',
+    'growth-monthly': 'https://pay.hotmart.com/YOUR_GROWTH_MONTHLY',
+    'advanced-annual': 'https://pay.hotmart.com/YOUR_ADVANCED_ANNUAL',
+    'advanced-monthly': 'https://pay.hotmart.com/YOUR_ADVANCED_MONTHLY',
+  };
+
+  const key = `${plan}-${billing}`;
+  const redirectUrl = redirectUrls[key] || 'https://pay.hotmart.com';
+
+  setTimeout(() => {
+    window.location.href = redirectUrl;
+  }, 2000);
+</script>

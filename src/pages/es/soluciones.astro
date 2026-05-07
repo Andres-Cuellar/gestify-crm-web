@@ -1,0 +1,146 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import CTA from '../../components/sections/CTA.astro';
+import { ui } from '../../i18n/ui';
+import type { Lang } from '../../i18n/ui';
+const currentLang: Lang = 'es';
+const t = ui[currentLang];
+
+const solutions = [
+  {
+    tag: 'Marketing',
+    title: 'negocios de marketing',
+    desc: 'Gestiona múltiples clientes desde un solo dashboard. Reportes automatizados, pipeline visual y automatización de campañas.',
+    points: ['Multi-cliente', 'Reportes blancos', 'Campaigns automatizadas'],
+    color: 'oklch(0.70 0.15 235)',
+  },
+  {
+    tag: 'Ventas',
+    title: 'Equipos de ventas',
+    desc: 'Cierra más ventas con seguimiento automático, scoring de leads y integrations con tu stack actual.',
+    points: ['Lead scoring', 'Auto follow-up', 'CRM pipeline'],
+    color: 'oklch(0.75 0.15 195)',
+  },
+  {
+    tag: 'Soporte',
+    title: 'Equipos de soporte',
+    desc: 'Inbox unificado para resolver tickets de todos los canales. IA que sugiere respuestas y prioriza casos.',
+    points: ['Omnicanal', 'IA suggestions', 'SLA tracking'],
+    color: 'oklch(0.65 0.15 280)',
+  },
+  {
+    tag: 'SAAS',
+    title: 'Productos SaaS',
+    desc: 'Onboarding automation, feature adoption tracking y churn prevention con workflows inteligentes.',
+    points: ['Onboarding flows', 'Feature adoption', 'Churn alerts'],
+    color: 'oklch(0.65 0.15 145)',
+  },
+];
+---
+
+<BaseLayout title="Soluciones" lang={currentLang}>
+  <section class="page-hero">
+    <div class="container">
+      <span class="section-tag fade-in" style="width:fit-content;">
+        <span class="section-tag-dot"></span>Soluciones
+      </span>
+      <h1 class="page-title fade-in" style="transition-delay:100ms;">Hecho para tu tipo de agencia</h1>
+      <p class="page-sub fade-in" style="transition-delay:200ms;">
+        Ya sea marketing, ventas, soporte o SaaS — Gestify se adapta a cómo trabajas.
+      </p>
+    </div>
+  </section>
+
+  <section class="section section-dark">
+    <div class="container">
+      <div class="sol-grid">
+        {solutions.map((s, i) => (
+          <div class="sol-card fade-in" style={`transition-delay:${i * 100}ms;`}>
+            <span class="sol-tag" style={`color: ${s.color}; background: ${s.color}22;`}>{s.tag}</span>
+            <h3 class="sol-title">{s.title}</h3>
+            <p class="sol-desc">{s.desc}</p>
+            <ul class="sol-points">
+              {s.points.map(p => <li>{p}</li>)}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <CTA currentLang={currentLang} />
+</BaseLayout>
+
+<style>
+.page-hero {
+  padding: 160px 0 80px;
+  text-align: center;
+}
+.page-title {
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  font-weight: 700;
+  line-height: 1.1;
+  margin: 20px auto 24px;
+  max-width: 700px;
+}
+.page-sub {
+  font-size: 18px;
+  color: rgba(255,255,255,0.5);
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.7;
+}
+.sol-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+.sol-card {
+  padding: 32px;
+  background: #161616;
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 24px;
+}
+.sol-tag {
+  display: inline-block;
+  padding: 6px 14px;
+  border-radius: 9999px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 16px;
+}
+.sol-title {
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+.sol-desc {
+  font-size: 14px;
+  color: rgba(255,255,255,0.5);
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+.sol-points {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.sol-points li {
+  font-size: 13px;
+  color: rgba(255,255,255,0.6);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.sol-points li::before {
+  content: '✓';
+  color: oklch(0.65 0.15 145);
+  font-weight: 600;
+}
+@media (max-width: 768px) {
+  .sol-grid { grid-template-columns: 1fr; }
+}
+</style>

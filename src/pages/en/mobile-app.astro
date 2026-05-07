@@ -1,0 +1,153 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { ArrowRight, Download } from 'lucide-astro';
+import type { Lang } from '../../i18n/ui';
+const currentLang: Lang = 'en';
+
+const features = [
+  { icon: '📱', title: 'iOS & Android', desc: 'Native app for both platforms' },
+  { icon: '🔔', title: 'Push notifications', desc: 'Real-time alerts' },
+  { icon: '📊', title: 'Mobile dashboard', desc: 'Metrics from anywhere' },
+  { icon: '💬', title: 'Quick reply', desc: 'Reply to chats from mobile' },
+];
+---
+
+<BaseLayout title="Gestify Mobile App" lang={currentLang}>
+  <!-- Hero with Phone Mockup -->
+  <section class="hero-visual">
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-text">
+          <div class="announce-badge fade-in">
+            <span>📱</span>
+            <span>Mobile App</span>
+          </div>
+          <h1 class="hero-title fade-in" style="transition-delay:100ms;">
+            Manage from anywhere
+          </h1>
+          <p class="hero-sub fade-in" style="transition-delay:200ms;">
+            The Gestify mobile app lets you manage conversations, view metrics, and serve customers from anywhere. Everything you need in your pocket.
+          </p>
+          <div class="hero-ctas fade-in" style="transition-delay:300ms;">
+            <a href="#" class="btn btn-primary">
+              <Download size={16} /> App Store
+            </a>
+            <a href="#" class="btn btn-primary">
+              <Download size={16} /> Google Play
+            </a>
+          </div>
+        </div>
+        <div class="hero-image-placeholder fade-in" style="transition-delay:200ms;">
+          <div class="phone-mockup">
+            <div class="phone-header">
+              <span>Gestify</span>
+              <span>●</span>
+            </div>
+            <div class="phone-content">
+              <div class="phone-metric">98%</div>
+              <div class="phone-label">Today's conversions</div>
+              <div class="phone-chart">📈</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features -->
+  <section class="features-section">
+    <div class="container">
+      <div class="section-header-center fade-in">
+        <h2>Everything you can do in the app</h2>
+        <p>Manage your business without being tied to a desk.</p>
+      </div>
+      <div class="features-grid">
+        {features.map((f, i) => (
+          <div class="feature-card fade-in" style={`transition-delay:${i * 80}ms;`}>
+            <div class="feature-icon">{f.icon}</div>
+            <h3 class="feature-title">{f.title}</h3>
+            <p class="feature-desc">{f.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- App Preview with Screenshot -->
+  <section class="app-preview">
+    <div class="container">
+      <div class="preview-grid">
+        <div class="preview-content fade-in">
+          <h2>Interface designed for speed</h2>
+          <p>Intuitive navigation that lets you access what you need in seconds. Reply to conversations, view analytics, and receive alerts without complications.</p>
+          <ul class="preview-list">
+            <li>⚡ One-tap reply</li>
+            <li>🔍 Smart search</li>
+            <li>📊 Customizable widgets</li>
+            <li>🌙 Automatic dark mode</li>
+          </ul>
+        </div>
+        <div class="preview-screenshots fade-in" style="transition-delay:100ms;">
+          <div class="screenshot-placeholder">
+            <div class="placeholder-icon">📱</div>
+            <span>Screenshot Preview</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section-cta">
+    <div class="container">
+      <h2 class="cta-title fade-in">Download free 📱</h2>
+      <p class="cta-sub fade-in">Available on iOS and Android. No additional cost.</p>
+      <div class="cta-btns fade-in" style="transition-delay:100ms;">
+        <a href="#" class="btn btn-primary"><Download size={16} /> iOS App Store</a>
+        <a href="#" class="btn btn-outline"><Download size={16} /> Google Play</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+.hero-visual { padding: 140px 0 80px; }
+.hero-content { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+.hero-text { }
+.announce-badge { display: inline-flex; align-items: center; gap: 10px; padding: 8px 16px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 9999px; font-size: 13px; color: rgba(255,255,255,0.7); margin-bottom: 24px; }
+.hero-title { font-size: clamp(2rem, 4vw, 3.2rem); font-weight: 800; line-height: 1.1; margin-bottom: 20px; }
+.hero-sub { font-size: 18px; color: rgba(255,255,255,0.5); line-height: 1.6; margin-bottom: 32px; }
+.hero-ctas { display: flex; gap: 12px; flex-wrap: wrap; }
+.hero-image-placeholder { display: flex; justify-content: center; }
+.phone-mockup { width: 240px; height: 400px; background: linear-gradient(145deg, #1a1a1a, #0a0a0a); border: 3px solid #333; border-radius: 40px; padding: 20px; display: flex; flex-direction: column; }
+.phone-header { display: flex; justify-content: space-between; font-size: 12px; color: rgba(255,255,255,0.5); margin-bottom: 20px; }
+.phone-content { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+.phone-metric { font-size: 48px; font-weight: 800; background: linear-gradient(135deg, oklch(0.75 0.15 195), oklch(0.70 0.15 235)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.phone-label { font-size: 12px; color: rgba(255,255,255,0.5); margin-bottom: 20px; }
+.phone-chart { font-size: 48px; }
+.features-section { padding: 80px 0; }
+.section-header-center { text-align: center; max-width: 650px; margin: 0 auto 48px; }
+.section-header-center h2 { font-size: clamp(1.8rem, 3vw, 2.5rem); font-weight: 700; margin-bottom: 12px; }
+.section-header-center p { font-size: 16px; color: rgba(255,255,255,0.5); line-height: 1.6; }
+.features-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+.feature-card { padding: 28px; background: #161616; border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; text-align: center; }
+.feature-icon { font-size: 36px; margin-bottom: 16px; }
+.feature-title { font-size: 16px; font-weight: 700; margin-bottom: 8px; }
+.feature-desc { font-size: 13px; color: rgba(255,255,255,0.5); }
+.app-preview { padding: 80px 0; background: #080808; }
+.preview-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+.preview-content h2 { font-size: clamp(1.6rem, 2.5vw, 2.2rem); font-weight: 700; margin-bottom: 16px; }
+.preview-content p { font-size: 16px; color: rgba(255,255,255,0.5); line-height: 1.6; margin-bottom: 24px; }
+.preview-list { list-style: none; margin-bottom: 32px; }
+.preview-list li { padding: 10px 0; font-size: 15px; color: rgba(255,255,255,0.8); }
+.preview-screenshots { }
+.screenshot-placeholder { background: linear-gradient(135deg, #161616, #0a0a0a); border: 1px solid rgba(255,255,255,0.08); border-radius: 24px; aspect-ratio: 9/16; max-height: 500px; display: flex; align-items: center; justify-content: center; }
+.placeholder-icon { font-size: 48px; color: rgba(255,255,255,0.3); }
+.screenshot-placeholder span { display: block; margin-top: 12px; font-size: 13px; color: rgba(255,255,255,0.3); font-weight: 500; }
+.section-cta { padding: 100px 0; text-align: center; }
+.cta-title { font-size: clamp(1.8rem, 3.5vw, 2.8rem); font-weight: 800; margin-bottom: 12px; }
+.cta-sub { font-size: 16px; color: rgba(255,255,255,0.5); margin-bottom: 32px; }
+.cta-btns { display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; }
+@media (max-width: 1024px) { .features-grid { grid-template-columns: repeat(2, 1fr); } .preview-grid { grid-template-columns: 1fr; } }
+@media (max-width: 768px) { .hero-content { grid-template-columns: 1fr; } .hero-image-placeholder { display: none; } }
+</style>

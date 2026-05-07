@@ -1,0 +1,235 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { ArrowRight } from 'lucide-astro';
+import type { Lang } from '../../i18n/ui';
+const currentLang: Lang = 'en';
+
+const features = [
+  {
+    title: 'Connected Calendars',
+    desc: 'Google Calendar, Outlook, Calendly... clients book in real-time availability.',
+    stat: '80%',
+    statLabel: 'Less manual coordination',
+    color: 'oklch(0.70 0.15 235)',
+    icon: '📅',
+  },
+  {
+    title: 'Auto Confirmation',
+    desc: 'Confirmations via WhatsApp, email, SMS. Reminders 24h and 1h before.',
+    stat: '40%',
+    statLabel: 'Reduction in no-shows',
+    color: 'oklch(0.75 0.15 195)',
+    icon: '✅',
+  },
+  {
+    title: 'Instant Reschedule',
+    desc: 'If a client needs to change, they do it from the confirmation link.',
+    stat: '90%',
+    statLabel: 'Customer satisfaction',
+    color: 'oklch(0.65 0.15 145)',
+    icon: '🔄',
+  },
+];
+---
+
+<BaseLayout title="Book appointments automatically" lang={currentLang}>
+  <!-- Hero with Visual -->
+  <section class="hero-visual">
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-text">
+          <div class="announce-badge fade-in">
+            <span>📅</span>
+            <span>AI Conversational Booking</span>
+          </div>
+          <h1 class="hero-title fade-in" style="transition-delay:100ms;">
+            Close more appointments without the back-and-forth
+          </h1>
+          <p class="hero-sub fade-in" style="transition-delay:200ms;">
+            The customer says "Yes, I want to book" and in 10 seconds has the appointment on their calendar.
+          </p>
+          <div class="hero-ctas fade-in" style="transition-delay:300ms;">
+            <a href={`/${currentLang}/demo`} class="btn btn-primary">
+              Talk to sales <ArrowRight size={16} />
+            </a>
+            <a href="#" class="btn btn-outline">
+              Start free trial
+            </a>
+          </div>
+        </div>
+        <div class="hero-visual-area fade-in" style="transition-delay:200ms;">
+          <div class="booking-visual-card">
+            <div class="booking-header">
+              <span>Conversational Booking</span>
+            </div>
+            <div class="booking-chat">
+              <div class="booking-msg bot">Hi! I'd like to schedule a demo 🗓️</div>
+              <div class="booking-msg bot">Sure, what day works for you?</div>
+              <div class="booking-msg user">Tomorrow at 3pm</div>
+              <div class="booking-msg bot checking">Checking availability...</div>
+              <div class="booking-msg bot confirmed">✅ Confirmed: Tomorrow 3:00 PM with Carlos from sales</div>
+            </div>
+            <div class="booking-calendar">
+              <div class="cal-header">📅 Tomorrow</div>
+              <div class="cal-time">15:00</div>
+              <div class="cal-event">Gestify Demo</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats -->
+  <section class="stats-section">
+    <div class="container">
+      <div class="stats-grid fade-in">
+        <div class="stat-item">
+          <span class="stat-val">80%</span>
+          <span class="stat-lbl">Less manual coordination</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-val">40%</span>
+          <span class="stat-lbl">Reduction in no-shows</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-val">90%</span>
+          <span class="stat-lbl">Customer satisfaction</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Visual -->
+  <section class="features-section">
+    <div class="container">
+      <div class="features-grid">
+        {features.map((f, i) => (
+          <div class="feature-card fade-in" style={`transition-delay:${i * 100}ms;`}>
+            <div class="feature-visual">
+              <span class="feature-icon">{f.icon}</span>
+            </div>
+            <div class="feature-content">
+              <span class="feature-stat" style={`color: ${f.color};`}>{f.stat}</span>
+              <span class="feature-label">{f.statLabel}</span>
+              <h3>{f.title}</h3>
+              <p>{f.desc}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Booking Flow Visual -->
+  <section class="booking-flow-section">
+    <div class="container">
+      <div class="flow-header fade-in">
+        <h2>From chat to appointment in 10 seconds</h2>
+      </div>
+      <div class="flow-visual">
+        <div class="flow-step-card fade-in">
+          <div class="step-illustration">
+            <span class="step-emoji">💬</span>
+          </div>
+          <div class="step-num">1</div>
+          <h4>Customer shows interest</h4>
+          <p>"I want to schedule a demo"</p>
+        </div>
+        <div class="flow-connector">→</div>
+        <div class="flow-step-card fade-in" style="transition-delay:100ms;">
+          <div class="step-illustration">
+            <span class="step-emoji">🤖</span>
+          </div>
+          <div class="step-num">2</div>
+          <h4>AI offers times</h4>
+          <p>Real availability</p>
+        </div>
+        <div class="flow-connector">→</div>
+        <div class="flow-step-card fade-in" style="transition-delay:200ms;">
+          <div class="step-illustration">
+            <span class="step-emoji">👆</span>
+          </div>
+          <div class="step-num">3</div>
+          <h4>Customer chooses</h4>
+          <p>Selects date/time</p>
+        </div>
+        <div class="flow-connector">→</div>
+        <div class="flow-step-card fade-in" style="transition-delay:300ms;">
+          <div class="step-illustration">
+            <span class="step-emoji">✅</span>
+          </div>
+          <div class="step-num">4</div>
+          <h4>Confirmed</h4>
+          <p>Added to calendar</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section">
+    <div class="container">
+      <div class="cta-card fade-in">
+        <h2>Stop wasting time coordinating appointments 📅</h2>
+        <div class="cta-btns">
+          <a href={`/${currentLang}/demo`} class="btn btn-primary">Talk to sales</a>
+          <a href="#" class="btn btn-outline">Start free trial</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+.hero-visual { padding: 140px 0 60px; }
+.hero-content { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+.announce-badge { display: inline-flex; align-items: center; gap: 10px; padding: 8px 16px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 9999px; font-size: 13px; color: rgba(255,255,255,0.7); margin-bottom: 24px; }
+.hero-title { font-size: clamp(2rem, 4vw, 3.2rem); font-weight: 800; line-height: 1.1; margin-bottom: 20px; }
+.hero-sub { font-size: 18px; color: rgba(255,255,255,0.5); line-height: 1.6; margin-bottom: 32px; }
+.hero-ctas { display: flex; gap: 16px; flex-wrap: wrap; }
+.booking-visual-card { background: linear-gradient(145deg, #1a1a1a, #0a0a0a); border: 1px solid rgba(255,255,255,0.1); border-radius: 20px; padding: 24px; }
+.booking-header { font-size: 13px; color: rgba(255,255,255,0.5); margin-bottom: 16px; }
+.booking-chat { display: flex; flex-direction: column; gap: 8px; margin-bottom: 20px; }
+.booking-msg { padding: 10px 14px; border-radius: 12px; font-size: 13px; max-width: 90%; }
+.booking-msg.bot { background: #222; color: rgba(255,255,255,0.7); align-self: flex-start; }
+.booking-msg.user { background: oklch(0.70 0.15 235); color: #fff; align-self: flex-end; }
+.booking-msg.checking { color: oklch(0.75 0.15 195); }
+.booking-msg.confirmed { background: rgba(34, 197, 94, 0.15); color: #22C55E; }
+.booking-calendar { background: #161616; border-radius: 12px; padding: 16px; text-align: center; }
+.cal-header { font-size: 11px; color: rgba(255,255,255,0.4); margin-bottom: 4px; }
+.cal-time { font-size: 24px; font-weight: 800; color: oklch(0.75 0.15 195); }
+.cal-event { font-size: 12px; color: rgba(255,255,255,0.6); }
+.stats-section { padding: 60px 0; border-top: 1px solid rgba(255,255,255,0.05); border-bottom: 1px solid rgba(255,255,255,0.05); }
+.stats-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; }
+.stat-item { text-align: center; }
+.stat-val { display: block; font-size: 40px; font-weight: 800; background: linear-gradient(135deg, oklch(0.75 0.15 195), oklch(0.70 0.15 235)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.stat-lbl { font-size: 13px; color: rgba(255,255,255,0.5); }
+.features-section { padding: 80px 0; }
+.features-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.feature-card { background: #161616; border: 1px solid rgba(255,255,255,0.08); border-radius: 20px; overflow: hidden; }
+.feature-visual { background: linear-gradient(135deg, #0a0a0a, #161616); aspect-ratio: 16/9; display: flex; align-items: center; justify-content: center; }
+.feature-icon { font-size: 48px; }
+.feature-content { padding: 24px; }
+.feature-stat { display: block; font-size: 28px; font-weight: 800; }
+.feature-label { display: block; font-size: 11px; color: rgba(255,255,255,0.4); margin-bottom: 8px; }
+.feature-content h3 { font-size: 16px; font-weight: 700; margin-bottom: 8px; }
+.feature-content p { font-size: 13px; color: rgba(255,255,255,0.5); line-height: 1.5; }
+.booking-flow-section { padding: 80px 0; background: #080808; }
+.flow-header { text-align: center; margin-bottom: 48px; }
+.flow-header h2 { font-size: clamp(1.8rem, 3vw, 2.5rem); font-weight: 700; }
+.flow-visual { display: flex; justify-content: center; align-items: center; gap: 0; }
+.flow-step-card { text-align: center; padding: 0 24px; }
+.step-illustration { margin-bottom: 12px; }
+.step-emoji { font-size: 40px; }
+.step-num { font-size: 11px; font-weight: 700; color: oklch(0.75 0.15 195); margin-bottom: 4px; }
+.flow-step-card h4 { font-size: 14px; font-weight: 700; margin-bottom: 4px; }
+.flow-step-card p { font-size: 12px; color: rgba(255,255,255,0.4); }
+.flow-connector { font-size: 24px; color: rgba(255,255,255,0.2); }
+.cta-section { padding: 80px 0; }
+.cta-card { text-align: center; background: linear-gradient(135deg, #161616, #0a0a0a); border: 1px solid rgba(255,255,255,0.08); border-radius: 24px; padding: 60px; }
+.cta-card h2 { font-size: clamp(1.8rem, 3vw, 2.5rem); font-weight: 800; margin-bottom: 32px; }
+.cta-btns { display: flex; justify-content: center; gap: 16px; }
+@media (max-width: 1024px) { .flow-visual { flex-wrap: wrap; } .flow-connector { display: none; } }
+@media (max-width: 768px) { .hero-content { grid-template-columns: 1fr; } .hero-visual-area { display: none; } .stats-grid { grid-template-columns: 1fr; } .features-grid { grid-template-columns: 1fr; } }
+</style>

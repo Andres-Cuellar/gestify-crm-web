@@ -1,0 +1,240 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { ArrowRight } from 'lucide-astro';
+import type { Lang } from '../../i18n/ui';
+const currentLang: Lang = 'en';
+
+const stories = [
+  {
+    company: 'TechCorp',
+    industry: 'SaaS',
+    logo: 'TC',
+    color: 'oklch(0.70 0.15 235)',
+    quote: 'Gestify transformed our customer support. Reduced response time by 70% and increased satisfaction.',
+    metric1: '70%',
+    metric1Label: 'Response time',
+    metric2: '4.8',
+    metric2Label: 'CSAT Score',
+    author: 'Maria Gonzalez',
+    role: 'Head of Customer Success',
+  },
+  {
+    company: 'RetailMax',
+    industry: 'E-commerce',
+    logo: 'RM',
+    color: 'oklch(0.75 0.15 195)',
+    quote: 'WhatsApp automation allowed us to 4x sales without increasing team. Incredible ROI.',
+    metric1: '4x',
+    metric1Label: 'Sales',
+    metric2: '85%',
+    metric2Label: 'Open Rate',
+    author: 'Carlos Ruiz',
+    role: 'E-commerce Manager',
+  },
+  {
+    company: 'FinanceHub',
+    industry: 'Finance',
+    logo: 'FH',
+    color: 'oklch(0.65 0.15 145)',
+    quote: 'Smart routing changed the game. Every lead now reaches the right advisor in seconds.',
+    metric1: '95%',
+    metric1Label: 'Lead routing',
+    metric2: '3x',
+    metric2Label: 'Conversions',
+    author: 'Ana Martinez',
+    role: 'VP Sales',
+  },
+];
+---
+
+<BaseLayout title="Success Stories - Gestify" lang={currentLang}>
+  <!-- Hero with Image Area -->
+  <section class="hero-visual">
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-text">
+          <div class="announce-badge fade-in">
+            <span>🏆</span>
+            <span>Success Stories</span>
+          </div>
+          <h1 class="hero-title fade-in" style="transition-delay:100ms;">
+            Companies that transformed their business with Gestify
+          </h1>
+          <p class="hero-sub fade-in" style="transition-delay:200ms;">
+            Discover how companies like yours achieved extraordinary results with our sales automation platform.
+          </p>
+          <div class="hero-ctas fade-in" style="transition-delay:300ms;">
+            <a href={`/${currentLang}/demo`} class="btn btn-primary">
+              View demo <ArrowRight size={16} />
+            </a>
+            <a href="#" class="btn btn-outline">
+              Start free
+            </a>
+          </div>
+        </div>
+        <div class="hero-image-placeholder fade-in" style="transition-delay:200ms;">
+          <div class="image-placeholder-content">
+            <div class="placeholder-icon">📊</div>
+            <span>Dashboard Preview</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats -->
+  <section class="stats-section">
+    <div class="container">
+      <div class="stats-grid fade-in">
+        <div class="stat-item">
+          <span class="stat-val">500+</span>
+          <span class="stat-lbl">Global companies</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-val">10M+</span>
+          <span class="stat-lbl">Leads processed</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-val">98%</span>
+          <span class="stat-lbl">Satisfaction</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-val">3x</span>
+          <span class="stat-lbl">Average ROI</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stories -->
+  <section class="stories-section">
+    <div class="container">
+      <div class="section-header-center fade-in">
+        <h2>Real success stories</h2>
+        <p>Companies that trust Gestify to transform customer service and increase revenue.</p>
+      </div>
+
+      <div class="stories-grid">
+        {stories.map((story, i) => (
+          <div class="story-card fade-in" style={`transition-delay:${i * 100}ms;`}>
+            <div class="story-header">
+              <div class="story-logo" style={`background: ${story.color}20; color: ${story.color};`}>
+                {story.logo}
+              </div>
+              <div>
+                <h3 class="story-company">{story.company}</h3>
+                <span class="story-industry">{story.industry}</span>
+              </div>
+            </div>
+            <blockquote class="story-quote">"{story.quote}"</blockquote>
+            <div class="story-metrics">
+              <div class="story-metric">
+                <span class="metric-val" style={`color: ${story.color};`}>{story.metric1}</span>
+                <span class="metric-lbl">{story.metric1Label}</span>
+              </div>
+              <div class="story-metric">
+                <span class="metric-val" style={`color: ${story.color};`}>{story.metric2}</span>
+                <span class="metric-lbl">{story.metric2Label}</span>
+              </div>
+            </div>
+            <div class="story-author">
+              <div class="author-avatar">{story.author.charAt(0)}</div>
+              <div>
+                <span class="author-name">{story.author}</span>
+                <span class="author-role">{story.role}</span>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Feature Highlight with Image -->
+  <section class="feature-highlight">
+    <div class="container">
+      <div class="highlight-grid">
+        <div class="highlight-image-placeholder fade-in">
+          <div class="image-placeholder-content">
+            <div class="placeholder-icon">📈</div>
+            <span>Analytics Preview</span>
+          </div>
+        </div>
+        <div class="highlight-content fade-in" style="transition-delay:100ms;">
+          <h2>Data that drives smart decisions</h2>
+          <p>Our dashboards give you complete visibility into every metric that matters: conversions, response time, customer satisfaction and more.</p>
+          <ul class="highlight-list">
+            <li>📊 Real-time reports</li>
+            <li>🎯 Analytics by agent and channel</li>
+            <li>📈 Trends and AI predictions</li>
+            <li>📱 Access from any device</li>
+          </ul>
+          <a href={`/${currentLang}/demo`} class="btn btn-primary">View analytics <ArrowRight size={16} /></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section-cta">
+    <div class="container">
+      <h2 class="cta-title fade-in">Your story could be the next one 🚀</h2>
+      <p class="cta-sub fade-in">Join the companies already transforming their business with Gestify.</p>
+      <div class="cta-btns fade-in" style="transition-delay:100ms;">
+        <a href={`/${currentLang}/demo`} class="btn btn-primary">Talk to sales</a>
+        <a href="#" class="btn btn-outline">Start free</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+.hero-visual { padding: 140px 0 80px; }
+.hero-content { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+.hero-text { }
+.announce-badge { display: inline-flex; align-items: center; gap: 10px; padding: 8px 16px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 9999px; font-size: 13px; color: rgba(255,255,255,0.7); margin-bottom: 24px; }
+.hero-title { font-size: clamp(2rem, 4vw, 3.2rem); font-weight: 800; line-height: 1.1; margin-bottom: 20px; }
+.hero-sub { font-size: 18px; color: rgba(255,255,255,0.5); line-height: 1.6; margin-bottom: 32px; }
+.hero-ctas { display: flex; gap: 16px; flex-wrap: wrap; }
+.hero-image-placeholder { background: linear-gradient(135deg, #161616, #0a0a0a); border: 1px solid rgba(255,255,255,0.08); border-radius: 24px; aspect-ratio: 16/10; display: flex; align-items: center; justify-content: center; }
+.image-placeholder-content { text-align: center; color: rgba(255,255,255,0.3); }
+.placeholder-icon { font-size: 48px; margin-bottom: 12px; }
+.image-placeholder-content span { font-size: 13px; font-weight: 500; }
+.stats-section { padding: 60px 0; border-top: 1px solid rgba(255,255,255,0.05); border-bottom: 1px solid rgba(255,255,255,0.05); }
+.stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 40px; }
+.stat-item { text-align: center; }
+.stat-val { display: block; font-size: 40px; font-weight: 800; background: linear-gradient(135deg, oklch(0.75 0.15 195), oklch(0.70 0.15 235)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.stat-lbl { font-size: 13px; color: rgba(255,255,255,0.5); }
+.stories-section { padding: 80px 0; }
+.section-header-center { text-align: center; max-width: 650px; margin: 0 auto 48px; }
+.section-header-center h2 { font-size: clamp(1.8rem, 3vw, 2.5rem); font-weight: 700; margin-bottom: 12px; }
+.section-header-center p { font-size: 16px; color: rgba(255,255,255,0.5); line-height: 1.6; }
+.stories-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.story-card { padding: 32px; background: #161616; border: 1px solid rgba(255,255,255,0.08); border-radius: 20px; }
+.story-header { display: flex; align-items: center; gap: 16px; margin-bottom: 20px; }
+.story-logo { width: 48px; height: 48px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 16px; font-weight: 800; }
+.story-company { font-size: 18px; font-weight: 700; }
+.story-industry { font-size: 12px; color: rgba(255,255,255,0.4); }
+.story-quote { font-size: 15px; color: rgba(255,255,255,0.7); line-height: 1.6; margin-bottom: 20px; font-style: italic; }
+.story-metrics { display: flex; gap: 32px; margin-bottom: 20px; padding: 16px; background: rgba(255,255,255,0.03); border-radius: 12px; }
+.story-metric { display: flex; flex-direction: column; gap: 4px; }
+.metric-val { font-size: 24px; font-weight: 800; }
+.metric-lbl { font-size: 11px; color: rgba(255,255,255,0.4); }
+.story-author { display: flex; align-items: center; gap: 12px; }
+.author-avatar { width: 36px; height: 36px; border-radius: 50%; background: oklch(0.75 0.15 195); color: #000; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 700; }
+.author-name { display: block; font-size: 13px; font-weight: 600; }
+.author-role { font-size: 11px; color: rgba(255,255,255,0.4); }
+.feature-highlight { padding: 80px 0; background: #080808; }
+.highlight-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+.highlight-image-placeholder { background: linear-gradient(135deg, #161616, #0a0a0a); border: 1px solid rgba(255,255,255,0.08); border-radius: 24px; aspect-ratio: 16/10; display: flex; align-items: center; justify-content: center; }
+.highlight-content h2 { font-size: clamp(1.6rem, 2.5vw, 2.2rem); font-weight: 700; margin-bottom: 16px; }
+.highlight-content p { font-size: 16px; color: rgba(255,255,255,0.5); line-height: 1.6; margin-bottom: 24px; }
+.highlight-list { list-style: none; margin-bottom: 32px; }
+.highlight-list li { padding: 10px 0; font-size: 15px; color: rgba(255,255,255,0.8); }
+.section-cta { padding: 100px 0; text-align: center; }
+.cta-title { font-size: clamp(1.8rem, 3.5vw, 2.8rem); font-weight: 800; margin-bottom: 12px; }
+.cta-sub { font-size: 16px; color: rgba(255,255,255,0.5); margin-bottom: 32px; }
+.cta-btns { display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; }
+@media (max-width: 1024px) { .stats-grid { grid-template-columns: repeat(2, 1fr); } .stories-grid { grid-template-columns: 1fr; } .highlight-grid { grid-template-columns: 1fr; } }
+@media (max-width: 768px) { .hero-content { grid-template-columns: 1fr; } .hero-image-placeholder { aspect-ratio: 16/9; } }
+</style>

@@ -1,0 +1,214 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { ui } from '../../i18n/ui';
+import type { Lang } from '../../i18n/ui';
+const currentLang: Lang = 'es';
+const t = ui[currentLang];
+
+const plans = [
+  {
+    name: 'Starter',
+    annualPrice: '130.000',
+    monthlyPrice: '151.000',
+    annualTotal: '1.560.000',
+    monthlyTotal: '151.000',
+    desc: 'Para negocios que empiezan.',
+    features: ['5 usuarios', '1,000 emails', 'Inbox básico', 'Email support', 'Calendarios'],
+    cta: 'Empezar',
+    popular: false,
+    emailLimit: '1.000',
+    whatsappPrice: '50.000',
+  },
+  {
+    name: 'Growth',
+    annualPrice: '370.000',
+    monthlyPrice: '431.000',
+    annualTotal: '4.440.000',
+    monthlyTotal: '431.000',
+    desc: 'Para negocios en crecimiento.',
+    features: ['15 usuarios', '10,000 emails', 'AI Agents', 'Automatizaciones', 'Integraciones', 'Calendarios'],
+    cta: 'Empezar',
+    popular: true,
+    emailLimit: '10.000',
+    whatsappIncluded: true,
+  },
+  {
+    name: 'Advanced',
+    annualPrice: '740.000',
+    monthlyPrice: '863.000',
+    annualTotal: '8.880.000',
+    monthlyTotal: '863.000',
+    desc: 'Para negocios que quieren dominar.',
+    features: ['50 usuarios', '30,000 emails', 'API access', 'Priority support', 'Calendarios', 'Sin white-label'],
+    cta: 'Empezar',
+    popular: false,
+    emailLimit: '30.000',
+    whatsappIncluded: true,
+    noWhitelabel: true,
+  },
+  {
+    name: 'Enterprise',
+    price: 'Custom',
+    desc: 'Para necesidades especiales.',
+    features: ['Usuarios ilimitados', 'SSO', 'SLA dedicado', 'Onboarding personalizado'],
+    cta: 'Hablar con ventas',
+    popular: false,
+  },
+];
+
+const faqs = [
+  { q: '¿Puedo cambiar de plan después?', a: 'Sí, puedes actualizar o bajar tu plan en cualquier momento. Los cambios aplican al siguiente ciclo de facturación.' },
+  { q: '¿Qué incluye WhatsApp?', a: 'WhatsApp incluye canal de chat, Instagram y Facebook Messenger en un solo inbox unificado.' },
+  { q: '¿Qué pasa si paso de usuarios en el plan Starter?', a: 'Te avisamos cuando llegues al 80% de uso. Puedes actualizar a Growth con un click.' },
+  { q: '¿Hay试用期 gratis?', a: 'Sí, 7 días gratis sin tarjeta de crédito. Prueba todos los features del plan Growth.' },
+  { q: '¿Puedo migrar desde otra plataforma?', a: 'Sí, ofrecemos migración asistida en todos los planes.' },
+];
+---
+
+<BaseLayout title="Precios" lang={currentLang}>
+  <section class="page-hero">
+    <div class="container">
+      <span class="section-tag fade-in" style="width:fit-content;"><span class="section-tag-dot"></span>Precios</span>
+      <h1 class="page-title fade-in" style="transition-delay:100ms;">Simple y transparente</h1>
+      <p class="page-sub fade-in" style="transition-delay:200ms;">Sin sorpresas. Sin límites ocultos. Solo resultados. Elige el plan que mejor se adapte a tu agencia.</p>
+    </div>
+  </section>
+
+  <!-- Billing Toggle -->
+  <div class="billing-toggle fade-in">
+    <span class="billing-label">Mensual</span>
+    <label class="toggle">
+      <input type="checkbox" id="billing-toggle" checked>
+      <span class="toggle-slider"></span>
+    </label>
+    <span class="billing-label">Anual</span>
+  </div>
+
+  <section class="section section-dark">
+    <div class="container">
+      <div class="plans-grid">
+        {plans.map((p, i) => (
+          <div class={`plan-card fade-in ${p.popular ? 'popular' : ''}`} style={`transition-delay:${i * 100}ms;`}>
+            {p.popular && <span class="plan-badge">Más popular</span>}
+            <div class="plan-name">{p.name}</div>
+            <div class="plan-price">
+              {p.price !== 'Custom' ? (
+                <>
+                  <span class="plan-num" data-annual={p.annualPrice} data-monthly={p.monthlyPrice}>{p.annualPrice}</span>
+                  <span class="plan-currency">COP</span>
+                  <span class="plan-period">/mes</span>
+                </>
+              ) : <span class="plan-num">{p.price}</span>}
+            </div>
+            {p.price !== 'Custom' && (
+              <div class="plan-total" data-annual={`$${p.annualTotal} facturado anualmente`} data-monthly={`$${p.monthlyTotal} facturado mensualmente`}>
+                ${p.annualTotal} facturado anualmente
+              </div>
+            )}
+            {p.price !== 'Custom' && (
+              <div class="plan-email-limit">{p.emailLimit} emails</div>
+            )}
+            {p.whatsappPrice && (
+              <div class="plan-whatsapp">WhatsApp +{p.whatsappPrice} COP/mes</div>
+            )}
+            {p.whatsappIncluded && (
+              <div class="plan-whatsapp included">✓ WhatsApp incluido</div>
+            )}
+            <div class="plan-desc">{p.desc}</div>
+            <div class="plan-divider"></div>
+            <ul class="plan-features">
+              {p.features.map(f => <li>{f}</li>)}
+            </ul>
+            <a href={`/es/gracias?plan=${p.name.toLowerCase()}&billing=annual`} class={`plan-btn ${p.popular ? 'primary' : ''} plan-btn-annual`} data-monthly-href={`/es/gracias?plan=${p.name.toLowerCase()}&billing=monthly`} data-annual-href={`/es/gracias?plan=${p.name.toLowerCase()}&billing=annual`}>{p.cta}</a>
+          </div>
+        ))}
+      </div>
+
+      <div class="trust-row fade-in" style="margin-top: 48px; text-align: center;">
+        <span class="trust-text">✓ Sin tarjeta de crédito · ✓ 7 días gratis · ✓ Cancela cuando quieras</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-light">
+    <div class="container">
+      <h2 class="section-title fade-in" style="text-align:center; margin-bottom: 48px;">Preguntas frecuentes</h2>
+      <div class="faq-grid">
+        {faqs.map((f, i) => (
+          <div class="faq-item fade-in" style={`transition-delay:${i * 100}ms;`}>
+            <h4 class="faq-q">{f.q}</h4>
+            <p class="faq-a">{f.a}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<script is:inline>
+  document.addEventListener('DOMContentLoaded', () => {
+    const toggle = document.getElementById('billing-toggle');
+    const prices = document.querySelectorAll('.plan-num[data-annual]');
+    const totals = document.querySelectorAll('.plan-total[data-annual]');
+    const buttons = document.querySelectorAll('.plan-btn-annual');
+
+    toggle?.addEventListener('change', () => {
+      const isAnnual = toggle.checked;
+      prices.forEach(p => {
+        const el = p;
+        el.textContent = isAnnual ? el.dataset.annual : el.dataset.monthly;
+      });
+      totals.forEach(t => {
+        const el = t;
+        el.textContent = isAnnual ? el.dataset.annual : el.dataset.monthly;
+      });
+      buttons.forEach(btn => {
+        const el = btn;
+        el.href = isAnnual ? el.dataset.annualHref : el.dataset.monthlyHref;
+      });
+    });
+  });
+</script>
+
+<style>
+.page-hero { padding: 160px 0 80px; text-align: center; }
+.page-title { font-size: clamp(2rem, 4vw, 3.5rem); font-weight: 700; line-height: 1.1; margin: 20px auto 24px; max-width: 700px; }
+.page-sub { font-size: 18px; color: rgba(255,255,255,0.5); max-width: 600px; margin: 0 auto; line-height: 1.7; }
+.billing-toggle { display: flex; align-items: center; justify-content: center; gap: 12px; padding: 0 0 32px; }
+.billing-label { font-size: 14px; color: rgba(255,255,255,0.6); }
+.toggle { position: relative; width: 48px; height: 26px; }
+.toggle input { opacity: 0; width: 0; height: 0; }
+.toggle-slider { position: absolute; inset: 0; background: rgba(255,255,255,0.1); border-radius: 9999px; cursor: pointer; transition: background 0.3s; }
+.toggle-slider::before { content: ''; position: absolute; width: 20px; height: 20px; left: 3px; bottom: 3px; background: white; border-radius: 50%; transition: transform 0.3s; }
+.toggle input:checked + .toggle-slider { background: oklch(0.75 0.15 195); }
+.toggle input:checked + .toggle-slider::before { transform: translateX(22px); }
+.plans-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+.plan-card { padding: 28px; background: #161616; border: 1px solid rgba(255,255,255,0.08); border-radius: 20px; position: relative; }
+.plan-card.popular { border-color: oklch(0.75 0.15 195); }
+.plan-badge { position: absolute; top: -12px; left: 50%; transform: translateX(-50%); padding: 6px 16px; background: oklch(0.75 0.15 195); color: #050505; font-size: 11px; font-weight: 700; text-transform: uppercase; border-radius: 9999px; white-space: nowrap; }
+.plan-name { font-size: 18px; font-weight: 600; margin-bottom: 8px; }
+.plan-price { display: flex; align-items: baseline; gap: 4px; margin-bottom: 4px; }
+.plan-num { font-size: 32px; font-weight: 700; }
+.plan-currency { font-size: 14px; font-weight: 600; margin-left: 2px; opacity: 0.7; }
+.plan-period { font-size: 14px; color: rgba(255,255,255,0.4); }
+.plan-email-limit { font-size: 12px; color: oklch(0.75 0.15 195); font-weight: 600; margin-top: 4px; }
+.plan-total { font-size: 10px; color: rgba(255,255,255,0.35); margin-top: 2px; }
+.plan-whatsapp { font-size: 11px; color: rgba(255,255,255,0.5); margin-top: 2px; }
+.plan-whatsapp.included { color: oklch(0.70 0.15 145); }
+.plan-desc { font-size: 13px; color: rgba(255,255,255,0.4); margin-bottom: 20px; }
+.plan-divider { height: 1px; background: rgba(255,255,255,0.08); margin-bottom: 20px; }
+.plan-features { list-style: none; display: flex; flex-direction: column; gap: 10px; margin-bottom: 24px; }
+.plan-features li { font-size: 13px; color: rgba(255,255,255,0.6); display: flex; align-items: flex-start; gap: 8px; }
+.plan-features li::before { content: '✓'; color: oklch(0.65 0.15 145); font-weight: 600; flex-shrink: 0; }
+.plan-btn { width: 100%; padding: 12px; border-radius: 9999px; font-size: 14px; font-weight: 600; text-align: center; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: #fafafa; cursor: pointer; transition: all 0.2s; }
+.plan-btn:hover { background: rgba(255,255,255,0.1); }
+.plan-btn.primary { background: oklch(0.75 0.15 195); color: #050505; border: none; }
+.plan-btn.primary:hover { opacity: 0.9; }
+.trust-text { font-size: 14px; color: rgba(255,255,255,0.4); }
+.faq-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 32px; }
+.faq-item { }
+.faq-q { font-size: 16px; font-weight: 600; margin-bottom: 8px; }
+.faq-a { font-size: 14px; color: rgba(255,255,255,0.5); line-height: 1.6; }
+@media (max-width: 1024px) { .plans-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 640px) { .plans-grid { grid-template-columns: 1fr; } .faq-grid { grid-template-columns: 1fr; } }
+</style>

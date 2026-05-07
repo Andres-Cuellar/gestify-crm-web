@@ -1,0 +1,136 @@
+---
+import { ArrowRight } from 'lucide-astro';
+import { ui } from '@/i18n/ui';
+import type { Lang } from '@/i18n/ui';
+
+interface Props { currentLang: Lang; }
+const { currentLang } = Astro.props;
+
+const stories = [
+  {
+    company: 'SchuVar Tours',
+    quote: currentLang === 'es'
+      ? '"Gracias a Gestify, vimos 3x más leads de ads, reducimos tiempo de respuesta y mejoramos la experiencia del cliente."'
+      : '"Thanks to Gestify, we saw 3x more leads from ads, reduced response time and improved customer experience."',
+    author: 'Esmeralda Sevilla',
+    role: currentLang === 'es' ? 'Deputy Manager' : 'Deputy Manager',
+    color: 'oklch(0.70 0.15 235)',
+  },
+  {
+    company: 'GETUTOR',
+    quote: currentLang === 'es'
+      ? '"El onboarding es suave, todas las features vitales están presentes y el soporte al cliente es 24/7. Cuando necesito algo, siempre puedo contar con Gestify."'
+      : '"Onboarding is smooth, all vital features are present and customer support is 24/7. When I need anything, I can always count on Gestify."',
+    author: 'Jedi Hui',
+    role: 'CEO',
+    color: 'oklch(0.75 0.15 195)',
+  },
+  {
+    company: 'Praga Medica',
+    quote: currentLang === 'es'
+      ? '"Con la IA manejando conversaciones rutinarias, todo encajó. Nuestros consultores podían enfocarse en leads de alta calidad que tenían mucho más probabilidad de convertir."'
+      : '"With AI handling routine conversations, everything clicked. Our consultants could focus on high-quality leads that were far more likely to convert into paying customers."',
+    author: 'David Fiala',
+    role: currentLang === 'es' ? 'Co-fundador' : 'Co-founder',
+    color: 'oklch(0.65 0.15 280)',
+  },
+];
+---
+
+<section class="stories-section">
+  <div class="container">
+    <div class="stories-header fade-in">
+      <h2 class="stories-title">
+        {currentLang === 'es'
+          ? 'Casos de éxito de empresas como la tuya'
+          : 'Success stories from businesses like yours'}
+      </h2>
+      <a href="#" class="stories-link">
+        {currentLang === 'es' ? 'Ver todos los casos →' : 'View all success stories →'}
+      </a>
+    </div>
+
+    <div class="stories-grid">
+      {stories.map((s, i) => (
+        <div class="story-card fade-in" style={`transition-delay: ${(i + 1) * 100}ms;`}>
+          <div class="story-company" style={`color: ${s.color};`}>{s.company}</div>
+          <blockquote class="story-quote">"{s.quote}"</blockquote>
+          <div class="story-author">
+            <span class="story-name">{s.author}</span>
+            <span class="story-role">{s.role}</span>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <div class="stories-cta fade-in" style="transition-delay: 400ms; text-align: center; margin-top: 48px;">
+      <a href="#" class="btn btn-primary">
+        {currentLang === 'es' ? '3x tus resultados con Gestify 🚀' : '3x your business results with Gestify 🚀'}
+        <ArrowRight size={16} />
+      </a>
+    </div>
+  </div>
+</section>
+
+<style>
+.stories-section {
+  padding: 100px 0;
+  background: #050505;
+}
+.stories-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 48px;
+}
+.stories-title {
+  font-size: clamp(1.5rem, 3vw, 2.2rem);
+  font-weight: 700;
+}
+.stories-link {
+  font-size: 14px;
+  color: oklch(0.75 0.15 195);
+  font-weight: 600;
+}
+.stories-link:hover { text-decoration: underline; }
+.stories-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+.story-card {
+  padding: 28px;
+  background: #161616;
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 20px;
+}
+.story-company {
+  font-size: 18px;
+  font-weight: 800;
+  margin-bottom: 16px;
+}
+.story-quote {
+  font-size: 14px;
+  color: rgba(255,255,255,0.7);
+  line-height: 1.6;
+  font-style: italic;
+  margin-bottom: 20px;
+}
+.story-author {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.story-name {
+  font-size: 13px;
+  font-weight: 600;
+}
+.story-role {
+  font-size: 12px;
+  color: rgba(255,255,255,0.4);
+}
+@media (max-width: 900px) {
+  .stories-grid { grid-template-columns: 1fr; }
+  .stories-header { flex-direction: column; gap: 16px; text-align: center; }
+}
+</style>

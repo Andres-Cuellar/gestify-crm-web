@@ -1,0 +1,286 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { ArrowRight } from 'lucide-astro';
+import type { Lang } from '../../i18n/ui';
+const currentLang: Lang = 'es';
+
+const features = [
+  {
+    title: 'Meta Click to Chat Ads',
+    desc: 'Captura leads donde están más activos con Click to Messenger Ads e Instagram Ads.',
+    stat: '10x',
+    statLabel: 'Más leads',
+    color: 'oklch(0.70 0.15 235)',
+    icon: '📘',
+  },
+  {
+    title: 'TikTok Messaging Ads',
+    desc: 'Capta leads en la app de social más rápida del mundo con 1.5B+ usuarios activos.',
+    stat: '50%',
+    statLabel: 'Más chats que generan revenue',
+    color: 'oklch(0.75 0.15 195)',
+    icon: '🎵',
+  },
+  {
+    title: 'Handle High Volumes',
+    desc: 'Convierte ads en revenue con IA y automatización para manejar grandes volúmenes.',
+    stat: '84%',
+    statLabel: 'Aumento en conversiones',
+    color: 'oklch(0.65 0.15 280)',
+    icon: '⚡',
+  },
+];
+
+const channels = [
+  { name: 'Facebook', icon: '📘', color: '#1877F2' },
+  { name: 'Instagram', icon: '📷', color: '#E4405F' },
+  { name: 'TikTok', icon: '🎵', color: '#000000' },
+  { name: 'Messenger', icon: '💬', color: '#006AFF' },
+];
+---
+
+<BaseLayout title="Capturar leads de ads" lang={currentLang}>
+  <!-- Hero with Image Area -->
+  <section class="hero-visual">
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-text">
+          <div class="announce-badge fade-in">
+            <span>✨</span>
+            <span>Gestify AI Agents — Ahora con razonamiento avanzado</span>
+          </div>
+          <h1 class="hero-title fade-in" style="transition-delay:100ms;">
+            10x tu generación de leads con click to chat ads
+          </h1>
+          <p class="hero-sub fade-in" style="transition-delay:200ms;">
+            Convierte engagement social en pipeline de prospectos con click to chat ads en Facebook, Instagram y TikTok
+          </p>
+          <div class="hero-ctas fade-in" style="transition-delay:300ms;">
+            <a href={`/${currentLang}/demo`} class="btn btn-primary">
+              Hablar con ventas <ArrowRight size={16} />
+            </a>
+            <a href="#" class="btn btn-outline">
+              Empezar prueba gratis
+            </a>
+          </div>
+        </div>
+        <div class="hero-visual-area fade-in" style="transition-delay:200ms;">
+          <div class="ads-dashboard-visual">
+            <div class="visual-header">
+              <span>📊 Ad Performance Dashboard</span>
+            </div>
+            <div class="metrics-row">
+              <div class="metric-box">
+                <span class="metric-val">10x</span>
+                <span class="metric-lbl">Leads</span>
+              </div>
+              <div class="metric-box">
+                <span class="metric-val">50%</span>
+                <span class="metric-lbl">Revenue</span>
+              </div>
+              <div class="metric-box">
+                <span class="metric-val">84%</span>
+                <span class="metric-lbl">Conversión</span>
+              </div>
+            </div>
+            <div class="chart-placeholder">
+              <span>📈</span>
+              <span>Live Campaign Stats</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats Bar -->
+  <section class="stats-bar">
+    <div class="container">
+      <div class="stats-grid fade-in">
+        <div class="stat-item">
+          <span class="stat-val">10x</span>
+          <span class="stat-lbl">Más leads</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-val">50%</span>
+          <span class="stat-lbl">Más chats que generan revenue</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-val">84%</span>
+          <span class="stat-lbl">Aumento en conversiones</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features with Visual -->
+  <section class="features-section">
+    <div class="container">
+      <div class="section-header-center fade-in">
+        <h2>Convierte ads en acción instantánea</h2>
+        <p>Captura leads mientras el interés está alto, automatiza respuestas para mantenerlos comprometidos.</p>
+      </div>
+      <div class="features-grid">
+        {features.map((f, i) => (
+          <div class="feature-card fade-in" style={`transition-delay:${i * 100}ms;`}>
+            <div class="feature-visual">
+              <div class="feature-icon-center">{f.icon}</div>
+            </div>
+            <div class="feature-content">
+              <span class="feature-stat" style={`color: ${f.color};`}>{f.stat}</span>
+              <span class="feature-stat-lbl">{f.statLabel}</span>
+              <h3>{f.title}</h3>
+              <p>{f.desc}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Channels Visual -->
+  <section class="channels-section">
+    <div class="container">
+      <div class="channels-grid">
+        <div class="channel-visual-card fade-in">
+          <div class="channel-image-placeholder">
+            <span>📘</span>
+            <span>Facebook Ads UI</span>
+          </div>
+          <div class="channel-info">
+            <h3>Facebook</h3>
+            <p>Chat links, comment replies, Facebook Live y más</p>
+          </div>
+        </div>
+        <div class="channel-visual-card fade-in" style="transition-delay:100ms;">
+          <div class="channel-image-placeholder">
+            <span>📷</span>
+            <span>Instagram Ads UI</span>
+          </div>
+          <div class="channel-info">
+            <h3>Instagram</h3>
+            <p>Story links, auto replies, DM buttons</p>
+          </div>
+        </div>
+        <div class="channel-visual-card fade-in" style="transition-delay:200ms;">
+          <div class="channel-image-placeholder">
+            <span>🎵</span>
+            <span>TikTok Ads UI</span>
+          </div>
+          <div class="channel-info">
+            <h3>TikTok</h3>
+            <p>DMs, bio links, TikTok Live</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Capabilities Visual -->
+  <section class="capabilities-section">
+    <div class="container">
+      <div class="cap-grid">
+        <div class="cap-card fade-in">
+          <div class="cap-icon">📥</div>
+          <h4>Omnichannel inbox</h4>
+          <p>Unifica contactos de llamadas, email, WhatsApp, TikTok, Facebook, Instagram</p>
+        </div>
+        <div class="cap-card fade-in" style="transition-delay:80ms;">
+          <div class="cap-icon">🤖</div>
+          <h4>AI Agents</h4>
+          <p>Responde FAQs, cualifica leads, actualiza datos y enruta consultas</p>
+        </div>
+        <div class="cap-card fade-in" style="transition-delay:160ms;">
+          <div class="cap-icon">🔗</div>
+          <h4>Automations</h4>
+          <p>Conecta con HubSpot, Salesforce, Google Sheets, Zapier</p>
+        </div>
+        <div class="cap-card fade-in" style="transition-delay:240ms;">
+          <div class="cap-icon">📊</div>
+          <h4>Lifecycle management</h4>
+          <p>Prioriza leads de alta intención y diseña journeys</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA with Visual -->
+  <section class="cta-section">
+    <div class="container">
+      <div class="cta-visual fade-in">
+        <div class="cta-content">
+          <h2>3x tus resultados con Gestify 🚀</h2>
+          <div class="cta-btns">
+            <a href={`/${currentLang}/demo`} class="btn btn-primary">Hablar con ventas</a>
+            <a href="#" class="btn btn-outline">Empezar prueba gratis</a>
+          </div>
+        </div>
+        <div class="cta-graphic">
+          <div class="floating-stat">📈</div>
+          <div class="floating-stat">💬</div>
+          <div class="floating-stat">🎯</div>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+.hero-visual { padding: 140px 0 60px; }
+.hero-content { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+.hero-text { }
+.announce-badge { display: inline-flex; align-items: center; gap: 10px; padding: 8px 16px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 9999px; font-size: 13px; color: rgba(255,255,255,0.7); margin-bottom: 24px; }
+.hero-title { font-size: clamp(2rem, 4vw, 3.2rem); font-weight: 800; line-height: 1.1; margin-bottom: 20px; }
+.hero-sub { font-size: 18px; color: rgba(255,255,255,0.5); line-height: 1.6; margin-bottom: 32px; }
+.hero-ctas { display: flex; gap: 16px; flex-wrap: wrap; }
+.ads-dashboard-visual { background: linear-gradient(145deg, #1a1a1a, #0a0a0a); border: 1px solid rgba(255,255,255,0.1); border-radius: 20px; padding: 24px; }
+.visual-header { font-size: 13px; color: rgba(255,255,255,0.5); margin-bottom: 20px; }
+.metrics-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 20px; }
+.metric-box { background: #161616; border-radius: 12px; padding: 16px; text-align: center; }
+.metric-val { display: block; font-size: 24px; font-weight: 800; background: linear-gradient(135deg, oklch(0.75 0.15 195), oklch(0.70 0.15 235)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.metric-lbl { font-size: 10px; color: rgba(255,255,255,0.4); }
+.chart-placeholder { background: #161616; border-radius: 12px; aspect-ratio: 16/8; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; }
+.chart-placeholder span:first-child { font-size: 36px; }
+.chart-placeholder span:last-child { font-size: 12px; color: rgba(255,255,255,0.3); }
+.stats-bar { padding: 60px 0; border-top: 1px solid rgba(255,255,255,0.05); border-bottom: 1px solid rgba(255,255,255,0.05); }
+.stats-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; }
+.stat-item { text-align: center; }
+.stat-val { display: block; font-size: 40px; font-weight: 800; background: linear-gradient(135deg, oklch(0.75 0.15 195), oklch(0.70 0.15 235)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.stat-lbl { font-size: 13px; color: rgba(255,255,255,0.5); }
+.features-section { padding: 80px 0; }
+.section-header-center { text-align: center; max-width: 650px; margin: 0 auto 48px; }
+.section-header-center h2 { font-size: clamp(1.8rem, 3vw, 2.5rem); font-weight: 700; margin-bottom: 12px; }
+.section-header-center p { font-size: 16px; color: rgba(255,255,255,0.5); line-height: 1.6; }
+.features-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.feature-card { background: #161616; border: 1px solid rgba(255,255,255,0.08); border-radius: 20px; overflow: hidden; }
+.feature-visual { background: linear-gradient(135deg, #0a0a0a, #161616); aspect-ratio: 16/9; display: flex; align-items: center; justify-content: center; }
+.feature-icon-center { font-size: 48px; }
+.feature-content { padding: 24px; }
+.feature-stat { display: block; font-size: 28px; font-weight: 800; }
+.feature-stat-lbl { display: block; font-size: 11px; color: rgba(255,255,255,0.4); margin-bottom: 8px; }
+.feature-content h3 { font-size: 16px; font-weight: 700; margin-bottom: 8px; }
+.feature-content p { font-size: 13px; color: rgba(255,255,255,0.5); line-height: 1.5; }
+.channels-section { padding: 80px 0; background: #080808; }
+.channels-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.channel-visual-card { background: #161616; border: 1px solid rgba(255,255,255,0.08); border-radius: 20px; overflow: hidden; }
+.channel-image-placeholder { background: linear-gradient(135deg, #0a0a0a, #161616); aspect-ratio: 16/9; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; }
+.channel-image-placeholder span:first-child { font-size: 36px; }
+.channel-image-placeholder span:last-child { font-size: 12px; color: rgba(255,255,255,0.3); }
+.channel-info { padding: 20px; }
+.channel-info h3 { font-size: 16px; font-weight: 700; margin-bottom: 8px; }
+.channel-info p { font-size: 13px; color: rgba(255,255,255,0.5); }
+.capabilities-section { padding: 80px 0; }
+.cap-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+.cap-card { padding: 24px; background: #161616; border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; text-align: center; }
+.cap-icon { font-size: 32px; margin-bottom: 16px; }
+.cap-card h4 { font-size: 14px; font-weight: 700; margin-bottom: 8px; }
+.cap-card p { font-size: 12px; color: rgba(255,255,255,0.5); }
+.cta-section { padding: 80px 0; }
+.cta-visual { display: grid; grid-template-columns: 2fr 1fr; gap: 60px; align-items: center; background: linear-gradient(135deg, #161616, #0a0a0a); border: 1px solid rgba(255,255,255,0.08); border-radius: 24px; padding: 60px; }
+.cta-content h2 { font-size: clamp(1.8rem, 3vw, 2.5rem); font-weight: 800; margin-bottom: 32px; }
+.cta-btns { display: flex; gap: 16px; }
+.cta-graphic { display: flex; gap: 16px; justify-content: center; }
+.floating-stat { width: 64px; height: 64px; background: #222; border: 1px solid rgba(255,255,255,0.1); border-radius: 16px; display: flex; align-items: center; justify-content: center; font-size: 28px; }
+@media (max-width: 1024px) { .cap-grid { grid-template-columns: repeat(2, 1fr); } .cta-visual { grid-template-columns: 1fr; } .cta-graphic { display: none; } }
+@media (max-width: 768px) { .hero-content { grid-template-columns: 1fr; } .hero-visual-area { display: none; } .stats-grid { grid-template-columns: 1fr; } .features-grid { grid-template-columns: 1fr; } .channels-grid { grid-template-columns: 1fr; } }
+</style>

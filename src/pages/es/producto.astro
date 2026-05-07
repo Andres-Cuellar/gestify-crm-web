@@ -1,0 +1,260 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { ArrowRight } from 'lucide-astro';
+import { ui } from '../../i18n/ui';
+import type { Lang } from '../../i18n/ui';
+const currentLang: Lang = 'es';
+
+const categories = [
+  {
+    tag: 'Capture Leads',
+    title: 'Captura prospectos de cada punto de contacto',
+    sub: 'Integra y cierra deals rápido con una bandeja de entrada unificada',
+    color: 'oklch(0.70 0.15 235)',
+    items: [
+      { title: 'Capture from Ads', href: `/${currentLang}/capture-from-ads`, desc: 'Meta Click to Chat, TikTok Ads' },
+      { title: 'Capture from Social', href: `/${currentLang}/capture-from-social`, desc: 'Facebook, Instagram, TikTok DMs' },
+      { title: 'Capture from Website', href: `/${currentLang}/capture-from-website`, desc: 'Chat widgets, lead forms' },
+      { title: 'Capture from Offline', href: `/${currentLang}/capture-from-offline`, desc: 'QR codes, in-store' },
+    ],
+  },
+  {
+    tag: 'Convert Leads',
+    title: 'Vende más con IA y automatización',
+    sub: 'Cualifica, enruta y cierra leads más rápido',
+    color: 'oklch(0.75 0.15 195)',
+    items: [
+      { title: 'AI Agents ✨', href: `/${currentLang}/ai-agents`, desc: 'FAQ, qualify, route, book' },
+      { title: 'Qualify Leads', href: `/${currentLang}/qualify-leads`, desc: 'Score & prioritize prospects' },
+      { title: 'Route Leads', href: `/${currentLang}/route-leads`, desc: 'Auto-assign to teams' },
+      { title: 'Book Appointments', href: `/${currentLang}/book-appointments`, desc: 'Calendar integration' },
+    ],
+  },
+  {
+    tag: 'Retain Customers',
+    title: 'Construye relaciones duraderas con clientes',
+    sub: 'Crece la lealtad y reduce churn con comunicación proactiva',
+    color: 'oklch(0.65 0.15 145)',
+    items: [
+      { title: 'Conversational Support', href: `/${currentLang}/conversational-support`, desc: 'CSAT, ticket management' },
+      { title: 'Promotions', href: `/${currentLang}/promotions`, desc: 'Broadcast campaigns' },
+      { title: 'Renewal Reminders', href: `/${currentLang}/renewal-reminders`, desc: 'Proactive retention' },
+      { title: 'CSAT / NPS Surveys', href: `/${currentLang}/csat-surveys`, desc: 'Measure satisfaction' },
+    ],
+  },
+];
+---
+
+<BaseLayout title="Producto" lang={currentLang}>
+  <!-- Hero -->
+  <section class="page-hero">
+    <div class="container">
+      <span class="section-tag fade-in">
+        <span class="section-tag-dot"></span>Producto
+      </span>
+      <h1 class="page-title fade-in" style="transition-delay:100ms;">
+        La plataforma todo-en-uno para capturar, convertir y fidelizar
+      </h1>
+      <p class="page-sub fade-in" style="transition-delay:200ms;">
+        Gestify te ayuda a gestionar todo el ciclo de vida del cliente — desde el primer contacto hasta la retención — desde una sola bandeja de entrada.
+      </p>
+      <div class="hero-ctas fade-in" style="transition-delay:300ms;">
+        <a href={`/${currentLang}/demo`} class="btn btn-primary">
+          Hablar con ventas <ArrowRight size={16} />
+        </a>
+        <a href="#" class="btn btn-outline">
+          Empezar prueba gratis
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Categories -->
+  {categories.map((cat, catIdx) => (
+    <section class={`category-section ${catIdx % 2 === 1 ? 'section-alt' : ''}`}>
+      <div class="container">
+        <div class="cat-header fade-in">
+          <span class="cat-tag" style={`color: ${cat.color}; background: ${cat.color}22;`}>{cat.tag}</span>
+          <h2 class="cat-title">{cat.title}</h2>
+          <p class="cat-sub">{cat.sub}</p>
+        </div>
+
+        <div class="cat-grid">
+          {cat.items.map((item, i) => (
+            <a href={item.href} class="cat-card fade-in" style={`transition-delay:${(catIdx * 4 + i + 1) * 80}ms;`}>
+              <div class="cat-card-icon" style={`background: ${cat.color}22;`}>
+                <span style={`color: ${cat.color};`}>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:20px;height:20px;"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                </span>
+              </div>
+              <div class="cat-card-content">
+                <h3 class="cat-card-title">{item.title}</h3>
+                <p class="cat-card-desc">{item.desc}</p>
+              </div>
+              <ArrowRight size={16} class="cat-card-arrow" />
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+  ))}
+
+  <!-- CTA -->
+  <section class="section-cta">
+    <div class="container">
+      <h2 class="cta-title fade-in">3x your business results with Gestify 🚀</h2>
+      <div class="cta-btns fade-in" style="transition-delay:100ms;">
+        <a href={`/${currentLang}/demo`} class="btn btn-primary">Hablar con ventas</a>
+        <a href="#" class="btn btn-outline">Empezar prueba gratis</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+.page-hero {
+  padding: 160px 0 80px;
+  text-align: center;
+}
+.section-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 9999px;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: oklch(0.75 0.15 195);
+  margin-bottom: 20px;
+}
+.section-tag-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: oklch(0.75 0.15 195);
+}
+.page-title {
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  font-weight: 700;
+  line-height: 1.1;
+  max-width: 700px;
+  margin: 0 auto 20px;
+}
+.page-sub {
+  font-size: 18px;
+  color: rgba(255,255,255,0.5);
+  max-width: 600px;
+  margin: 0 auto 36px;
+  line-height: 1.7;
+}
+.hero-ctas {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+/* Category Sections */
+.category-section {
+  padding: 80px 0;
+}
+.section-alt {
+  background: #080808;
+}
+.cat-header {
+  text-align: center;
+  max-width: 600px;
+  margin: 0 auto 48px;
+}
+.cat-tag {
+  display: inline-block;
+  padding: 6px 14px;
+  border-radius: 9999px;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 16px;
+}
+.cat-title {
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+.cat-sub {
+  font-size: 15px;
+  color: rgba(255,255,255,0.5);
+}
+.cat-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+.cat-card {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 20px 24px;
+  background: #161616;
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 16px;
+  text-decoration: none;
+  transition: border-color 0.2s, transform 0.2s;
+}
+.cat-card:hover {
+  border-color: oklch(0.75 0.15 195);
+  transform: translateY(-2px);
+}
+.cat-card-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.cat-card-content {
+  flex: 1;
+}
+.cat-card-title {
+  font-size: 15px;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+.cat-card-desc {
+  font-size: 12px;
+  color: rgba(255,255,255,0.4);
+}
+.cat-card-arrow {
+  color: rgba(255,255,255,0.3);
+  flex-shrink: 0;
+}
+
+/* CTA */
+.section-cta {
+  padding: 100px 0;
+  text-align: center;
+}
+.cta-title {
+  font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+  font-weight: 800;
+  margin-bottom: 32px;
+}
+.cta-btns {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 640px) {
+  .cat-grid { grid-template-columns: 1fr; }
+}
+</style>

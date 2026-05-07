@@ -1,0 +1,375 @@
+---
+import { ArrowRight, Play } from 'lucide-astro';
+import { ui } from '@/i18n/ui';
+import type { Lang } from '@/i18n/ui';
+
+interface Props { currentLang: Lang; }
+const { currentLang } = Astro.props;
+const t = ui[currentLang];
+---
+
+<section class="hero-new">
+  <div class="hero-bg">
+    <div class="hero-orb hero-orb-1"></div>
+    <div class="hero-orb hero-orb-2"></div>
+    <div class="hero-grid-overlay"></div>
+  </div>
+  <div class="container">
+    <!-- Badge announcement -->
+    <div class="announce-badge fade-in">
+      <span class="announce-dot"></span>
+      <span>🤖 Agentes de atención al cliente disponible ahora!</span>
+      <a href="#">Learn more <ArrowRight size={12} /></a>
+    </div>
+
+    <!-- Headline -->
+    <h1 class="hero-headline fade-in" style="transition-delay: 100ms;">
+      {currentLang === 'es' 
+        ? 'Tus clientes preguntan por chat. Llaman para detalles. Confirmas por email.' 
+        : 'Customers ask on chat. Call for details. Confirm by email.'}
+    </h1>
+    <p class="hero-sub-new fade-in" style="transition-delay: 200ms;">
+      {currentLang === 'es'
+        ? 'La mayoría de plataformas no pueden. Gestify unifica todos los puntos de contacto con el cliente y CRMs en una bandeja de entrada team con Agentes IA y gestión nativa de leads para que tus conversaciones nunca se rompan.'
+        : 'Most platforms can\'t. Gestify unifies all customer touchpoints and CRMs in a team inbox with AI Agents and native lead management so your conversations never break — even when customers switch channels.'}
+    </p>
+
+    <!-- CTAs -->
+    <div class="hero-ctas-new fade-in" style="transition-delay: 300ms;">
+      <a href={`/${currentLang}/demo`} class="btn btn-primary btn-lg">
+        {currentLang === 'es' ? 'Hablar con ventas' : 'Talk to Sales'}
+        <ArrowRight size={16} />
+      </a>
+      <a href="#" class="btn btn-outline btn-lg">
+        {currentLang === 'es' ? 'Empezar prueba gratis' : 'Start Free Trial'}
+      </a>
+    </div>
+
+    <!-- G2 Badge -->
+    <div class="g2-badge fade-in" style="transition-delay: 400ms;">
+      <div class="g2-score">
+        <span class="g2-num">4.8</span>
+        <div class="g2-stars">★★★★★</div>
+      </div>
+      <div class="g2-text">
+        <span class="g2-based">Based on 400+ reviews</span>
+        <span class="g2-tag">Top-rated on G2 for highest ROI</span>
+      </div>
+    </div>
+
+    <!-- Product screenshot -->
+    <div class="hero-screenshot fade-in" style="transition-delay: 500ms;">
+      <div class="screenshot-wrapper">
+        <!-- <img src="/producto.webp" alt="Gestify dashboard" class="screenshot-img"
+             onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" /> -->
+        <div class="screenshot-placeholder" style="display:none;">
+          <div class="placeholder-content">
+            <div class="placeholder-inbox">
+              <div class="placeholder-header">
+                <span class="placeholder-title">Bandeja de entrada</span>
+                <span class="placeholder-count">12 mensajes</span>
+              </div>
+              <div class="placeholder-messages">
+                <div class="placeholder-msg msg-wa">
+                  <div class="msg-avatar">WA</div>
+                  <div class="msg-content">
+                    <span class="msg-name">María García</span>
+                    <span class="msg-text">Hola, quiero info sobre el plan Growth</span>
+                    <span class="msg-time">2 min</span>
+                  </div>
+                </div>
+                <div class="placeholder-msg msg-ig">
+                  <div class="msg-avatar">IG</div>
+                  <div class="msg-content">
+                    <span class="msg-name">Carlos R.</span>
+                    <span class="msg-text">¿Cuándo podemos agendar la demo?</span>
+                    <span class="msg-time">5 min</span>
+                  </div>
+                </div>
+                <div class="placeholder-msg msg-email">
+                  <div class="msg-avatar">EM</div>
+                  <div class="msg-content">
+                    <span class="msg-name">Ana López</span>
+                    <span class="msg-text">Confirmo mi cita para mañana 3pm</span>
+                    <span class="msg-time">12 min</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="placeholder-ai">
+              <div class="ai-badge">✨ Agente IA activo</div>
+              <div class="ai-stat">+127% conversión</div>
+            </div>
+          </div>
+          <!-- Image placeholder label -->
+          <div class="img-placeholder-label">
+            <span>🖼️</span>
+            <span>{currentLang === 'es' ? 'Imagen del producto' : 'Product screenshot'}</span>
+            <span class="img-dims">1200 x 600px</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+.hero-new {
+  padding: 140px 0 60px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+.hero-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.4;
+}
+.hero-orb-1 {
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, oklch(0.70 0.15 280) 0%, transparent 70%);
+  top: -200px;
+  left: -100px;
+}
+.hero-orb-2 {
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, oklch(0.75 0.15 195) 0%, transparent 70%);
+  bottom: -100px;
+  right: -50px;
+}
+.hero-grid-overlay {
+  position: absolute;
+  inset: 0;
+  background-image: 
+    linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+  background-size: 60px 60px;
+  mask-image: radial-gradient(ellipse 80% 60% at 50% 40%, black 20%, transparent 80%);
+}
+.container {
+  position: relative;
+  z-index: 1;
+}
+.announce-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 9999px;
+  font-size: 13px;
+  color: rgba(255,255,255,0.7);
+  margin-bottom: 32px;
+}
+.announce-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: oklch(0.75 0.15 145);
+}
+.announce-badge a {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  color: oklch(0.75 0.15 195);
+  font-weight: 600;
+}
+.hero-headline {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 700;
+  line-height: 1.15;
+  max-width: 800px;
+  margin: 0 auto 24px;
+}
+.hero-sub-new {
+  font-size: 18px;
+  color: rgba(255,255,255,0.5);
+  max-width: 680px;
+  margin: 0 auto 36px;
+  line-height: 1.7;
+}
+.hero-ctas-new {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin-bottom: 40px;
+  flex-wrap: wrap;
+}
+.btn-lg {
+  padding: 16px 28px;
+  font-size: 15px;
+}
+.g2-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 16px;
+  padding: 12px 20px;
+  background: #161616;
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 16px;
+  margin-bottom: 48px;
+}
+.g2-score {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.g2-num {
+  font-size: 28px;
+  font-weight: 800;
+}
+.g2-stars {
+  color: #ffbd2e;
+  font-size: 14px;
+  letter-spacing: 1px;
+}
+.g2-text {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+.g2-based {
+  font-size: 12px;
+  color: rgba(255,255,255,0.4);
+}
+.g2-tag {
+  font-size: 13px;
+  font-weight: 600;
+  color: rgba(255,255,255,0.8);
+}
+.hero-screenshot {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+.screenshot-wrapper {
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,0.1);
+  background: #161616;
+}
+.screenshot-img {
+  width: 100%;
+  display: block;
+}
+.screenshot-placeholder {
+  padding: 40px;
+  min-height: 400px;
+}
+.placeholder-content {
+  display: grid;
+  grid-template-columns: 1fr 200px;
+  gap: 24px;
+}
+.placeholder-inbox {
+  background: #0a0a0a;
+  border-radius: 16px;
+  padding: 20px;
+}
+.placeholder-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+.placeholder-title {
+  font-size: 16px;
+  font-weight: 600;
+}
+.placeholder-count {
+  font-size: 12px;
+  color: rgba(255,255,255,0.4);
+  background: rgba(255,255,255,0.05);
+  padding: 4px 10px;
+  border-radius: 9999px;
+}
+.placeholder-messages {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.placeholder-msg {
+  display: flex;
+  gap: 12px;
+  padding: 14px;
+  background: rgba(255,255,255,0.03);
+  border-radius: 12px;
+}
+.msg-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+.msg-wa .msg-avatar { background: oklch(0.70 0.15 235 / 0.2); color: oklch(0.70 0.15 235); }
+.msg-ig .msg-avatar { background: oklch(0.65 0.15 280 / 0.2); color: oklch(0.65 0.15 280); }
+.msg-email .msg-avatar { background: oklch(0.75 0.15 195 / 0.2); color: oklch(0.75 0.15 195); }
+.msg-content {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.msg-name { font-size: 13px; font-weight: 600; }
+.msg-text { font-size: 12px; color: rgba(255,255,255,0.5); }
+.msg-time { font-size: 11px; color: rgba(255,255,255,0.3); }
+.placeholder-ai {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 16px;
+}
+.ai-badge {
+  padding: 10px 16px;
+  background: oklch(0.75 0.15 195 / 0.15);
+  border: 1px solid oklch(0.75 0.15 195 / 0.3);
+  border-radius: 12px;
+  font-size: 13px;
+  font-weight: 600;
+  color: oklch(0.75 0.15 195);
+}
+.ai-stat {
+  font-size: 28px;
+  font-weight: 800;
+  color: oklch(0.75 0.15 195);
+}
+.img-placeholder-label {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  background: rgba(0,0,0,0.8);
+  border: 1px dashed rgba(255,255,255,0.2);
+  border-radius: 8px;
+  font-size: 12px;
+  color: rgba(255,255,255,0.5);
+}
+.img-dims {
+  font-size: 10px;
+  color: rgba(255,255,255,0.3);
+  padding: 2px 6px;
+  background: rgba(255,255,255,0.05);
+  border-radius: 4px;
+}
+@media (max-width: 768px) {
+  .placeholder-content { grid-template-columns: 1fr; }
+  .placeholder-ai { flex-direction: row; align-items: center; }
+}
+</style>

@@ -1,0 +1,29 @@
+---
+import { ArrowRight } from 'lucide-astro';
+import { ui } from '@/i18n/ui';
+import type { Lang } from '@/i18n/ui';
+
+interface Props { currentLang: Lang; }
+const { currentLang } = Astro.props;
+const t = ui[currentLang];
+---
+
+<section class="cta-box">
+  <div class="container">
+    <span class="section-tag fade-in" style="margin: 0 auto 24px; width: fit-content;">
+      <span class="section-tag-dot"></span>
+      {currentLang === 'es' ? 'Empieza hoy' : 'Start today'}
+    </span>
+    <h2 class="cta-title fade-in" style="transition-delay: 100ms;">{t.cta.title}</h2>
+    <p class="cta-sub fade-in" style="transition-delay: 200ms;">{t.cta.subtitle}</p>
+    <div class="cta-btns fade-in" style="transition-delay: 300ms;">
+      <a href="#" class="btn btn-primary">
+        {t.cta.button}
+        <ArrowRight size={16} />
+      </a>
+      <a href={`/${currentLang}/demo`} class="btn btn-outline">
+        {currentLang === 'es' ? 'Ver demo' : 'Book demo'}
+      </a>
+    </div>
+  </div>
+</section>

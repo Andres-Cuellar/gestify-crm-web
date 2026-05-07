@@ -1,0 +1,160 @@
+---
+import { ui } from '@/i18n/ui';
+import type { Lang } from '@/i18n/ui';
+
+interface Props { currentLang: Lang; }
+const { currentLang } = Astro.props;
+
+const stats = [
+  { value: '60%', label: currentLang === 'es' ? 'ciclo de ventas más rápido' : 'faster sales cycle', color: 'oklch(0.70 0.15 235)' },
+  { value: '81%', label: currentLang === 'es' ? 'tasa de conversión con Agentes IA' : 'conversion rate with AI Agents', color: 'oklch(0.75 0.15 195)' },
+  { value: '42.5x', label: currentLang === 'es' ? 'más ROI' : 'more ROI', color: 'oklch(0.65 0.15 145)' },
+];
+---
+
+<section class="stats-section">
+  <div class="container">
+    <div class="stats-header fade-in">
+      <h2 class="stats-title">
+        {currentLang === 'es'
+          ? 'Resultados probados de negocios como el tuyo'
+          : 'Proven results from businesses like yours'}
+      </h2>
+    </div>
+
+    <!-- Visual Stats Canvas -->
+    <div class="stats-visual fade-in" style="transition-delay: 200ms;">
+      <div class="stats-canvas-wrapper">
+        <canvas id="statsCanvas" width="800" height="300"></canvas>
+        <div class="stats-overlay">
+          {stats.map((s, i) => (
+            <div class="stat-card" style={`--stat-color: ${s.color};`}>
+              <div class="stat-value">{s.value}</div>
+              <div class="stat-label">{s.label}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+
+    <!-- Quick stats row -->
+    <div class="stats-quick-row fade-in" style="transition-delay: 400ms;">
+      <div class="quick-stat">
+        <span class="quick-val">10k+</span>
+        <span class="quick-lbl">{currentLang === 'es' ? 'negocios activas' : 'active agencies'}</span>
+      </div>
+      <div class="quick-divider"></div>
+      <div class="quick-stat">
+        <span class="quick-val">99.99%</span>
+        <span class="quick-lbl">{currentLang === 'es' ? 'uptime garantizado' : 'uptime guaranteed'}</span>
+      </div>
+      <div class="quick-divider"></div>
+      <div class="quick-stat">
+        <span class="quick-val">24/7</span>
+        <span class="quick-lbl">{currentLang === 'es' ? 'soporte humano' : 'human support'}</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+.stats-section {
+  padding: 80px 0;
+  background: #080808;
+}
+.stats-header {
+  text-align: center;
+  margin-bottom: 48px;
+}
+.stats-title {
+  font-size: clamp(1.5rem, 3vw, 2.2rem);
+  font-weight: 700;
+  color: rgba(255,255,255,0.7);
+}
+.stats-visual {
+  margin-bottom: 48px;
+}
+.stats-canvas-wrapper {
+  position: relative;
+  background: linear-gradient(135deg, #161616, #0a0a0a);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 20px;
+  overflow: hidden;
+  height: 200px;
+}
+#statsCanvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.3;
+}
+.stats-overlay {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  padding: 40px;
+  height: 100%;
+  align-items: center;
+}
+.stat-card {
+  text-align: center;
+  padding: 20px;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid var(--stat-color);
+  border-radius: 16px;
+  backdrop-filter: blur(10px);
+}
+.stat-card .stat-value {
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 800;
+  background: linear-gradient(135deg, var(--stat-color), color-mix(in srgb, var(--stat-color) 70%, white));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 8px;
+}
+.stat-card .stat-label {
+  font-size: 12px;
+  color: rgba(255,255,255,0.5);
+  line-height: 1.4;
+}
+.stats-quick-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 48px;
+  padding: 32px;
+  background: #161616;
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 16px;
+}
+.quick-stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+.quick-val {
+  font-size: 28px;
+  font-weight: 800;
+  color: rgba(255,255,255,0.9);
+}
+.quick-lbl {
+  font-size: 12px;
+  color: rgba(255,255,255,0.4);
+}
+.quick-divider {
+  width: 1px;
+  height: 40px;
+  background: rgba(255,255,255,0.1);
+}
+@media (max-width: 768px) {
+  .stats-overlay { grid-template-columns: 1fr; padding: 20px; }
+  .stats-quick-row { flex-direction: column; gap: 24px; }
+  .quick-divider { width: 40px; height: 1px; }
+}
+</style>

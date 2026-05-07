@@ -1,0 +1,59 @@
+---
+import { MessageSquare, Bot, GitBranch, Workflow, Layers, BarChart3, Shield } from 'lucide-astro';
+import { ui } from '@/i18n/ui';
+import type { Lang } from '@/i18n/ui';
+
+interface Props { currentLang: Lang; }
+const { currentLang } = Astro.props;
+const t = ui[currentLang];
+
+const features = [
+  { icon: MessageSquare, title: t.features.inbox.title, desc: t.features.inbox.description, color: 'oklch(0.70 0.15 235)' },
+  { icon: Bot, title: t.features.ai.title, desc: t.features.ai.description, color: 'oklch(0.75 0.15 195)' },
+  { icon: GitBranch, title: t.features.crm.title, desc: t.features.crm.description, color: 'oklch(0.65 0.15 280)' },
+  { icon: Workflow, title: t.features.automation.title, desc: t.features.automation.description, color: 'oklch(0.65 0.15 145)' },
+];
+
+const miniFeatures = [
+  { icon: Layers, title: currentLang === 'es' ? 'White-label' : 'White-label', sub: currentLang === 'es' ? 'Tu marca, tu dominio' : 'Your brand' },
+  { icon: BarChart3, title: currentLang === 'es' ? 'Analytics' : 'Analytics', sub: currentLang === 'es' ? 'Reportes detallados' : 'Detailed reports' },
+  { icon: Shield, title: currentLang === 'es' ? 'Seguridad' : 'Security', sub: 'SSO, 2FA' },
+];
+---
+
+<section class="section section-dark">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag fade-in">
+        <span class="section-tag-dot"></span>
+        {currentLang === 'es' ? 'Características' : 'Features'}
+      </span>
+      <h2 class="section-title fade-in" style="transition-delay: 100ms;">{t.features.title}</h2>
+      <p class="section-sub fade-in" style="transition-delay: 200ms;">{t.features.subtitle}</p>
+    </div>
+
+    <div class="features-grid">
+      {features.map((f, i) => (
+        <div class="feature-card fade-in" style={`transition-delay: ${(i + 3) * 100}ms;`}>
+          <div class="feature-icon" style={`background: ${f.color}22;`}>
+            <f.icon size={24} style={`color: ${f.color};`} />
+          </div>
+          <h3 class="feature-title">{f.title}</h3>
+          <p class="feature-desc">{f.desc}</p>
+        </div>
+      ))}
+    </div>
+
+    <div class="mini-row fade-in" style="transition-delay: 700ms;">
+      {miniFeatures.map(f => (
+        <div class="mini-card">
+          <div class="mini-icon"><f.icon size={20} /></div>
+          <div>
+            <div class="mini-title">{f.title}</div>
+            <div class="mini-sub">{f.sub}</div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

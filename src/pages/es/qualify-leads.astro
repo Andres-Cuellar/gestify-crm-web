@@ -1,0 +1,268 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { ArrowRight } from 'lucide-astro';
+import type { Lang } from '../../i18n/ui';
+const currentLang: Lang = 'es';
+
+const features = [
+  {
+    title: 'Scoring Automático',
+    desc: 'Puntúa leads basándose en comportamiento, demografía y engagement. Identifica instantáneamente quién está listo para comprar.',
+    stat: '2x',
+    statLabel: 'Más leads cualificados',
+    color: 'oklch(0.70 0.15 235)',
+    icon: '🎯',
+  },
+  {
+    title: 'Segmentación Avanzada',
+    desc: 'Segmenta por industria, tamaño de empresa, presupuesto y stage del lifecycle. Enriquece datos con más de 50 data points.',
+    stat: '50+',
+    statLabel: 'Data points por lead',
+    color: 'oklch(0.75 0.15 195)',
+    icon: '📊',
+  },
+  {
+    title: 'Priorización Inteligente',
+    desc: 'Tu equipo enfoca su tiempo en leads de alto valor. La IA prioriza automáticamente según probabilidad de conversión.',
+    stat: '40%',
+    statLabel: 'Mejor uso del tiempo',
+    color: 'oklch(0.65 0.15 145)',
+    icon: '⏱️',
+  },
+];
+---
+
+<BaseLayout title="Cualificar leads automáticamente" lang={currentLang}>
+  <!-- Hero with Visual -->
+  <section class="hero-visual">
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-text">
+          <div class="announce-badge fade-in">
+            <span>🎯</span>
+            <span>Lead Scoring con IA predictiva</span>
+          </div>
+          <h1 class="hero-title fade-in" style="transition-delay:100ms;">
+            Cualifica leads como un experto y enfócate en cerrar
+          </h1>
+          <p class="hero-sub fade-in" style="transition-delay:200ms;">
+            Deja que la IA analice, puntúe y priorice para que tu equipo gaste tiempo solo en prospectos que van a convertir
+          </p>
+          <div class="hero-ctas fade-in" style="transition-delay:300ms;">
+            <a href={`/${currentLang}/demo`} class="btn btn-primary">
+              Hablar con ventas <ArrowRight size={16} />
+            </a>
+            <a href="#" class="btn btn-outline">
+              Empezar prueba gratis
+            </a>
+          </div>
+        </div>
+        <div class="hero-visual-area fade-in" style="transition-delay:200ms;">
+          <div class="scoring-visual-card">
+            <div class="scoring-header">
+              <span>Lead Scoring Dashboard</span>
+              <span class="live-dot"></span>
+            </div>
+            <div class="leads-list">
+              <div class="lead-item hot">
+                <div class="lead-avatar">MG</div>
+                <div class="lead-info">
+                  <span class="lead-name">María García</span>
+                  <span class="lead-company">TechCorp</span>
+                </div>
+                <div class="lead-score">95</div>
+                <div class="lead-badge hot">Hot</div>
+              </div>
+              <div class="lead-item warm">
+                <div class="lead-avatar">CR</div>
+                <div class="lead-info">
+                  <span class="lead-name">Carlos Ruiz</span>
+                  <span class="lead-company">RetailMax</span>
+                </div>
+                <div class="lead-score">78</div>
+                <div class="lead-badge warm">Warm</div>
+              </div>
+              <div class="lead-item cold">
+                <div class="lead-avatar">AM</div>
+                <div class="lead-info">
+                  <span class="lead-name">Ana Martínez</span>
+                  <span class="lead-company">FinanceHub</span>
+                </div>
+                <div class="lead-score">42</div>
+                <div class="lead-badge cold">Cold</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats -->
+  <section class="stats-section">
+    <div class="container">
+      <div class="stats-grid fade-in">
+        <div class="stat-item">
+          <span class="stat-val">2x</span>
+          <span class="stat-lbl">Más leads cualificados</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-val">50+</span>
+          <span class="stat-lbl">Data points por lead</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-val">40%</span>
+          <span class="stat-lbl">Mejor uso del tiempo</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Visual -->
+  <section class="features-section">
+    <div class="container">
+      <div class="features-grid">
+        {features.map((f, i) => (
+          <div class="feature-card fade-in" style={`transition-delay:${i * 100}ms;`}>
+            <div class="feature-visual">
+              <div class="feature-icon-large">{f.icon}</div>
+            </div>
+            <div class="feature-content">
+              <span class="feature-stat" style={`color: ${f.color};`}>{f.stat}</span>
+              <span class="feature-stat-label">{f.statLabel}</span>
+              <h3>{f.title}</h3>
+              <p>{f.desc}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Scoring Visual -->
+  <section class="scoring-model">
+    <div class="container">
+      <div class="scoring-grid">
+        <div class="scoring-content fade-in">
+          <h2>Cómo funciona el scoring</h2>
+          <p>Nuestra IA analiza dozens de señales para determinar quién está listo para comprar y quién necesita más nurturing.</p>
+          <div class="scoring-factors">
+            <div class="factor-item">
+              <span class="factor-icon">📊</span>
+              <span>Engagement</span>
+            </div>
+            <div class="factor-item">
+              <span class="factor-icon">🏢</span>
+              <span>Datos demográficos</span>
+            </div>
+            <div class="factor-item">
+              <span class="factor-icon">💰</span>
+              <span>Presupuesto</span>
+            </div>
+            <div class="factor-item">
+              <span class="factor-icon">🎯</span>
+              <span>Intensión</span>
+            </div>
+          </div>
+        </div>
+        <div class="scoring-bar-visual fade-in" style="transition-delay:100ms;">
+          <div class="score-bar-header">Distribución de Leads</div>
+          <div class="score-bar-segments">
+            <div class="score-segment cold" style="width: 25%;">
+              <span>Frío</span>
+              <span>25%</span>
+            </div>
+            <div class="score-segment warm" style="width: 25%;">
+              <span>Tibio</span>
+              <span>25%</span>
+            </div>
+            <div class="score-segment hot" style="width: 30%;">
+              <span>Caliente</span>
+              <span>30%</span>
+            </div>
+            <div class="score-segment vhot" style="width: 20%;">
+              <span>Hot</span>
+              <span>20%</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section">
+    <div class="container">
+      <div class="cta-card fade-in">
+        <h2>Deja de perder tiempo en leads que no van a convertir 🎯</h2>
+        <div class="cta-btns">
+          <a href={`/${currentLang}/demo`} class="btn btn-primary">Hablar con ventas</a>
+          <a href="#" class="btn btn-outline">Empezar prueba gratis</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+.hero-visual { padding: 140px 0 60px; }
+.hero-content { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+.announce-badge { display: inline-flex; align-items: center; gap: 10px; padding: 8px 16px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 9999px; font-size: 13px; color: rgba(255,255,255,0.7); margin-bottom: 24px; }
+.hero-title { font-size: clamp(2rem, 4vw, 3.2rem); font-weight: 800; line-height: 1.1; margin-bottom: 20px; }
+.hero-sub { font-size: 18px; color: rgba(255,255,255,0.5); line-height: 1.6; margin-bottom: 32px; }
+.hero-ctas { display: flex; gap: 16px; flex-wrap: wrap; }
+.scoring-visual-card { background: linear-gradient(145deg, #1a1a1a, #0a0a0a); border: 1px solid rgba(255,255,255,0.1); border-radius: 20px; padding: 24px; }
+.scoring-header { display: flex; justify-content: space-between; align-items: center; font-size: 13px; color: rgba(255,255,255,0.5); margin-bottom: 20px; }
+.live-dot { width: 8px; height: 8px; border-radius: 50%; background: #22C55E; }
+.leads-list { display: flex; flex-direction: column; gap: 12px; }
+.lead-item { display: flex; align-items: center; gap: 12px; padding: 12px; background: #161616; border-radius: 12px; }
+.lead-avatar { width: 36px; height: 36px; border-radius: 50%; background: #333; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700; }
+.lead-item.hot .lead-avatar { background: rgba(239, 68, 68, 0.2); color: #EF4444; }
+.lead-item.warm .lead-avatar { background: rgba(245, 158, 11, 0.2); color: #F59E0B; }
+.lead-info { flex: 1; }
+.lead-name { display: block; font-size: 13px; font-weight: 600; }
+.lead-company { font-size: 11px; color: rgba(255,255,255,0.4); }
+.lead-score { font-size: 18px; font-weight: 800; }
+.lead-badge { font-size: 10px; font-weight: 700; padding: 3px 8px; border-radius: 6px; }
+.lead-badge.hot { background: rgba(239, 68, 68, 0.15); color: #EF4444; }
+.lead-badge.warm { background: rgba(245, 158, 11, 0.15); color: #F59E0B; }
+.lead-badge.cold { background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.5); }
+.stats-section { padding: 60px 0; border-top: 1px solid rgba(255,255,255,0.05); border-bottom: 1px solid rgba(255,255,255,0.05); }
+.stats-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; }
+.stat-item { text-align: center; }
+.stat-val { display: block; font-size: 40px; font-weight: 800; background: linear-gradient(135deg, oklch(0.75 0.15 195), oklch(0.70 0.15 235)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.stat-lbl { font-size: 13px; color: rgba(255,255,255,0.5); }
+.features-section { padding: 80px 0; }
+.features-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.feature-card { background: #161616; border: 1px solid rgba(255,255,255,0.08); border-radius: 20px; overflow: hidden; }
+.feature-visual { background: linear-gradient(135deg, #0a0a0a, #161616); aspect-ratio: 16/9; display: flex; align-items: center; justify-content: center; }
+.feature-icon-large { font-size: 48px; }
+.feature-content { padding: 24px; }
+.feature-stat { display: block; font-size: 32px; font-weight: 800; }
+.feature-stat-label { display: block; font-size: 12px; color: rgba(255,255,255,0.4); margin-bottom: 12px; }
+.feature-content h3 { font-size: 16px; font-weight: 700; margin-bottom: 8px; }
+.feature-content p { font-size: 13px; color: rgba(255,255,255,0.5); line-height: 1.5; }
+.scoring-model { padding: 80px 0; background: #080808; }
+.scoring-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+.scoring-content h2 { font-size: clamp(1.6rem, 2.5vw, 2.2rem); font-weight: 700; margin-bottom: 16px; }
+.scoring-content p { font-size: 16px; color: rgba(255,255,255,0.5); line-height: 1.6; margin-bottom: 32px; }
+.scoring-factors { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+.factor-item { display: flex; align-items: center; gap: 12px; padding: 16px; background: #161616; border-radius: 12px; }
+.factor-icon { font-size: 24px; }
+.factor-item span:last-child { font-size: 14px; font-weight: 600; }
+.scoring-bar-visual { background: #161616; border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; padding: 24px; }
+.score-bar-header { font-size: 13px; font-weight: 600; margin-bottom: 20px; color: rgba(255,255,255,0.5); }
+.score-bar-segments { display: flex; height: 48px; border-radius: 12px; overflow: hidden; }
+.score-segment { display: flex; flex-direction: column; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; }
+.score-segment span:last-child { opacity: 0.7; }
+.score-segment.cold { background: oklch(0.65 0.15 145); }
+.score-segment.warm { background: oklch(0.75 0.15 195); }
+.score-segment.hot { background: oklch(0.70 0.15 235); }
+.score-segment.vhot { background: oklch(0.75 0.15 195); }
+.cta-section { padding: 80px 0; }
+.cta-card { text-align: center; background: linear-gradient(135deg, #161616, #0a0a0a); border: 1px solid rgba(255,255,255,0.08); border-radius: 24px; padding: 60px; }
+.cta-card h2 { font-size: clamp(1.8rem, 3vw, 2.5rem); font-weight: 800; margin-bottom: 32px; }
+.cta-btns { display: flex; justify-content: center; gap: 16px; }
+@media (max-width: 1024px) { .scoring-grid { grid-template-columns: 1fr; } }
+@media (max-width: 768px) { .hero-content { grid-template-columns: 1fr; } .hero-visual-area { display: none; } .stats-grid { grid-template-columns: 1fr; } .features-grid { grid-template-columns: 1fr; } .scoring-factors { grid-template-columns: 1fr; } }
+</style>

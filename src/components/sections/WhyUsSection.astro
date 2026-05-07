@@ -1,0 +1,137 @@
+---
+import { ui } from '@/i18n/ui';
+import type { Lang } from '@/i18n/ui';
+
+interface Props { currentLang: Lang; }
+const { currentLang } = Astro.props;
+
+const pillars = [
+  {
+    title: currentLang === 'es' ? 'Diseñado para crecer' : 'Designed for growth',
+    desc: currentLang === 'es'
+      ? 'El ROI más rápido del mercado con un roadmap moldeado por ti para escalar revenue a través del lifecycle del cliente.'
+      : 'Quickest ROI in the market with a roadmap shaped by you to scale revenue across the customer lifecycle.',
+    color: 'oklch(0.70 0.15 235)',
+  },
+  {
+    title: currentLang === 'es' ? 'Confiabilidad a escala' : 'Reliability at scale',
+    desc: currentLang === 'es'
+      ? 'Tech de primer nivel y seguridad enterprise-grade para velocidad y estabilidad, con 99.999% uptime bajo altos volúmenes.'
+      : 'Best-in-class tech and enterprise-grade security for speed and stability, with 99.999% uptime under high chat volumes.',
+    color: 'oklch(0.75 0.15 195)',
+  },
+  {
+    title: currentLang === 'es' ? 'Líderes en experiencia' : 'Leading with experience',
+    desc: currentLang === 'es'
+      ? 'La única plataforma de conversación con 8 años de liderazgo, preferida por Meta y TikTok para acceso temprano a features.'
+      : 'The only customer conversation platform with 8 years of market leadership, preferred by Meta and TikTok for early feature access.',
+    color: 'oklch(0.65 0.15 280)',
+  },
+  {
+    title: currentLang === 'es' ? 'Soporte en el que confías' : 'Support you can trust',
+    desc: currentLang === 'es'
+      ? 'Soporte humano top-rated y guía expert en cada etapa para ayudarte a escalar con confianza.'
+      : 'Top-rated human support and expert guidance at every stage to help you scale confidently.',
+    color: 'oklch(0.65 0.15 145)',
+  },
+];
+---
+
+<section class="why-section">
+  <div class="container">
+    <div class="why-header fade-in">
+      <h2 class="why-title">
+        {currentLang === 'es'
+          ? 'Así Gestify te prepara para el éxito'
+          : 'Here\'s how Gestify sets you up for success'}
+      </h2>
+    </div>
+
+    <div class="why-grid">
+      {pillars.map((p, i) => (
+        <div class="why-card fade-in" style={`transition-delay: ${(i + 1) * 100}ms;`}>
+          <div class="why-image-placeholder">
+            <div class="why-img-box" style={`border-color: ${p.color}40;`}>
+              <span>{i + 1}</span>
+            </div>
+          </div>
+          <div class="why-icon" style={`background: ${p.color}22;`}>
+            <span style={`color: ${p.color};`}>✓</span>
+          </div>
+          <h3 class="why-card-title">{p.title}</h3>
+          <p class="why-card-desc">{p.desc}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+.why-section {
+  padding: 100px 0;
+  background: #080808;
+}
+.why-header {
+  text-align: center;
+  margin-bottom: 60px;
+}
+.why-title {
+  font-size: clamp(1.8rem, 3vw, 2.5rem);
+  font-weight: 700;
+}
+.why-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+.why-card {
+  padding: 28px;
+  background: #161616;
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 20px;
+}
+.why-image-placeholder {
+  margin-bottom: 16px;
+}
+.why-img-box {
+  width: 100%;
+  aspect-ratio: 16/9;
+  border: 2px dashed;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  font-weight: 800;
+  color: rgba(255,255,255,0.2);
+}
+.why-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+.why-icon span {
+  font-size: 20px;
+  font-weight: 800;
+}
+.why-card-title {
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+.why-card-desc {
+  font-size: 13px;
+  color: rgba(255,255,255,0.5);
+  line-height: 1.6;
+}
+@media (max-width: 900px) {
+  .why-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 540px) {
+  .why-grid { grid-template-columns: 1fr; }
+}
+</style>

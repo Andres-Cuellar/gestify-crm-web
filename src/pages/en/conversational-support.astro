@@ -1,0 +1,258 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { ArrowRight } from 'lucide-astro';
+import type { Lang } from '../../i18n/ui';
+const currentLang: Lang = 'en';
+
+const features = [
+  {
+    title: 'Ticket Management',
+    desc: 'Transform chats into trackable tickets. SLA monitoring, automatic priorities, and smart escalation.',
+    stat: '60%',
+    statLabel: 'Resolution time',
+    color: 'oklch(0.65 0.15 145)',
+  },
+  {
+    title: 'CSAT Management',
+    desc: 'Measure post-interaction satisfaction with automated surveys. Identify areas for improvement in real time.',
+    stat: '4.6',
+    statLabel: 'Average CSAT',
+    color: 'oklch(0.75 0.15 195)',
+  },
+  {
+    title: 'Knowledge Base',
+    desc: 'Create a knowledge base your AI uses to answer. Consistency across all conversations.',
+    stat: '80%',
+    statLabel: 'Self-service rate',
+    color: 'oklch(0.70 0.15 235)',
+  },
+];
+
+const capabilities = [
+  { title: 'Multi-channel inbox', desc: 'Unify WhatsApp, email, chat, social in one view.' },
+  { title: 'Canned responses', desc: 'Pre-defined responses to resolve faster.' },
+  { title: 'Private notes', desc: 'Internal collaboration without exposing info to customer.' },
+  { title: 'SLA analytics', desc: 'Dashboard for SLA compliance and response times.' },
+];
+---
+
+<BaseLayout title="Conversational support that retains" lang={currentLang}>
+  <!-- Hero -->
+  <section class="hero-product">
+    <div class="container">
+      <div class="announce-badge fade-in">
+        <span>💬</span>
+        <span>Omnichannel support with AI</span>
+        <a href="#">Learn more →</a>
+      </div>
+      <h1 class="hero-product-title fade-in" style="transition-delay:100ms;">
+        Support that turns customers into promoters
+      </h1>
+      <p class="hero-product-sub fade-in" style="transition-delay:200ms;">
+        One unified inbox for all your channels. AI that assists your agents and customers who leave satisfied.
+      </p>
+      <div class="hero-ctas fade-in" style="transition-delay:300ms;">
+        <a href={`/${currentLang}/demo`} class="btn btn-primary">
+          Talk to sales <ArrowRight size={16} />
+        </a>
+        <a href="#" class="btn btn-outline">
+          Start free trial
+        </a>
+      </div>
+
+      <!-- Stats -->
+      <div class="hero-stats fade-in" style="transition-delay:400ms;">
+        <div class="hero-stat">
+          <span class="stat-val">60%</span>
+          <span class="stat-lbl">Resolution time</span>
+        </div>
+        <div class="hero-stat">
+          <span class="stat-val">4.6</span>
+          <span class="stat-lbl">Average CSAT</span>
+        </div>
+        <div class="hero-stat">
+          <span class="stat-val">80%</span>
+          <span class="stat-lbl">Self-service rate</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Logos -->
+  <section class="logos-mini">
+    <div class="container">
+      <p class="logos-label">10k+ agencies trust Gestify</p>
+      <div class="logos-row">
+        <span>Toyota</span>
+        <span>McDonalds</span>
+        <span>British Airways</span>
+        <span>Radisson</span>
+        <span>Subway</span>
+        <span>Decathlon</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features -->
+  <section class="section-capture">
+    <div class="container">
+      <div class="section-header-center fade-in">
+        <h2>From ticket to promoter</h2>
+        <p>Every interaction is a chance to retain. Our tools make support a competitive differentiator.</p>
+      </div>
+
+      <div class="capture-cards">
+        {features.map((f, i) => (
+          <div class="capture-card fade-in" style={`transition-delay:${i * 100}ms;`}>
+            <div class="capture-card-header">
+              <div class="capture-stat">
+                <span class="capture-stat-val" style={`color: ${f.color};`}>{f.stat}</span>
+                <span class="capture-stat-lbl">{f.statLabel}</span>
+              </div>
+            </div>
+            <h3 class="capture-card-title">{f.title}</h3>
+            <p class="capture-card-desc">{f.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Inbox View -->
+  <section class="section-flow">
+    <div class="container">
+      <div class="section-header-center fade-in">
+        <h2>One inbox, all channels</h2>
+      </div>
+      <div class="inbox-visual">
+        <div class="inbox-sidebar fade-in">
+          <div class="inbox-channel active">
+            <span class="channel-dot wa"></span>
+            <span>WhatsApp</span>
+            <span class="badge">3</span>
+          </div>
+          <div class="inbox-channel">
+            <span class="channel-dot fb"></span>
+            <span>Facebook</span>
+            <span class="badge">1</span>
+          </div>
+          <div class="inbox-channel">
+            <span class="channel-dot email"></span>
+            <span>Email</span>
+          </div>
+          <div class="inbox-channel">
+            <span class="channel-dot chat"></span>
+            <span>Live Chat</span>
+          </div>
+        </div>
+        <div class="inbox-main fade-in" style="transition-delay:100ms;">
+          <div class="inbox-thread">
+            <div class="thread-header">
+              <span class="thread-name">Maria Garcia</span>
+              <span class="thread-time">2 min ago</span>
+            </div>
+            <div class="thread-preview">Hi, I have a problem with my order #4521...</div>
+            <div class="thread-status open">Open</div>
+          </div>
+          <div class="inbox-thread resolved">
+            <div class="thread-header">
+              <span class="thread-name">Carlos Ruiz</span>
+              <span class="thread-time">15 min ago</span>
+            </div>
+            <div class="thread-preview">Thanks for the help with the shipping...</div>
+            <div class="thread-status resolved">Resolved</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Capabilities -->
+  <section class="section-capabilities">
+    <div class="container">
+      <div class="section-header-center fade-in">
+        <h2>Tools your team needs</h2>
+      </div>
+      <div class="cap-grid">
+        {capabilities.map((cap, i) => (
+          <div class="cap-card fade-in" style={`transition-delay:${i * 80}ms;`}>
+            <h4 class="cap-title">{cap.title}</h4>
+            <p class="cap-desc">{cap.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section-cta">
+    <div class="container">
+      <h2 class="cta-title fade-in">Turn support into your competitive advantage 💬</h2>
+      <div class="cta-btns fade-in" style="transition-delay:100ms;">
+        <a href={`/${currentLang}/demo`} class="btn btn-primary">Talk to sales</a>
+        <a href="#" class="btn btn-outline">Start free trial</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+.hero-product { padding: 140px 0 60px; text-align: center; }
+.announce-badge { display: inline-flex; align-items: center; gap: 10px; padding: 8px 16px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 9999px; font-size: 13px; color: rgba(255,255,255,0.7); margin-bottom: 32px; }
+.announce-badge a { color: oklch(0.75 0.15 195); font-weight: 600; }
+.hero-product-title { font-size: clamp(2.2rem, 5vw, 4rem); font-weight: 800; line-height: 1.1; max-width: 800px; margin: 0 auto 20px; }
+.hero-product-sub { font-size: 18px; color: rgba(255,255,255,0.5); max-width: 600px; margin: 0 auto 36px; line-height: 1.6; }
+.hero-ctas { display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; margin-bottom: 48px; }
+.hero-stats { display: flex; justify-content: center; gap: 60px; padding: 32px; background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.06); border-radius: 20px; max-width: 700px; margin: 0 auto; }
+.hero-stat { display: flex; flex-direction: column; gap: 4px; text-align: center; }
+.stat-val { font-size: 32px; font-weight: 800; background: linear-gradient(135deg, oklch(0.75 0.15 195), oklch(0.70 0.15 235)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.stat-lbl { font-size: 12px; color: rgba(255,255,255,0.5); }
+.logos-mini { padding: 40px 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
+.logos-label { text-align: center; font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: rgba(255,255,255,0.35); margin-bottom: 24px; }
+.logos-row { display: flex; justify-content: center; flex-wrap: wrap; gap: 40px; }
+.logos-row span { font-size: 16px; font-weight: 700; color: rgba(255,255,255,0.25); }
+.section-capture { padding: 80px 0; }
+.section-header-center { text-align: center; max-width: 650px; margin: 0 auto 48px; }
+.section-header-center h2 { font-size: clamp(1.8rem, 3vw, 2.5rem); font-weight: 700; margin-bottom: 12px; }
+.section-header-center p { font-size: 16px; color: rgba(255,255,255,0.5); line-height: 1.6; }
+.capture-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.capture-card { padding: 28px; background: #161616; border: 1px solid rgba(255,255,255,0.08); border-radius: 20px; text-align: left; }
+.capture-card-header { margin-bottom: 20px; }
+.capture-stat { display: inline-flex; flex-direction: column; gap: 2px; }
+.capture-stat-val { font-size: 36px; font-weight: 800; }
+.capture-stat-lbl { font-size: 12px; color: rgba(255,255,255,0.5); }
+.capture-card-title { font-size: 18px; font-weight: 700; margin-bottom: 10px; }
+.capture-card-desc { font-size: 14px; color: rgba(255,255,255,0.5); line-height: 1.6; }
+.section-flow { padding: 80px 0; background: #080808; }
+.inbox-visual { display: grid; grid-template-columns: 200px 1fr; gap: 24px; max-width: 900px; margin: 0 auto; }
+.inbox-sidebar { background: #161616; border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; padding: 16px; }
+.inbox-channel { display: flex; align-items: center; gap: 10px; padding: 12px; border-radius: 10px; font-size: 13px; color: rgba(255,255,255,0.6); cursor: pointer; }
+.inbox-channel.active { background: rgba(255,255,255,0.05); color: #fff; }
+.inbox-channel:hover { background: rgba(255,255,255,0.03); }
+.channel-dot { width: 8px; height: 8px; border-radius: 50%; }
+.channel-dot.wa { background: #25D366; }
+.channel-dot.fb { background: #1877F2; }
+.channel-dot.email { background: oklch(0.75 0.15 195); }
+.channel-dot.chat { background: oklch(0.70 0.15 235); }
+.inbox-channel .badge { margin-left: auto; background: oklch(0.75 0.15 195); color: #000; font-size: 10px; font-weight: 700; padding: 2px 6px; border-radius: 10px; }
+.inbox-main { display: flex; flex-direction: column; gap: 12px; }
+.inbox-thread { padding: 16px; background: #161616; border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; }
+.inbox-thread.resolved { opacity: 0.6; }
+.thread-header { display: flex; justify-content: space-between; margin-bottom: 8px; }
+.thread-name { font-size: 13px; font-weight: 600; }
+.thread-time { font-size: 11px; color: rgba(255,255,255,0.4); }
+.thread-preview { font-size: 12px; color: rgba(255,255,255,0.5); margin-bottom: 8px; }
+.thread-status { display: inline-block; font-size: 10px; font-weight: 700; padding: 3px 8px; border-radius: 6px; }
+.thread-status.open { background: rgba(37, 211, 102, 0.15); color: #25D366; }
+.thread-status.resolved { background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.5); }
+.section-capabilities { padding: 80px 0; }
+.cap-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+.cap-card { padding: 24px; background: #161616; border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; }
+.cap-title { font-size: 14px; font-weight: 700; margin-bottom: 8px; }
+.cap-desc { font-size: 12px; color: rgba(255,255,255,0.5); line-height: 1.6; }
+.section-cta { padding: 100px 0; text-align: center; }
+.cta-title { font-size: clamp(1.8rem, 3.5vw, 2.8rem); font-weight: 800; margin-bottom: 32px; }
+.cta-btns { display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; }
+@media (max-width: 1024px) { .cap-grid { grid-template-columns: repeat(2, 1fr); } .inbox-visual { grid-template-columns: 1fr; } }
+@media (max-width: 768px) { .capture-cards { grid-template-columns: 1fr; } .hero-stats { flex-direction: column; gap: 24px; } }
+</style>

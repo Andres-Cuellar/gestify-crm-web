@@ -1,0 +1,17 @@
+{
+  "name": "gestify-web",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview"
+  },
+  "dependencies": {
+    "@lucide/astro": "^1.14.0",
+    "@tailwindcss/postcss": "^4.2.4",
+    "astro": "^5.18.1",
+    "lucide-astro": "^0.556.0",
+    "postcss": "^8.5.13"
+  }
+}

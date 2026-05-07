@@ -1,0 +1,290 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { ArrowRight } from 'lucide-astro';
+import type { Lang } from '../../i18n/ui';
+const currentLang: Lang = 'en';
+
+const features = [
+  {
+    title: 'Facebook & Instagram DMs',
+    desc: 'Capture leads directly from direct messages on the world\'s most-used apps.',
+    stat: '2B+',
+    statLabel: 'Active users',
+    color: 'oklch(0.70 0.15 235)',
+    icon: '📱',
+  },
+  {
+    title: 'TikTok DM Automation',
+    desc: 'Automatically respond to TikTok DMs and convert engagement into leads.',
+    stat: '1.5B',
+    statLabel: 'TikTok users',
+    color: 'oklch(0.75 0.15 195)',
+    icon: '🎵',
+  },
+  {
+    title: 'Unified Social Inbox',
+    desc: 'Manage all your social messages in one inbox with AI assistance.',
+    stat: '80%',
+    statLabel: 'Less time managing',
+    color: 'oklch(0.65 0.15 280)',
+    icon: '📥',
+  },
+];
+---
+
+<BaseLayout title="Capture leads from social media" lang={currentLang}>
+  <!-- Hero with Image Area -->
+  <section class="hero-visual">
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-text">
+          <div class="announce-badge fade-in">
+            <span>📱</span>
+            <span>Social Media Capture</span>
+          </div>
+          <h1 class="hero-title fade-in" style="transition-delay:100ms;">
+            Convert followers into leads with social automation
+          </h1>
+          <p class="hero-sub fade-in" style="transition-delay:200ms;">
+            Capture leads directly from Facebook, Instagram and TikTok DMs with intelligent automatic responses
+          </p>
+          <div class="hero-ctas fade-in" style="transition-delay:300ms;">
+            <a href={`/${currentLang}/demo`} class="btn btn-primary">
+              Talk to sales <ArrowRight size={16} />
+            </a>
+            <a href="#" class="btn btn-outline">
+              Start free trial
+            </a>
+          </div>
+        </div>
+        <div class="hero-visual-area fade-in" style="transition-delay:200ms;">
+          <div class="social-inbox-visual">
+            <div class="inbox-header">
+              <span>📥 Social Inbox</span>
+              <span class="inbox-badge">3 new</span>
+            </div>
+            <div class="social-channels">
+              <div class="channel-item active">
+                <span class="channel-icon social-fb">📘</span>
+                <span>Facebook</span>
+                <span class="msg-count">2</span>
+              </div>
+              <div class="channel-item">
+                <span class="channel-icon social-ig">📷</span>
+                <span>Instagram</span>
+                <span class="msg-count">1</span>
+              </div>
+              <div class="channel-item">
+                <span class="channel-icon social-tt">🎵</span>
+                <span>TikTok</span>
+              </div>
+            </div>
+            <div class="msg-preview">
+              <div class="preview-avatar">MG</div>
+              <div class="preview-content">
+                <span class="preview-name">Maria Garcia</span>
+                <span class="preview-msg">Hi, I'm interested in the product...</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats Bar -->
+  <section class="stats-bar">
+    <div class="container">
+      <div class="stats-grid fade-in">
+        <div class="stat-item">
+          <span class="stat-val">2B+</span>
+          <span class="stat-lbl">Social active users</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-val">80%</span>
+          <span class="stat-lbl">Less time managing</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-val">3x</span>
+          <span class="stat-lbl">More engagement</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features with Visual -->
+  <section class="features-section">
+    <div class="container">
+      <div class="features-grid">
+        {features.map((f, i) => (
+          <div class="feature-card fade-in" style={`transition-delay:${i * 100}ms;`}>
+            <div class="feature-visual">
+              <div class="feature-icon-center">{f.icon}</div>
+            </div>
+            <div class="feature-content">
+              <span class="feature-stat" style={`color: ${f.color};`}>{f.stat}</span>
+              <span class="feature-stat-lbl">{f.statLabel}</span>
+              <h3>{f.title}</h3>
+              <p>{f.desc}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Platforms Visual -->
+  <section class="platforms-section">
+    <div class="container">
+      <div class="section-header-center fade-in">
+        <h2>Connect all your networks</h2>
+      </div>
+      <div class="platforms-grid">
+        <div class="platform-card fade-in">
+          <div class="platform-image-placeholder">
+            <span>📘</span>
+            <span>Facebook Messenger</span>
+          </div>
+        </div>
+        <div class="platform-card fade-in" style="transition-delay:100ms;">
+          <div class="platform-image-placeholder">
+            <span>📷</span>
+            <span>Instagram DM</span>
+          </div>
+        </div>
+        <div class="platform-card fade-in" style="transition-delay:200ms;">
+          <div class="platform-image-placeholder">
+            <span>🎵</span>
+            <span>TikTok Messages</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- How it Works Visual -->
+  <section class="how-section">
+    <div class="container">
+      <div class="how-grid">
+        <div class="how-content fade-in">
+          <h2>How it works</h2>
+          <div class="how-steps">
+            <div class="how-step">
+              <span class="step-num">1</span>
+              <div>
+                <h4>Customer sends DM</h4>
+                <p>Customer sends a message on Facebook, Instagram, or TikTok</p>
+              </div>
+            </div>
+            <div class="how-step">
+              <span class="step-num">2</span>
+              <div>
+                <h4>AI responds instantly</h4>
+                <p>The AI agent responds with relevant information</p>
+              </div>
+            </div>
+            <div class="how-step">
+              <span class="step-num">3</span>
+              <div>
+                <h4>Lead captured</h4>
+                <p>Contact saved to your CRM with full context</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="how-visual fade-in" style="transition-delay:100ms;">
+          <div class="automation-flow">
+            <div class="flow-node">
+              <span>📱 Social</span>
+            </div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-node ai">
+              <span>🤖 AI</span>
+            </div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-node crm">
+              <span>📊 CRM</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section">
+    <div class="container">
+      <div class="cta-card fade-in">
+        <h2>Convert followers to leads 📱</h2>
+        <div class="cta-btns">
+          <a href={`/${currentLang}/demo`} class="btn btn-primary">Talk to sales</a>
+          <a href="#" class="btn btn-outline">Start free trial</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+.hero-visual { padding: 140px 0 60px; }
+.hero-content { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+.announce-badge { display: inline-flex; align-items: center; gap: 10px; padding: 8px 16px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 9999px; font-size: 13px; color: rgba(255,255,255,0.7); margin-bottom: 24px; }
+.hero-title { font-size: clamp(2rem, 4vw, 3.2rem); font-weight: 800; line-height: 1.1; margin-bottom: 20px; }
+.hero-sub { font-size: 18px; color: rgba(255,255,255,0.5); line-height: 1.6; margin-bottom: 32px; }
+.hero-ctas { display: flex; gap: 16px; flex-wrap: wrap; }
+.social-inbox-visual { background: linear-gradient(145deg, #1a1a1a, #0a0a0a); border: 1px solid rgba(255,255,255,0.1); border-radius: 20px; padding: 24px; }
+.inbox-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; font-size: 13px; color: rgba(255,255,255,0.5); }
+.inbox-badge { background: oklch(0.75 0.15 195); color: #000; padding: 4px 10px; border-radius: 12px; font-size: 11px; font-weight: 700; }
+.social-channels { display: flex; flex-direction: column; gap: 8px; margin-bottom: 16px; }
+.channel-item { display: flex; align-items: center; gap: 12px; padding: 12px; background: #161616; border-radius: 10px; font-size: 13px; }
+.channel-item.active { border: 1px solid oklch(0.75 0.15 195); }
+.channel-icon { font-size: 18px; }
+.msg-count { margin-left: auto; background: oklch(0.75 0.15 195); color: #000; padding: 2px 8px; border-radius: 10px; font-size: 10px; font-weight: 700; }
+.msg-preview { display: flex; align-items: center; gap: 12px; padding: 12px; background: #161616; border-radius: 10px; }
+.preview-avatar { width: 36px; height: 36px; border-radius: 50%; background: oklch(0.70 0.15 235); color: #fff; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700; }
+.preview-content { flex: 1; }
+.preview-name { display: block; font-size: 13px; font-weight: 600; }
+.preview-msg { font-size: 11px; color: rgba(255,255,255,0.4); }
+.stats-bar { padding: 60px 0; border-top: 1px solid rgba(255,255,255,0.05); border-bottom: 1px solid rgba(255,255,255,0.05); }
+.stats-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; }
+.stat-item { text-align: center; }
+.stat-val { display: block; font-size: 40px; font-weight: 800; background: linear-gradient(135deg, oklch(0.75 0.15 195), oklch(0.70 0.15 235)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.stat-lbl { font-size: 13px; color: rgba(255,255,255,0.5); }
+.features-section { padding: 80px 0; }
+.features-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.feature-card { background: #161616; border: 1px solid rgba(255,255,255,0.08); border-radius: 20px; overflow: hidden; }
+.feature-visual { background: linear-gradient(135deg, #0a0a0a, #161616); aspect-ratio: 16/9; display: flex; align-items: center; justify-content: center; }
+.feature-icon-center { font-size: 48px; }
+.feature-content { padding: 24px; }
+.feature-stat { display: block; font-size: 28px; font-weight: 800; }
+.feature-stat-lbl { display: block; font-size: 11px; color: rgba(255,255,255,0.4); margin-bottom: 8px; }
+.feature-content h3 { font-size: 16px; font-weight: 700; margin-bottom: 8px; }
+.feature-content p { font-size: 13px; color: rgba(255,255,255,0.5); line-height: 1.5; }
+.platforms-section { padding: 80px 0; background: #080808; }
+.section-header-center { text-align: center; max-width: 650px; margin: 0 auto 48px; }
+.section-header-center h2 { font-size: clamp(1.8rem, 3vw, 2.5rem); font-weight: 700; margin-bottom: 12px; }
+.platforms-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.platform-card { background: #161616; border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; overflow: hidden; }
+.platform-image-placeholder { background: linear-gradient(135deg, #0a0a0a, #161616); aspect-ratio: 16/9; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; }
+.platform-image-placeholder span:first-child { font-size: 36px; }
+.platform-image-placeholder span:last-child { font-size: 12px; color: rgba(255,255,255,0.3); }
+.how-section { padding: 80px 0; }
+.how-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+.how-content h2 { font-size: clamp(1.6rem, 2.5vw, 2.2rem); font-weight: 700; margin-bottom: 32px; }
+.how-steps { display: flex; flex-direction: column; gap: 20px; }
+.how-step { display: flex; gap: 16px; align-items: flex-start; }
+.step-num { width: 32px; height: 32px; border-radius: 50%; background: oklch(0.75 0.15 195); color: #000; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 800; flex-shrink: 0; }
+.how-step h4 { font-size: 15px; font-weight: 700; margin-bottom: 4px; }
+.how-step p { font-size: 13px; color: rgba(255,255,255,0.5); }
+.automation-flow { background: #161616; border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; padding: 32px; display: flex; align-items: center; justify-content: center; gap: 16px; }
+.flow-node { padding: 16px 24px; background: #222; border-radius: 12px; font-size: 14px; font-weight: 600; }
+.flow-node.ai { background: oklch(0.75 0.15 195); color: #000; }
+.flow-node.crm { background: oklch(0.70 0.15 235); color: #fff; }
+.flow-arrow { font-size: 24px; color: rgba(255,255,255,0.2); }
+.cta-section { padding: 80px 0; }
+.cta-card { text-align: center; background: linear-gradient(135deg, #161616, #0a0a0a); border: 1px solid rgba(255,255,255,0.08); border-radius: 24px; padding: 60px; }
+.cta-card h2 { font-size: clamp(1.8rem, 3vw, 2.5rem); font-weight: 800; margin-bottom: 32px; }
+.cta-btns { display: flex; justify-content: center; gap: 16px; }
+@media (max-width: 1024px) { .how-grid { grid-template-columns: 1fr; } }
+@media (max-width: 768px) { .hero-content { grid-template-columns: 1fr; } .hero-visual-area { display: none; } .stats-grid { grid-template-columns: 1fr; } .features-grid { grid-template-columns: 1fr; } .platforms-grid { grid-template-columns: 1fr; } }
+</style>

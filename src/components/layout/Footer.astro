@@ -1,0 +1,68 @@
+---
+import { Mail } from 'lucide-astro';
+import { ui } from '@/i18n/ui';
+import type { Lang } from '@/i18n/ui';
+
+interface Props { currentLang: Lang; }
+const { currentLang } = Astro.props;
+const t = ui[currentLang];
+---
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <img src="/logo.webp" alt="Gestify" style="height: 32px; filter: brightness(0) invert(0.8);" />
+        <p>{t.footer.tagline}</p>
+      </div>
+
+      <div class="footer-col">
+        <h4>{t.footer.product}</h4>
+        <ul>
+          <li><a href={`/${currentLang}/producto`}>Features</a></li>
+          <li><a href={`/${currentLang}/precios`}>Pricing</a></li>
+          <li><a href="#">Integrations</a></li>
+          <li><a href="#">API</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>{t.footer.company}</h4>
+        <ul>
+          <li><a href="#">About</a></li>
+          <li><a href="#">Blog</a></li>
+          <li><a href="#">Careers</a></li>
+          <li><a href={`/${currentLang}/contacto`}>Contact</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>{t.footer.resources}</h4>
+        <ul>
+          <li><a href="#">Documentation</a></li>
+          <li><a href="#">Help Center</a></li>
+          <li><a href="#">Webinars</a></li>
+          <li><a href="#">Community</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>{t.footer.legal}</h4>
+        <ul>
+          <li><a href="#">Privacy</a></li>
+          <li><a href="#">Terms</a></li>
+          <li><a href="#">Security</a></li>
+          <li><a href="#">Cookies</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2024 Gestify. {t.footer.rights}</p>
+      <a href="mailto:hola@gestify.us" class="footer-email">
+        <Mail size={14} />
+        <span>hola@gestify.us</span>
+      </a>
+    </div>
+  </div>
+</footer>

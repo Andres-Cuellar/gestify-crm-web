@@ -1,0 +1,83 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { ui } from '../../i18n/ui';
+import type { Lang } from '../../i18n/ui';
+const currentLang: Lang = 'en';
+const t = ui[currentLang];
+---
+
+<BaseLayout title="Contact" lang={currentLang}>
+  <section class="page-hero">
+    <div class="container">
+      <span class="section-tag fade-in" style="width:fit-content;"><span class="section-tag-dot"></span>Contact</span>
+      <h1 class="page-title fade-in" style="transition-delay:100ms;">Let's talk</h1>
+      <p class="page-sub fade-in" style="transition-delay:200ms;">Ready to see how Gestify can help your agency? Schedule a call with our team.</p>
+    </div>
+  </section>
+  <section class="section section-dark">
+    <div class="container">
+      <div class="contact-grid">
+        <div class="contact-info fade-in">
+          <h2 class="contact-heading">Contact info</h2>
+          <div class="contact-item">
+            <span class="contact-label">Email</span>
+            <a href="mailto:hola@gestify.us" class="contact-value">hola@gestify.us</a>
+          </div>
+          <div class="contact-item">
+            <span class="contact-label">WhatsApp</span>
+            <a href="https://wa.me/1234567890" class="contact-value">+1 (555) 123-4567</a>
+          </div>
+          <div class="contact-item">
+            <span class="contact-label">Hours</span>
+            <span class="contact-value">Monday to Friday, 9am - 6pm EST</span>
+          </div>
+          <div class="contact-divider"></div>
+          <h3 class="contact-subheading">Prefer email?</h3>
+          <p class="contact-text">Write to us at <a href="mailto:hola@gestify.us">hola@gestify.us</a> and we'll respond in under 24 hours.</p>
+        </div>
+        <form class="contact-form fade-in" style="transition-delay:100ms;">
+          <div class="form-group">
+            <label class="form-label">Name</label>
+            <input type="text" class="form-input" placeholder="Your name" />
+          </div>
+          <div class="form-group">
+            <label class="form-label">Email</label>
+            <input type="email" class="form-input" placeholder="you@email.com" />
+          </div>
+          <div class="form-group">
+            <label class="form-label">Company</label>
+            <input type="text" class="form-input" placeholder="Your agency name" />
+          </div>
+          <div class="form-group">
+            <label class="form-label">Message</label>
+            <textarea class="form-textarea" rows="5" placeholder="How can we help?"></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary" style="width:100%; justify-content: center;">Send message</button>
+        </form>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+.page-hero { padding: 160px 0 80px; text-align: center; }
+.page-title { font-size: clamp(2rem, 4vw, 3.5rem); font-weight: 700; line-height: 1.1; margin: 20px auto 24px; max-width: 700px; }
+.page-sub { font-size: 18px; color: rgba(255,255,255,0.5); max-width: 600px; margin: 0 auto; line-height: 1.7; }
+.contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; max-width: 900px; margin: 0 auto; }
+.contact-heading { font-size: 24px; font-weight: 700; margin-bottom: 28px; }
+.contact-item { margin-bottom: 20px; }
+.contact-label { display: block; font-size: 12px; text-transform: uppercase; letter-spacing: 0.1em; color: rgba(255,255,255,0.4); margin-bottom: 4px; }
+.contact-value { font-size: 16px; color: rgba(255,255,255,0.9); }
+.contact-value:hover { color: oklch(0.75 0.15 195); }
+.contact-divider { height: 1px; background: rgba(255,255,255,0.08); margin: 32px 0; }
+.contact-subheading { font-size: 18px; font-weight: 600; margin-bottom: 12px; }
+.contact-text { font-size: 14px; color: rgba(255,255,255,0.5); line-height: 1.6; }
+.contact-text a { color: oklch(0.75 0.15 195); }
+.form-group { margin-bottom: 20px; }
+.form-label { display: block; font-size: 13px; font-weight: 500; color: rgba(255,255,255,0.7); margin-bottom: 8px; }
+.form-input, .form-textarea { width: 100%; padding: 14px 16px; background: #161616; border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; color: #fafafa; font-size: 14px; font-family: inherit; outline: none; transition: border-color 0.2s; }
+.form-input:focus, .form-textarea:focus { border-color: oklch(0.70 0.15 235); }
+.form-input::placeholder, .form-textarea::placeholder { color: rgba(255,255,255,0.3); }
+.form-textarea { resize: vertical; min-height: 120px; }
+@media (max-width: 768px) { .contact-grid { grid-template-columns: 1fr; } }
+</style>
