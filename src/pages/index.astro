@@ -1,4 +1,14 @@
 ---
-// Redirect to default locale
-return Astro.redirect('/es');
 ---
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="refresh" content="0; url=/es" />
+    <link rel="canonical" href="/es" />
+  </head>
+  <body>
+    <script>
+      window.location.replace('/es');
+    </script>
+  </body>
+</html>

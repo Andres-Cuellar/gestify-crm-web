@@ -73,6 +73,7 @@ const stats = [
 }
 .stats-visual {
   margin-bottom: 48px;
+  overflow: hidden;
 }
 .stats-canvas-wrapper {
   position: relative;
@@ -80,7 +81,6 @@ const stats = [
   border: 1px solid rgba(255,255,255,0.08);
   border-radius: 20px;
   overflow: hidden;
-  height: 200px;
 }
 #statsCanvas {
   position: absolute;
@@ -153,8 +153,22 @@ const stats = [
   background: rgba(255,255,255,0.1);
 }
 @media (max-width: 768px) {
-  .stats-overlay { grid-template-columns: 1fr; padding: 20px; }
-  .stats-quick-row { flex-direction: column; gap: 24px; }
-  .quick-divider { width: 40px; height: 1px; }
+  .stats-canvas-wrapper { height: auto; }
+  .stats-overlay { 
+    grid-template-columns: 1fr; 
+    padding: 20px; 
+    gap: 16px;
+    height: auto;
+  }
+  .stat-card { padding: 16px; }
+  .stats-quick-row { 
+    flex-direction: column; 
+    gap: 24px; 
+    padding: 24px;
+  }
+  .quick-divider { width: 60px; height: 1px; }
+  .quick-stat { gap: 8px; }
+  .quick-val { font-size: 32px; }
+  .quick-lbl { font-size: 14px; text-align: center; }
 }
 </style>
